@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Marvel United: Maximum Mutation — Campaña Spider-Verse & X-Men</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#e23636">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Maximum Mutation">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="icon" type="image/png" href="./assets/icons/favicon.png">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/comic-cards.css">
+</head>
+<body>
+
+  <!-- Encabezado de la Aplicación -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <img src="./assets/mu_logo.png" alt="Marvel United Logo" class="brand-logo">
+      <div class="brand-titles">
+        <h1>MAXIMUM <span>MUTATION</span></h1>
+        <p>Campaña Spider-Verse & X-Men</p>
+      </div>
+    </div>
+    <div class="header-controls">
+      <button id="soundToggleBtn" class="icon-btn" title="Activar/Silenciar Efectos de Sonido">🔊</button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       VISTA 1: TIMELINE Y MAPA DE CAMPAÑA
+       ========================================================================= -->
+  <section id="view-timeline" class="view-section active">
+    <div class="timeline-intro-card">
+      <h2>🕷️✖️ La Conspiración Simbiótica</h2>
+      <p>
+        El robo de bio-muestras mutantes y tejido simbiótico en los laboratorios de Oscorp ha desatado una crisis sin precedentes. A lo largo de <strong>10 capítulos épicos</strong>, tus decisiones, victorias y derrotas darán forma a la historia, desbloqueando nuevos héroes y forjando alianzas con temibles anti-héroes. ¡Elige el capítulo activo para comenzar tu partida en la mesa!
+      </p>
+    </div>
+
+    <h2 class="section-title">Mapa de Capítulos</h2>
+    <div id="timelineNodesContainer" class="campaign-nodes">
+      <!-- Los nodos de campaña se generan dinámicamente -->
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 2: COMPANION EN MESA (PARTIDA ACTIVA)
+       ========================================================================= -->
+  <section id="view-match" class="view-section">
+    <!-- Header del Escenario -->
+    <div class="match-header-box">
+      <div class="node-act" id="matchChapterAct">ACTO I: LA SOMBRA EN MANHATTAN</div>
+      <h2 id="matchChapterTitle" style="font-family:var(--font-comic);font-size:1.25rem;color:var(--comic-yellow);margin-bottom:8px;">Capítulo 1: Asalto a Oscorp</h2>
+      
+      <div class="match-villain-hero-row">
+        <img id="matchVillainAvatar" src="./assets/villains/rhino.png" alt="Villano" class="villain-portrait-lg">
+        <div class="match-villain-meta">
+          <p style="font-size:0.68rem;text-transform:uppercase;color:var(--marvel-red);font-weight:800;">Villano a Derrotar</p>
+          <h2 id="matchVillainName">Rhino</h2>
+          <p id="matchVillainSubtitle">El Ariete Rinoceronte</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sinopsis Narrativa -->
+    <div style="background:var(--bg-card);border:1px solid var(--bg-card-border);border-radius:var(--radius-md);padding:12px;margin-bottom:14px;">
+      <strong style="color:var(--comic-cyan);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.5px;">Briefing de la Misión:</strong>
+      <p id="matchSynopsis" style="font-size:0.8rem;color:#cbd5e1;margin-top:4px;line-height:1.4;"></p>
+    </div>
+
+    <!-- Ubicaciones Recomendadas (Piezas Físicas) -->
+    <h3 style="font-size:0.8rem;text-transform:uppercase;color:var(--text-muted);font-weight:800;margin-bottom:6px;">Ubicaciones en Círculo (Piezas de tu Caja):</h3>
+    <div id="matchLocationsStrip" class="locations-strip">
+      <!-- Generado dinámicamente con las 6 ubicaciones -->
+    </div>
+
+    <!-- Instrucciones de Preparación Física -->
+    <div style="background:rgba(246, 201, 14, 0.08);border:1px solid rgba(246, 201, 14, 0.3);border-radius:var(--radius-md);padding:12px;margin-bottom:14px;">
+      <strong style="color:var(--comic-yellow);font-size:0.75rem;text-transform:uppercase;">Preparación en la Mesa:</strong>
+      <ul id="matchSetupList" style="font-size:0.78rem;color:#e2e8f0;padding-left:18px;margin-top:4px;line-height:1.4;">
+        <!-- Checklist dinámico -->
+      </ul>
+      <div style="margin-top:8px;font-size:0.78rem;color:#fed7aa;border-top:1px dashed rgba(246,201,14,0.3);padding-top:6px;">
+        <strong>Regla Especial del Capítulo:</strong> <span id="matchSpecialRules"></span>
+      </div>
+    </div>
+
+    <!-- Héroes Desplegados en la Mesa (2 Jugadores + 1 Opcional) -->
+    <div style="background:var(--bg-card);border:1px solid var(--bg-card-border);border-radius:var(--radius-md);padding:12px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div>
+          <span style="font-size:0.75rem;text-transform:uppercase;color:var(--comic-yellow);font-weight:800;">Equipo en Mesa:</span>
+          <span id="playerModeBadge" class="badge badge-blue" style="margin-left:6px;">2 Héroes (Tú y Esposa)</span>
+        </div>
+        <button onclick="document.querySelector('[data-view=\'roster\']').click()" class="badge badge-yellow" style="cursor:pointer;border:none;">Catálogo ➔</button>
+      </div>
+
+      <div id="matchSlotsGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <!-- Ranura 1 y Ranura 2 -->
+      </div>
+      
+      <!-- Ranura 3: Apoyo Opcional -->
+      <div id="matchSlot3Container" style="margin-top:8px;">
+        <!-- Botón o tarjeta del 3er héroe -->
+      </div>
+    </div>
+
+    <!-- TRACKERS INTERACTIVOS DE PARTIDA -->
+    <h3 class="section-title">Trackers de Mesa en Vivo</h3>
+    
+    <div class="trackers-grid">
+      <!-- Salud del Villano -->
+      <div class="tracker-card danger heroic">
+        <span class="tracker-title">❤️ Vida Restante del Villano</span>
+        <div class="tracker-value-row">
+          <button id="btnDamageVillainMinus" class="tracker-btn" title="Restar 1 de Vida">−</button>
+          <div style="display:flex;align-items:baseline;gap:4px;">
+            <span id="trackerVillainHp" class="tracker-number">12</span>
+            <span id="trackerVillainMaxHp" style="font-size:0.9rem;color:var(--text-muted);font-weight:bold;">/ 12 PS</span>
+          </div>
+          <button id="btnDamageVillainPlus" class="tracker-btn" title="Sumar 1 de Vida">+</button>
+        </div>
+      </div>
+
+      <!-- Civiles Rescatados -->
+      <div class="tracker-card">
+        <span class="tracker-title">👥 Civiles Rescatados</span>
+        <div class="tracker-value-row">
+          <button id="btnCivilianMinus" class="tracker-btn">−</button>
+          <span id="trackerCivilians" class="tracker-number" style="font-size:1.6rem;">0 / 9</span>
+          <button id="btnCivilianPlus" class="tracker-btn">+</button>
+        </div>
+      </div>
+
+      <!-- Matones Derrotados -->
+      <div class="tracker-card">
+        <span class="tracker-title">💥 Matones Derrotados</span>
+        <div class="tracker-value-row">
+          <button id="btnThugMinus" class="tracker-btn">−</button>
+          <span id="trackerThugs" class="tracker-number" style="font-size:1.6rem;">0 / 9</span>
+          <button id="btnThugPlus" class="tracker-btn">+</button>
+        </div>
+      </div>
+
+      <!-- Amenazas Despejadas -->
+      <div class="tracker-card">
+        <span class="tracker-title">⚠️ Amenazas Despejadas</span>
+        <div class="tracker-value-row">
+          <button id="btnThreatMinus" class="tracker-btn">−</button>
+          <span id="trackerThreats" class="tracker-number" style="font-size:1.6rem;">0 / 4</span>
+          <button id="btnThreatPlus" class="tracker-btn">+</button>
+        </div>
+      </div>
+
+      <!-- Fichas de Exposición (Celulares) -->
+      <div class="tracker-card" style="border-color:#f59e0b;">
+        <span class="tracker-title">📱 Fichas de Exposición</span>
+        <div class="tracker-value-row">
+          <button id="btnExposureMinus" class="tracker-btn">−</button>
+          <span id="trackerExposure" class="tracker-number" style="font-size:1.6rem;">0</span>
+          <button id="btnExposurePlus" class="tracker-btn">+</button>
+        </div>
+        <span id="exposureAlertBadge" class="badge badge-red" style="display:none;margin-top:4px;">¡PRENSA HOSTIL ACTIVA!</span>
+      </div>
+    </div>
+
+    <!-- MAZO DE EVENTOS DIGITALES DE LA CAMPAÑA -->
+    <div class="events-deck-section">
+      <h3 class="section-title">Cartas de Evento Digitales</h3>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:8px;">Toca cada botón en el momento que corresponda según la partida en la mesa:</p>
+      
+      <div class="event-buttons-grid">
+        <button id="btnEventInitial" class="btn-event-trigger">
+          <span class="event-btn-icon">⚡</span>
+          <span class="event-btn-label">Evento Inicial</span>
+          <span class="event-btn-desc">Regla de inicio de misión</span>
+        </button>
+
+        <button id="btnEventUnderPressure" class="btn-event-trigger yellow">
+          <span class="event-btn-icon">🔥</span>
+          <span class="event-btn-label">Bajo Presión</span>
+          <span class="event-btn-desc">Al completar 1ª Misión</span>
+        </button>
+
+        <button id="btnEventAccelerated" class="btn-event-trigger red">
+          <span class="event-btn-icon">💥</span>
+          <span class="event-btn-label">Acelerado</span>
+          <span class="event-btn-desc">Al completar 2ª Misión</span>
+        </button>
+
+        <button id="btnEventCrisis" class="btn-event-trigger purple">
+          <span class="event-btn-icon">📰</span>
+          <span class="event-btn-label">Crisis Inesperada</span>
+          <span class="event-btn-desc">Giro de guión aleatorio</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Botones de Resolución de la Partida -->
+    <div class="match-action-bar">
+      <button id="btnDeclareLoss" class="btn-big-action btn-loss">
+        <span>✕</span> Derrota
+      </button>
+      <button id="btnDeclareWin" class="btn-big-action btn-win">
+        <span>✓</span> ¡Victoria!
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 3: ROSTER Y CATÁLOGO DE HÉROES
+       ========================================================================= -->
+  <section id="view-roster" class="view-section">
+    <h2 class="section-title">Catálogo de Héroes (15 Disponibles)</h2>
+    <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px;">
+      Toca cualquier héroe para ver su perfil detallado, sus cartas clave y agregarlo al equipo de tu partida física.
+    </p>
+
+    <!-- Filtros -->
+    <div class="roster-filter-row">
+      <button class="filter-chip roster-filter-chip active" data-filter="all">Todos (15)</button>
+      <button class="filter-chip roster-filter-chip" data-filter="unlocked">Desbloqueados</button>
+      <button class="filter-chip roster-filter-chip" data-filter="locked">Bloqueados</button>
+      <button class="filter-chip roster-filter-chip" data-filter="antihero">Anti-Héroes (3)</button>
+      <button class="filter-chip roster-filter-chip" data-filter="spider">Spider-Verse (8)</button>
+      <button class="filter-chip roster-filter-chip" data-filter="xmen">X-Men (7)</button>
+    </div>
+
+    <!-- Grid de Héroes -->
+    <div id="rosterGrid" class="roster-grid">
+      <!-- Tarjetas de héroes generadas dinámicamente -->
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 4: PERKS Y ARSENAL DE CAMPAÑA
+       ========================================================================= -->
+  <section id="view-perks" class="view-section">
+    <h2 class="section-title">Arsenal & Perks de Campaña</h2>
+    <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:14px;">
+      Ventajas permanentes y equipo especial obtenidos como recompensa tras ganar capítulos. Puedes tener hasta <strong>2 Perks equipados</strong> simultáneamente para cada partida física (o 3 en los capítulos finales).
+    </p>
+
+    <div id="perksListContainer" style="display:flex;flex-direction:column;gap:10px;">
+      <!-- Perks generados dinámicamente -->
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VISTA 5: DIARIO DE HISTORIA Y CONFIGURACIÓN
+       ========================================================================= -->
+  <section id="view-history" class="view-section">
+    <h2 class="section-title">Diario de la Campaña</h2>
+    
+    <!-- Estadísticas Generales -->
+    <div class="trackers-grid" style="margin-bottom:18px;">
+      <div class="tracker-card">
+        <span class="tracker-title">Victorias</span>
+        <span id="statTotalWins" class="tracker-number" style="color:var(--success-green);">0</span>
+      </div>
+      <div class="tracker-card">
+        <span class="tracker-title">Derrotas</span>
+        <span id="statTotalLosses" class="tracker-number" style="color:var(--marvel-red);">0</span>
+      </div>
+      <div class="tracker-card heroic">
+        <span class="tracker-title">Héroes Desbloqueados</span>
+        <span id="statHeroesUnlocked" class="tracker-number" style="color:var(--comic-yellow);font-size:1.8rem;">4 / 15</span>
+      </div>
+    </div>
+
+    <!-- Historial de Partidas -->
+    <h3 style="font-size:0.85rem;text-transform:uppercase;color:var(--text-muted);font-weight:800;margin-bottom:8px;">Crónica de Batallas:</h3>
+    <div id="historyListContainer" class="history-list" style="margin-bottom:24px;">
+      <!-- Lista de partidas pasadas -->
+    </div>
+
+    <!-- Opciones de Campaña & Respaldo -->
+    <div style="background:var(--bg-card);border:1px solid var(--bg-card-border);border-radius:var(--radius-md);padding:14px;">
+      <h3 style="font-family:var(--font-comic);font-size:1rem;color:var(--comic-yellow);margin-bottom:10px;">Gestión de la Partida</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button id="btnExportCampaign" class="btn-secondary" style="flex:1;">💾 Respaldar Partida</button>
+        <button id="btnImportCampaign" class="btn-secondary" style="flex:1;">📂 Cargar Respaldo</button>
+      </div>
+      <button id="btnResetCampaign" class="btn-secondary" style="width:100%;margin-top:10px;color:var(--marvel-red);border-color:var(--marvel-red);">⚠️ Reiniciar Toda la Campaña</button>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MODAL 1: CARTA DE EVENTO DIGITAL (3D FLIP CARD)
+       ========================================================================= -->
+  <div id="eventModal" class="modal-overlay">
+    <div class="modal-card" style="background:transparent;border:none;box-shadow:none;padding:0;">
+      <div class="comic-card-stage">
+        <div id="cardFlipper" class="comic-card-flipper">
+          
+          <!-- Reverso Oficial de la Carta -->
+          <div class="comic-card-back">
+            <img src="./assets/mu_logo.png" alt="Marvel United" class="card-back-logo">
+            <div class="card-back-tap-hint">Toca para Voltear</div>
+          </div>
+
+          <!-- Anverso de la Carta de Evento -->
+          <div id="comicCardFront" class="comic-card-front event-under-pressure">
+            <div class="card-header-bar">
+              <span id="eventCardTypeBadge" class="card-type-badge">Bajo Presión</span>
+              <h2 id="eventCardTitle" class="card-title-text">¡EMBOSCADA!</h2>
+            </div>
+            
+            <div class="card-body-content">
+              <div class="card-rule-box">
+                <span id="eventCardRule">Texto de la regla oficial del evento...</span>
+              </div>
+              <div class="card-flavor-text" id="eventCardFlavor">
+                "Cita de cómic del personaje involucrado..."
+              </div>
+            </div>
+
+            <div class="card-footer-bar">
+              <span id="eventCardFooterSeries">MAXIMUM MUTATION</span>
+              <span>MARVEL UNITED</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card-modal-actions">
+        <button id="closeEventModalBtn" class="btn-primary" style="width:100%;">¡Entendido! Volver a la Mesa</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: RESOLUCIÓN DE PARTIDA & EPÍLOGO NARRATIVO
+       ========================================================================= -->
+  <div id="outcomeModal" class="modal-overlay">
+    <div class="modal-card">
+      <span id="outcomeBadge" class="badge badge-green" style="margin-bottom:8px;">¡VICTORIA ÉPICA!</span>
+      <h2 id="outcomeTitle" style="font-family:var(--font-comic);font-size:1.3rem;margin-bottom:10px;">¡Objetivo Cumplido!</h2>
+      
+      <p id="outcomeEpilogue" style="font-size:0.85rem;color:#cbd5e1;line-height:1.45;margin-bottom:12px;"></p>
+      
+      <div id="outcomeBonus" style="font-size:0.8rem;color:var(--comic-yellow);font-weight:bold;margin-bottom:12px;"></div>
+      
+      <div id="outcomeUnlocksContainer">
+        <!-- Tarjetas de héroes desbloqueados -->
+      </div>
+
+      <button id="closeOutcomeModalBtn" class="btn-primary" style="width:100%;margin-top:14px;">Continuar Campaña</button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: DETALLE DE HÉROE
+       ========================================================================= -->
+  <div id="heroDetailModal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="closeHeroModalBtn" class="modal-close-btn">&times;</button>
+      
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+        <img id="modalHeroAvatar" src="./assets/heroes/spider_man.png" style="width:72px;height:72px;border-radius:50%;border:2px solid var(--comic-yellow);object-fit:cover;">
+        <div>
+          <h2 id="modalHeroName" style="font-family:var(--font-comic);font-size:1.25rem;">Spider-Man</h2>
+          <p id="modalHeroAlter" style="font-size:0.75rem;color:var(--comic-yellow);font-weight:700;">Peter Parker</p>
+          <p id="modalHeroBox" style="font-size:0.68rem;color:var(--text-muted);">Caja de Origen</p>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-dark);border-radius:8px;padding:10px;margin-bottom:10px;font-size:0.78rem;">
+        <p><strong>Rol:</strong> <span id="modalHeroRole"></span></p>
+        <p><strong>Habilidad Clave:</strong> <span id="modalHeroTrait" style="color:var(--comic-cyan);"></span></p>
+        <p style="margin-top:4px;color:#94a3b8;" id="modalHeroDesc"></p>
+      </div>
+
+      <!-- Mini Stats Bar -->
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:6px;text-align:center;margin-bottom:12px;">
+        <div style="background:#1e293b;padding:6px;border-radius:6px;">
+          <div style="font-size:0.65rem;color:var(--text-muted);">MOV</div>
+          <strong id="statMov" style="font-size:0.8rem;color:var(--comic-cyan);">Alto</strong>
+        </div>
+        <div style="background:#1e293b;padding:6px;border-radius:6px;">
+          <div style="font-size:0.65rem;color:var(--text-muted);">ATQ</div>
+          <strong id="statAtk" style="font-size:0.8rem;color:var(--marvel-red);">Medio</strong>
+        </div>
+        <div style="background:#1e293b;padding:6px;border-radius:6px;">
+          <div style="font-size:0.65rem;color:var(--text-muted);">HER</div>
+          <strong id="statHer" style="font-size:0.8rem;color:var(--comic-yellow);">Alto</strong>
+        </div>
+        <div style="background:#1e293b;padding:6px;border-radius:6px;">
+          <div style="font-size:0.65rem;color:var(--text-muted);">WILD</div>
+          <strong id="statWild" style="font-size:0.8rem;color:var(--success-green);">Medio</strong>
+        </div>
+      </div>
+
+      <div id="modalHeroUnlockCond" style="font-size:0.75rem;color:var(--marvel-red);background:rgba(226,54,54,0.1);padding:8px;border-radius:6px;margin-bottom:12px;display:none;"></div>
+
+      <!-- Asignación a Ranuras de Jugadores -->
+      <div id="heroAssignContainer" style="display:flex;flex-direction:column;gap:8px;">
+        <button id="btnAssignSlot1" class="btn-primary" style="background:#2563eb;width:100%;">👤 Asignar a Jorge (Jugador 1)</button>
+        <button id="btnAssignSlot2" class="btn-primary" style="background:#db2777;width:100%;">🌸 Asignar a Esposa (Jugadora 2)</button>
+        <button id="btnAssignSlot3" class="btn-primary" style="background:#7c3aed;width:100%;">⭐ Asignar como 3er Héroe (Apoyo Opcional)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       BARRA DE NAVEGACIÓN INFERIOR (PWA MOBILE DOCK)
+       ========================================================================= -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-view="timeline">
+      <span class="nav-icon">🗺️</span>
+      <span>Campaña</span>
+    </button>
+    <button class="nav-item" data-view="match">
+      <span class="nav-icon">⚔️</span>
+      <span>Partida</span>
+    </button>
+    <button class="nav-item" data-view="roster">
+      <span class="nav-icon">🦸</span>
+      <span>Héroes</span>
+    </button>
+    <button class="nav-item" data-view="perks">
+      <span class="nav-icon">🛡️</span>
+      <span>Perks</span>
+    </button>
+    <button class="nav-item" data-view="history">
+      <span class="nav-icon">📜</span>
+      <span>Diario</span>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="./js/audio.js"></script>
+  <script src="./js/campaign-data.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
