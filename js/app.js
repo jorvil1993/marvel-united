@@ -1117,6 +1117,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('modalHeroTrait').textContent = hero.trait;
     document.getElementById('modalHeroDesc').textContent = hero.description;
     
+    const bioEl = document.getElementById('modalHeroComicBio');
+    if (bioEl) {
+      bioEl.textContent = hero.comicBio || hero.description;
+    }
+    
     // Stats
     document.getElementById('statMov').textContent = hero.stats.mov;
     document.getElementById('statAtk').textContent = hero.stats.atk;
