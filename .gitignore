@@ -1,0 +1,15 @@
+# Archivos de impresión y documentos pesados
+*.pdf
+*.PDF
+*.zip
+*.rar
+*.7z
+*.psd
+*.ai
+
+# Archivos del sistema y temporales
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+node_modules/
