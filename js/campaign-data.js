@@ -489,7 +489,7 @@ const CAMPAIGN_CHAPTERS = [
       "wolverine"
     ],
     "comicReference": "Champions Vol. 2 (Mark Waid) & Ultimate Spider-Man",
-    "synopsis": "«PRÓLOGO: EL COMPLOT EN LAS SOMBRAS»\nUna noche inusualmente fría en Manhattan es sacudida por estruendosas detonaciones en los niveles subterráneos de Oscorp Tower. Norman Osborn ha estado acumulando en secreto bio-muestras de mutantes y cultivos alienígenas de tejido simbiótico para sintetizar un catalizador biológico ilegal: el K-Gene.\n\n«LA CRISIS ACTUAL»\nRhino (Aleksei Sytsevich) irrumpe como un ariete viviente derribando mamparas blindadas con furia ciega. No busca dinero: fue contratado como fuerza de choque para extraer los contenedores criogénicos que albergan las cepas mutagénicas maestras.\n\n«MISIÓN DEL EQUIPO»\nPeter Parker (Spider-Man) y Miles Morales acuden de inmediato al escuchar las alarmas sísmicas. Deben coordinar redes de contención y bioelectricidad para neutralizar a Rhino antes de que derribe las columnas maestras y escape con las muestras. Desde los conductos de ventilación, Felicia Hardy (Black Cat) —la ladrona de guante blanco más astuta de Nueva York, equipada con garras y un dispositivo que altera las probabilidades de suerte— merodea buscando desvalijar los servidores de Oscorp.",
+    "synopsis": "«PRÓLOGO: EL COMPLOT EN LAS SOMBRAS»\nUna noche inusualmente fría en Manhattan es sacudida por estruendosas detonaciones en los niveles subterráneos de Oscorp Tower. Norman Osborn ha estado acumulando en secreto bio-muestras de mutantes y cultivos alienígenas de tejido simbiótico para sintetizar un catalizador biológico ilegal: el K-Gene.\n\n«LA CRISIS ACTUAL»\nRhino (Aleksei Sytsevich) irrumpe como un ariete viviente derribando mamparas blindadas con furia ciega. No busca dinero: fue contratado como fuerza de choque por la Hermandad para saquear los contenedores criogénicos que albergan las cepas mutagénicas maestras.\n\n«MISIÓN DEL EQUIPO Y LA LLEGADA DE BLACK CAT»\nPeter Parker (Spider-Man) y Miles Morales acuden de inmediato al escuchar las alarmas sísmicas. Desde Westchester, el Profesor Charles Xavier detecta mediante Cerebro la perturbación biológica y alerta telepáticamente a Scott Summers (Cyclops), quien acude como apoyo táctico. Mientras tanto, oculta en los conductos de ventilación se encuentra Felicia Hardy (Black Cat) —la ladrona de guante blanco más audaz de Nueva York, armada con garras de escalada y microchips de manipulación de probabilidad (su campo de 'mala suerte')—. Felicia había entrado a Oscorp a robar cuentas secretas de Osborn, pero al presenciar el horror del bio-armamento, aprovecha el caos de la embestida de Rhino para sustraer el disco duro con los datos científicos del proyecto y aliarse con los héroes para evitar una catástrofe biológica.",
     "locations": [
       {
         "name": "Oscorp Tower",
@@ -525,7 +525,7 @@ const CAMPAIGN_CHAPTERS = [
       "😈 VILLANO (Rhino): Inicia en OSCORP TOWER — Rhino derriba las compuertas de la bóveda subterránea de biomasa.",
       "👤 JORGE (Spider-Man): Inicia en MIDTOWN HIGH SCHOOL — Peter se balancea a toda velocidad desde Queens al escuchar las sirenas.",
       "🌸 ESPOSA (Miles Morales): Inicia en SIMS TOWER — Miles patrullaba las azoteas de Brooklyn y corta la avenida.",
-      "⭐ APOYO (Cyclops, si juega): Inicia en DAILY BUGLE — Scott Summers vigila desde las alturas con visor táctico.",
+      "⭐ APOYO (Cyclops, si juega): Inicia en DAILY BUGLE — Scott Summers fue alertado telepáticamente por el Profesor Xavier desde Cerebro y vigila las rutas de escape.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
       "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
@@ -555,7 +555,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: BÓVEDA ASEGURADA Y DATOS RECUPERADOS!",
-      "epilogue": "Con una maniobra perfectamente sincronizada, Peter Parker y Miles Morales sobrecargan la armadura de Rhino con bioelectricidad, haciéndolo desplomarse contra el suelo reforzado. Entre las sombras de la bóveda aparece Black Cat (Felicia Hardy) con un disco duro militar de Oscorp en mano: \"Buen golpe, chicos. Aleksei solo era la fuerza bruta: estos archivos indican que Victor Creed (Sabretooth) fue desplegado en Central Park para cazar y silenciar a informantes mutantes clave\". Preocupado por la conexión mutante, Peter utiliza la frecuencia de emergencia de los Vengadores para contactar a Scott Summers y a Logan en Westchester. ¡Black Cat se une formalmente a la alianza!",
+      "epilogue": "Con una maniobra perfectamente sincronizada, Peter Parker y Miles Morales sobrecargan la armadura de Rhino con bioelectricidad, haciéndolo desplomarse contra el suelo reforzado. Entre las sombras de la bóveda salta ágilmente Felicia Hardy (Black Cat) con el disco duro militar de Oscorp en mano: \"Tranquilos, chicos. Iba a vaciar las cuentas secretas de Norman, pero Aleksei casi me aplasta. Sus archivos revelan algo mucho peor: Victor Creed (Sabretooth) fue contratado para silenciar en Central Park a los científicos que formularon el virus K-Gene\". Preocupado por la conexión mutante, Peter conecta la radio con Scott Summers, quien confirma las lecturas enviadas por el Profesor Xavier desde Cerebro. ¡Black Cat entrega el disco y se une formalmente a la alianza!",
       "unlockedHeroes": [
         "black_cat"
       ],
@@ -567,7 +567,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: COLAPSO EN OSCORP Y ESCAPE DEL ARIETE",
-      "epilogue": "La embestida colosal de Rhino pulveriza las columnas maestras de la bóveda subterránea, sepultando a los héroes bajo vigas de acero y escombros. Rhino logra escapar en un furgón blindado con los contenedores criogénicos de biomasa. Para desviar la atención policial y criminalizar a los justicieros, la Hermandad de Mutantes activa de inmediato a Mystique en el Daily Bugle: la cambiaformas imprime portadas sensacionalistas acusando a Spider-Man y a los justicieros mutantes de terrorismo urbano. ¡Scott Summers y Beast acuden de urgencia a Manhattan para detener la desinformación antes de que la ciudad arda en pánico!",
+      "epilogue": "La embestida colosal de Rhino pulveriza las columnas maestras de la bóveda subterránea, sepultando a los héroes bajo vigas de acero y escombros. Rhino logra escapar en un furgón blindado con los contenedores criogénicos de biomasa. Felicia Hardy (Black Cat), quien observaba desde los ductos tras sustraer una copia parcial de los discos duros, ayuda a liberar a Peter y a Miles de los escombros. Para desviar la atención policial, la Hermandad de Mutantes activa de inmediato a Mystique en el Daily Bugle para imprimir portadas falsas acusando a los mutantes del asalto. El Profesor Xavier alerta a Cyclops y Beast para detener la difamación mediática.",
       "unlockedHeroes": [
         "black_cat"
       ],
@@ -611,7 +611,7 @@ const CAMPAIGN_CHAPTERS = [
       "spider_man"
     ],
     "comicReference": "Astonishing Spider-Man & Wolverine (Jason Aaron)",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON CAPÍTULO 1 - VICTORIA)»\nTras someter a Rhino en la bóveda de Oscorp, Peter Parker y Miles Morales aseguraron los discos duros de Norman Osborn con ayuda de Black Cat. En Westchester, el Profesor Charles Xavier detectó una perturbación mediante Cerebro y alertó telepáticamente a los X-Men sobre una orden de ejecución activa: Victor Creed (Sabretooth) fue enviado por la Hermandad a Central Park para eliminar a científicos desertores de Oscorp que intentaban denunciar el desarrollo del virus mutagénico K-Gene.\n\n«LA CRISIS ACTUAL»\nLogan capta el inconfundible hedor a sangre y tabaco de su eterno némesis en la espesura del parque nocturno. Sabretooth está cazando a los informantes civiles uno a uno entre las sombras para borrar todo rastro del pacto secreto entre Osborn y Magneto.\n\n«MISIÓN DEL EQUIPO»\nScott Summers (Cyclops) coordina el perímetro de evacuación con rayos ópticos de contención, mientras Wolverine se lanza a la espesura para frenar a Creed garras contra colmillos. Desde un laboratorio móvil en las inmediaciones, el Dr. Hank McCoy asiste con apoyo científico.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON CAPÍTULO 1 - VICTORIA)»\nTras someter a Rhino en la bóveda de Oscorp, Peter Parker y Miles Morales aseguraron los discos duros de Norman Osborn gracias a la astucia de Felicia Hardy (Black Cat), quien decidió usar su botín para colaborar con los justicieros. Desde la Mansión en Westchester, el Profesor Charles Xavier detectó mediante Cerebro una grave perturbación psíquica en Manhattan y alertó telepáticamente a Scott Summers y a Logan: Victor Creed (Sabretooth) fue desplegado en Central Park para cazar y silenciar a los genetistas desertores de Oscorp que conocen la fórmula del virus mutagénico K-Gene.\n\n«LA CRISIS ACTUAL»\nLogan capta el inconfundible hedor a sangre y tabaco de su eterno némesis en la espesura del parque nocturno. Sabretooth está cazando a los informantes civiles uno a uno entre las sombras para borrar todo rastro del pacto secreto entre Osborn y la Hermandad. Black Cat vigila los perímetros con sus prismáticos guiando al escuadrón.\n\n«MISIÓN DEL EQUIPO»\nScott Summers (Cyclops) coordina el perímetro de evacuación con rayos ópticos de contención, mientras Wolverine se lanza a la espesura para frenar a Creed garras contra colmillos. Desde un laboratorio móvil en las inmediaciones, el Dr. Hank McCoy asiste con apoyo científico.",
     "locations": [
       {
         "name": "Central Park",
@@ -733,7 +733,7 @@ const CAMPAIGN_CHAPTERS = [
       "miles_morales"
     ],
     "comicReference": "All-New X-Men & Uncanny X-Men (Bendis)",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON CAPÍTULO 1 - DERROTA)»\nEl brutal asalto de Rhino culminó con la fuga del villano y el colapso de la bóveda subterránea de Oscorp. Con los frascos de K-Gene en manos del crimen organizado, la Hermandad de Mutantes puso en marcha la segunda fase de su plan: Mystique se infiltró en el Daily Bugle suplantando al editor ejecutivo para publicar portadas sensacionalistas que acusan a los mutantes de terrorismo y destrucción urbana.\n\n«LA CRISIS ACTUAL»\nSirenas policiales atronan las avenidas mientras turbas de manifestantes engañados rodean la torre del periódico exigiendo la detención de los justicieros. Mystique utiliza sus dones de camuflaje para sembrar el caos en la sala de redacción y alterar los cables de noticias internacionales.\n\n«MISIÓN DEL EQUIPO»\nScott Summers (Cyclops) y Logan irrumpen en el edificio para desenmascarar a la impostora, mientras el Dr. Hank McCoy hackea los servidores centrales para anular la emisión de noticias falsas.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON CAPÍTULO 1 - DERROTA)»\nEl asalto de Rhino culminó con la fuga del villano con los contenedores criogénicos de K-Gene. Black Cat rescató a Peter y a Miles del derrumbe y compartió las coordenadas del convoy. Sin embargo, para cubrir la retirada del ariete, la Hermandad de Mutantes puso en marcha una ofensiva propagandística: Mystique se infiltró en el Daily Bugle suplantando al editor para acusar a los mutantes de terrorismo biológico. Desde Westchester, el Profesor Xavier detectó mediante Cerebro el bloqueo mental en la redacción y envió a Scott Summers y Logan de urgencia.\n\n«LA CRISIS ACTUAL»\nSirenas policiales atronan las avenidas mientras turbas de manifestantes engañados rodean la torre del periódico. Mystique utiliza su camuflaje para sembrar el caos en la sala de redacción y alterar los cables de noticias internacionales.\n\n«MISIÓN DEL EQUIPO»\nScott Summers (Cyclops) y Logan irrumpen en el edificio para desenmascarar a la impostora, mientras el Dr. Hank McCoy hackea los servidores centrales para anular la emisión de noticias falsas.",
     "locations": [
       {
         "name": "Daily Bugle",
@@ -921,7 +921,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: EL COMPLOT DE OSBORN AL DESCUBIERTO!",
-      "epilogue": "Felicia arrebata el detonador de las manos de Mystique con su gancho acrobático, mientras Beast y Spider-Man evacuan al personal civil. Al verse acorralada, Mystique confiesa la aterradora verdad: ¡Norman Osborn nunca perdió las bio-muestras! El propio Osborn financió a la Hermandad para probar el mutágeno y ahora vuela en su planeador hacia el Puente de Brooklyn con un arsenal de bombas mutagénicas. En las sombras de la redacción, Gwen Stacy (Ghost-Spider) —la heroína arácnida de la Tierra-65 que viaja entre dimensiones con su reloj multiversal— y Jean Grey se presentan ofreciendo su poder dimensional y psiónico. ¡Ghost-Spider y Jean Grey se unen al equipo activo!",
+      "epilogue": "Felicia arrebata el detonador de las manos de Mystique con su gancho acrobático, mientras Beast y Spider-Man evacuan al personal civil. Al verse acorralada, Mystique confiesa la aterradora verdad: ¡Norman Osborn nunca perdió las bio-muestras! El propio Osborn financió a la Hermandad para probar el mutágeno y ahora vuela en su planeador hacia el Puente de Brooklyn con un arsenal de bombas mutagénicas. Justo en ese instante, el aire de la redacción se distorsiona con un destello cuántico y de una brecha dimensional aterriza acrobáticamente Gwen Stacy (Ghost-Spider), con su traje blanco con capucha rosa y su reloj multiversal. Gwen revela de inmediato su procedencia: en su dimensión nativa (Tierra-65), ella fue mordida por la araña radiactiva y su Peter Parker murió trágicamente; su reloj de salto interdimensional detectó una catástrofe en este mundo desatada por los bio-experimentos de Osborn. «No dejaré que otro Peter muera ni que este universo perezca», sentencia Gwen. Junto a ella, Jean Grey proyecta su poder psiónico para coordinar la mente del equipo. ¡Ghost-Spider y Jean Grey se unen al equipo activo!",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -934,7 +934,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: DETONACIÓN EN LA ROTATIVA",
-      "epilogue": "Una detonación secundaria destruye los talleres del Daily Bugle. Mystique se desvanece en el humo mientras las alarmas inundan la avenida. El sabotaje impide acceder a los radares a tiempo: Osborn ya ha alcanzado el Puente de Brooklyn con su planeador cargado al máximo de bio-explosivos.",
+      "epilogue": "Una detonación secundaria destruye los talleres del Daily Bugle. Mystique se desvanece en el humo mientras las alarmas inundan la avenida. El sabotaje impide acceder a los radares a tiempo: Osborn ya ha alcanzado el Puente de Brooklyn con su planeador cargado al máximo de bio-explosivos. En medio del humo de los escombros se abre un portal interdimensional del que emerge Gwen Stacy (Ghost-Spider) armada con su reloj multiversal: proveniente de la Tierra-65 donde perdió a su Peter Parker, Gwen viajó entre realidades al detectar la amenaza de Osborn para evitar otra tragedia y ofrecer su ayuda a la desesperada junto a Jean Grey. ¡Ambas se suman al escuadrón para frenar el fuego del Duende!",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1045,7 +1045,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: RESCATE HEROICO Y CÓDIGOS DE VUELO!",
-      "epilogue": "Con una sincronización asombrosa, Felicia abre las cerraduras de las salas de rehenes mientras Beast noquea a la escolta de Mystique. Antes de huir, Mystique deja caer su comunicador militar con las coordenadas del Green Goblin: Norman Osborn se dirige al Puente de Brooklyn. Gwen Stacy (Ghost-Spider) y Jean Grey llegan como refuerzos de emergencia. ¡Ambas se unen al equipo activo!",
+      "epilogue": "Con una sincronización asombrosa, Felicia abre las cerraduras de las salas de rehenes mientras Beast noquea a la escolta de Mystique. Antes de huir, Mystique deja caer su comunicador militar con las coordenadas del Green Goblin: Norman Osborn se dirige al Puente de Brooklyn con bombas mutagénicas. En ese instante de tensión, una fractura dimensional ilumina el estudio y Gwen Stacy (Ghost-Spider) desciende desde el portal. Armada con su reloj multiversal y portando su traje blanco con capucha, Gwen explica que proviene de la Tierra-65 —donde tras ser picada por la araña perdió a su propio Peter Parker— y que su sensor detectó el riesgo existencial que corre este mundo. «¡No permitiré que este Peter ni esta ciudad caigan!», proclama Gwen, sumándose junto a los poderes psíquicos de Jean Grey. ¡Ambas se unen al equipo activo!",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1058,7 +1058,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: DIFUSIÓN CONSUMADA",
-      "epilogue": "Mystique completa la emisión hostil antes de escapar en un helicóptero camuflado. La ciudad entra en histeria y el Green Goblin aprovecha el caos para bombardear el Puente de Brooklyn sin oposición.",
+      "epilogue": "Mystique completa la emisión hostil antes de escapar en un helicóptero camuflado. La ciudad entra en histeria y el Green Goblin aprovecha el caos para bombardear el Puente de Brooklyn sin oposición. Entre la confusión callejera se materializa un vórtice dimensional del que salta Gwen Stacy (Ghost-Spider) con su reloj interdimensional de la Tierra-65: decidida a salvar a este Peter Parker y evitar una hecatombe biológica, Gwen y Jean Grey se integran de inmediato al escuadrón para intentar contener el ataque aéreo.",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1169,7 +1169,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: CONVOY INTERCEPTADO Y REVELACIÓN DE OSBORN!",
-      "epilogue": "Beast y Miles neutralizan a Creed con una combinación de suero sedante y descargas bioeléctricas. Al revisar la cabina del camión principal, descubren el logotipo personal de Norman Osborn y planes de vuelo hacia el Puente de Brooklyn: ¡el Green Goblin va a liberar el virus desde el aire! Ghost-Spider y Jean Grey se unen a la vanguardia. ¡Ambas se incorporan al roster activo!",
+      "epilogue": "Beast y Miles neutralizan a Creed con una combinación de suero sedante y descargas bioeléctricas. Al revisar la cabina del camión principal, descubren el logotipo personal de Norman Osborn y planes de vuelo hacia el Puente de Brooklyn: ¡el Green Goblin va a liberar el virus desde el aire! En ese instante crucial, un zumbido cuántico abre una fisura resplandeciente en la arboleda de Central Park y Gwen Stacy (Ghost-Spider) desciende con su traje blanco y capucha rosa. Gwen explica su llegada con su reloj multiversal: procede de la Tierra-65, donde fue picada por la araña y donde su Peter Parker murió; al detectar la distorsión mortal de Osborn en esta línea temporal, saltó de universo para salvar a este Peter y su realidad. Con Jean Grey despertando sus defensas psiónicas, ¡Ghost-Spider y Jean Grey se incorporan al roster activo!",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1182,7 +1182,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: EL CONVOY ROMPE EL CERCO",
-      "epilogue": "Creed derriba las barricadas y permite que uno de los camiones escape hacia los almacenes de Osborn. El retraso permite que el Green Goblin cargue su planeador y comience el bombardeo sobre el Puente de Brooklyn.",
+      "epilogue": "Creed derriba las barricadas y permite que uno de los camiones escape hacia los almacenes de Osborn. El retraso permite que el Green Goblin cargue su planeador y comience el bombardeo sobre el Puente de Brooklyn. Mientras el equipo se reagrupa entre las sombras, un portal dimensional se abre y emerge Gwen Stacy (Ghost-Spider) con su reloj interdimensional de la Tierra-65: decidida a evitar que otro Peter Parker muera en el multiverso, Gwen y Jean Grey se incorporan al escuadrón para interceptar el ataque aéreo.",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1293,7 +1293,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: EL FRENTE SE SOSTIENE!",
-      "epilogue": "A pesar de la hostilidad ambiental, Miles y Beast reducen a Creed frente a las cámaras de los noticieros, demostrando quién era el verdadero agresor. La confesión grabada de Creed desenmascara a Norman Osborn como el Green Goblin. Ghost-Spider y Jean Grey se incorporan al equipo para cortar el paso a Osborn en el Puente de Brooklyn. ¡Ambas se unen al roster activo!",
+      "epilogue": "A pesar de la hostilidad ambiental, Miles y Beast reducen a Creed frente a las cámaras de los noticieros, demostrando quién era el verdadero agresor. La confesión grabada de Creed desenmascara a Norman Osborn como el Green Goblin. En medio de los flashes, una anomalía dimensional abre un vórtice y desciende Gwen Stacy (Ghost-Spider) con su traje blanco con capucha: proveniente de la Tierra-65 donde fue picada por la araña y su Peter falleció, Gwen viajó entre realidades con su reloj multiversal para impedir una masacre similar en este mundo. Junto a Jean Grey, se integran para cortar el paso a Osborn en el Puente de Brooklyn. ¡Ambas se unen al roster activo!",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1306,7 +1306,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: CAOS TOTAL Y EMBESTIDA DEL DUENDE",
-      "epilogue": "El fuego cruzado obliga a los héroes a retirarse a las cloacas. Con la ciudad sumida en la histeria, el Green Goblin sobrevuela Manhattan desatando una lluvia de bombas de fuego sobre el Puente de Brooklyn.",
+      "epilogue": "El fuego cruzado obliga a los héroes a retirarse a las cloacas. Con la ciudad sumida en la histeria, el Green Goblin sobrevuela Manhattan desatando una lluvia de bombas de fuego sobre el Puente de Brooklyn. Gwen Stacy (Ghost-Spider), recién llegada a través de un portal dimensional desde la Tierra-65 armada con su reloj multiversal para salvar a este universo, y Jean Grey se suman al escuadrón en plena emergencia aérea.",
       "unlockedHeroes": [
         "ghost_spider",
         "jean_grey"
@@ -1351,7 +1351,7 @@ const CAMPAIGN_CHAPTERS = [
       "cyclops"
     ],
     "comicReference": "Ultimate Spider-Man: Death of a Goblin & Dark Phoenix Saga",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 3 - VICTORIA)»\nLa desarticulación de las células de la Hermandad arrojó una revelación aterradora: Norman Osborn en persona es la mente maestra que orquestó tanto el asalto a Oscorp como la tapadera mediática. Con las bio-muestras mutantes sintetizadas en bombas de calabaza mutagénicas, el Green Goblin vuela en su aerodeslizador hacia el Puente de Brooklyn para dispersar el gas tóxico sobre el tráfico matutino.\n\n«LA CRISIS ACTUAL»\nGracias a los datos de telemetría asegurados a tiempo, Gwen Stacy (Ghost-Spider) —la heroína arácnida de la Tierra-65 que viaja entre dimensiones con su reloj multiversal— y Jean Grey despliegan escudos telequinéticos y redes de contención aérea sobre los cables del puente para interceptar al villano antes del lanzamiento.\n\n«MISIÓN DEL EQUIPO»\nGwen Stacy realiza maniobras acrobáticas entre las torres de suspensión mientras Jean Grey protege a los conductores con barreras psiónicas. Deben derribar el planeador del Green Goblin antes de que alcance altitud de dispersión.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 3 - VICTORIA)»\nLa desarticulación de las células de la Hermandad arrojó una revelación aterradora: Norman Osborn en persona es la mente maestra que orquestó tanto el asalto a Oscorp como la tapadera mediática. Con las bio-muestras mutantes sintetizadas en bombas de calabaza mutagénicas, el Green Goblin vuela en su aerodeslizador hacia el Puente de Brooklyn para dispersar el gas tóxico sobre el tráfico matutino.\n\n«LA CRISIS ACTUAL Y LA LLEGADA DE GHOST-SPIDER»\nGwen Stacy (Ghost-Spider) —recién llegada de la Tierra-65 a través de su reloj multiversal, decidida a evitar que este Peter Parker sufra una tragedia como en su dimensión nativa— se lanza entre los tirantes de acero del puente con agilidad felina, mientras Jean Grey proyecta escudos psiónicos de contención para proteger a los conductores y detener las detonaciones.\n\n«MISIÓN DEL EQUIPO»\nGwen Stacy realiza maniobras acrobáticas entre las torres de suspensión mientras Jean Grey resguarda a los civiles con barreras mentales. Deben derribar el planeador del Green Goblin antes de que alcance altitud de dispersión.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -1417,7 +1417,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: AERODESLIZADOR DERRIBADO!",
-      "epilogue": "Con un impacto certero, Gwen Stacy atasca el rotor del planeador y Jean Grey estrella el vehículo contra un pilar de hormigón. Norman Osborn es neutralizado, pero antes de perder el conocimiento su radio militar emite una transmisión cifrada hacia Westchester: ¡había contratado a Juggernaut (Cain Marko) para arrasar la Escuela de Xavier y saquear las bobinas de Cerebro! Con ventaja de tiempo, Storm y Jessica Drew (Spider-Woman) —agente encubierta con alas de planeo y devastadores rayos bioeléctricos de veneno— llegan volando al rescate para partir a la Mansión X. ¡Storm y Spider-Woman se unen al equipo activo!",
+      "epilogue": "Con un impacto certero, Gwen Stacy atasca el rotor del planeador y Jean Grey estrella el vehículo contra un pilar de hormigón. Norman Osborn es neutralizado, pero antes de perder el conocimiento su radio militar emite una transmisión cifrada hacia Westchester: ¡había contratado a Juggernaut (Cain Marko) para arrasar la Escuela de Xavier y saquear las bobinas de Cerebro! En ese instante descienden de los cielos Storm y Jessica Drew (Spider-Woman). Jessica revela su tapadera: es una superespía bio-alterada entrenada por Hydra y S.H.I.E.L.D., dotada de alas de planeo y devastadores rayos de veneno bioeléctrico («Venom Blasts»), quien llevaba semanas investigando de incógnito la red de contrabando de Osborn. Al interceptar la orden de ataque contra Westchester, Jessica coordinó con Ororo Munroe un despliegue aéreo inmediato para salvar la Mansión X. ¡Storm y Spider-Woman se unen al equipo activo!",
       "unlockedHeroes": [
         "storm",
         "spider_woman"
@@ -1430,7 +1430,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: CORTINA DE HUMO Y ASALTO INICIADO",
-      "epilogue": "El Green Goblin detona una granada de humo químico que cubre el puente, huyendo entre las nubes. La conmoción retrasa las comunicaciones y la alerta de Westchester llega tarde: Juggernaut ya ha comenzado su embestida contra la Mansión X. Storm y Spider-Woman acuden a la carrera para contener la brecha.",
+      "epilogue": "El Green Goblin detona una granada de humo químico que cubre el puente, huyendo entre las nubes. La conmoción retrasa las comunicaciones y la alerta de Westchester llega tarde: Juggernaut ya ha comenzado su embestida contra la Mansión X para demoler la cámara de Cerebro. De entre las nubes aterrizan de emergencia Storm y Jessica Drew (Spider-Woman): Jessica, superespía de élite entrenada por S.H.I.E.L.D. con alas de planeo y rayos bioeléctricos de veneno, estaba infiltrada en las operaciones encubiertas de Osborn y descubrió la marcha del gigante. Ambas heroínas se unen al escuadrón y vuelan a toda velocidad hacia Westchester. ¡Storm y Spider-Woman se unen al equipo activo!",
       "unlockedHeroes": [
         "storm",
         "spider_woman"
@@ -1475,7 +1475,7 @@ const CAMPAIGN_CHAPTERS = [
       "wolverine"
     ],
     "comicReference": "Spider-Man: A Death in the Family & Uncanny X-Men",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 3 - DERROTA)»\nLos retrasos y contratiempos de las misiones anteriores permitieron a Norman Osborn finalizar la síntesis de su fórmula mutagénica. Con una carcajada desquiciada que resuena por los altavoces de la ciudad, el Green Goblin lanza una lluvia de calabazas explosivas sobre el Puente de Brooklyn, atrapando a cientos de civiles en medio de detonaciones y humo tóxico.\n\n«LA CRISIS ACTUAL»\nEl puente arde y los cables de suspensión crujen peligrosamente. Gwen Stacy (Ghost-Spider) y Jean Grey acuden a la desesperada en medio del fuego para evacuar a las familias atrapadas y derribar el planeador del maniático.\n\n«MISIÓN DEL EQUIPO»\nExtinguir los incendios, salvar a los civiles de caer al río y neutralizar al Green Goblin en medio de un infierno de llamas.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 3 - DERROTA)»\nLos retrasos y contratiempos de las misiones anteriores permitieron a Norman Osborn finalizar la síntesis de su fórmula mutagénica. Con una carcajada desquiciada que resuena por los altavoces de la ciudad, el Green Goblin lanza una lluvia de calabazas explosivas sobre el Puente de Brooklyn, atrapando a cientos de civiles en medio de detonaciones y humo tóxico.\n\n«LA CRISIS ACTUAL»\nEl puente arde y los cables de suspensión crujen peligrosamente. Gwen Stacy (Ghost-Spider) —llegada desde la Tierra-65 mediante su reloj multiversal para evitar que este mundo caiga como el suyo— y Jean Grey acuden a la desesperada en medio del fuego para evacuar a las familias atrapadas y derribar el planeador del maniático.\n\n«MISIÓN DEL EQUIPO»\nExtinguir los incendios, salvar a los civiles de caer al río y neutralizar al Green Goblin en medio de un infierno de llamas.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -1541,7 +1541,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: TRAGEDIA EVITADA Y AVISO DE WESTCHESTER!",
-      "epilogue": "A costa de un esfuerzo titánico, Jean Grey y Gwen Stacy salvan a todos los civiles del puente y reducen a Norman Osborn. En su traje chamuscado, una transmisión revela que Juggernaut ya avanza hacia la Mansión X en Westchester para saquear los laboratorios de Xavier. Storm y Spider-Woman llegan surcando el cielo para reforzar la defensa. ¡Ambas se incorporan al roster activo!",
+      "epilogue": "A costa de un esfuerzo titánico, Jean Grey y Gwen Stacy salvan a todos los civiles del puente y reducen a Norman Osborn. En su traje chamuscado, una transmisión revela que Juggernaut ya avanza hacia la Mansión X en Westchester para saquear los laboratorios de Xavier. Storm y Jessica Drew (Spider-Woman) —superespía encubierta de S.H.I.E.L.D. con alas de planeo y rayos bioeléctricos de veneno que investigaba a Osborn— llegan volando para reforzar la defensa y viajar de urgencia a Westchester. ¡Ambas se incorporan al roster activo!",
       "unlockedHeroes": [
         "storm",
         "spider_woman"
@@ -1554,7 +1554,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: COLAPSO PARCIAL Y ALERTA ROJA",
-      "epilogue": "El puente sufre graves daños y Osborn se pierde en la noche. Las sirenas de Manhattan se mezclan con la señal de socorro de Westchester: ¡Juggernaut ha roto las puertas de la Escuela de Xavier! El equipo debe correr sin descanso hacia la Mansión.",
+      "epilogue": "El puente sufre graves daños y Osborn se pierde en la noche. Las sirenas de Manhattan se mezclan con la señal de socorro de Westchester: ¡Juggernaut ha roto las puertas de la Escuela de Xavier para arrasar Cerebro! Jessica Drew (Spider-Woman), tras abandonar su misión encubierta de espionaje sobre Osborn, y Storm se unen al equipo en un vuelo desesperado para defender la Mansión X. ¡Ambas se suman al escuadrón!",
       "unlockedHeroes": [
         "storm",
         "spider_woman"
@@ -1665,7 +1665,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: EL COLOSO DOBLEGADO!",
-      "epilogue": "Con un relámpago celestial de Storm y un disparo de precisión óptica de Cyclops, el yelmo místico de Juggernaut salta por los aires, cayendo inconsciente en el jardín delantero. Al revisar el arnés cibernético adosado a su pecho, Hank McCoy detecta una señal biológica estremecedora: Marko fue dopado con tejido vivo de un huésped cautivo: ¡Eddie Brock (Venom)! Brock está retenido y torturado en los Túneles Morlock bajo Manhattan. En ese instante, una brecha temporal se abre en el jardín y de ella emerge Miguel O'Hara (Spider-Man 2099): \"El colapso temporal comenzó con ese simbionte. Vengo del futuro para ayudarlos a salvarlo\". ¡Spider-Man 2099 se suma a la alianza!",
+      "epilogue": "Con un relámpago celestial de Storm y un disparo de precisión óptica de Cyclops, el yelmo místico de Juggernaut salta por los aires, cayendo inconsciente en el jardín delantero. Al revisar el arnés cibernético adosado a su pecho, Hank McCoy detecta una señal biológica estremecedora: Marko fue dopado con tejido vivo de un huésped cautivo: ¡Eddie Brock (Venom), quien agoniza retenido en los Túneles Morlock bajo Manhattan! En ese instante, el tejido espaciotemporal se desgarra con un vórtice de taquiones azul y carmesí. Del portal emerge de un salto acrobático Miguel O'Hara (Spider-Man 2099), enfundado en su traje de moléculas inestables, con afiladas garras en sus guanteletes y colmillos retráctiles. Miguel revela su increíble origen y misión: es un genetista de la megacorporación Alchemax en la Nueva York del año 2099 cuyo ADN fue reescrito con código arácnido; su asistente holográfica Lyla descubrió que en 2024 una plaga mutagénica («La Máxima Mutación») aniquiló a humanos y mutantes por igual. «El paciente cero de ese apocalipsis es Venom en las cloacas: viajé ochenta años al pasado para evitar que el futuro sea destruido», advierte Miguel. ¡Spider-Man 2099 se suma a la alianza!",
       "unlockedHeroes": [
         "spider_2099"
       ],
@@ -1677,7 +1677,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: BRECHA EN EL SUBTERRÁNEO",
-      "epilogue": "Juggernaut pulveriza los cimientos subterráneos de la Mansión X antes de ser repelido. La onda de choque colapsa las cloacas de Manhattan conectadas a los Túneles Morlock. En las profundidades, Venom se libera de su tanque en medio de un ataque de dolor y furia ciega. Miguel O'Hara (Spider-Man 2099) llega del futuro justo a tiempo para rescatar a los héroes de los escombros.",
+      "epilogue": "Juggernaut pulveriza los cimientos subterráneos de la Mansión X antes de ser repelido. La onda de choque colapsa las cloacas de Manhattan conectadas a los Túneles Morlock, liberando a Venom en medio de un ataque de dolor y furia ciega. En medio de los escombros se abre un portal de taquiones del que salta Miguel O'Hara (Spider-Man 2099): el genetista del año 2099 que viajó en el tiempo con su traje de moléculas inestables tras descubrir mediante su IA Lyla que esta crisis extinguió a la humanidad en su época. Miguel ayuda a rescatar a los héroes y los guía urgentemente hacia las cloacas para contener al simbionte.",
       "unlockedHeroes": [
         "spider_2099"
       ],
@@ -1721,7 +1721,7 @@ const CAMPAIGN_CHAPTERS = [
       "jean_grey"
     ],
     "comicReference": "X-Men: Messiah Complex & Fear Itself",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 4 - DERROTA)»\nEl Green Goblin logró detonar sus bombas de dispersión en el puente y escapar entre el humo químico. La emergencia colapsó los sistemas de respuesta y la señal de socorro de Westchester llegó tarde: Cain Marko (Juggernaut) ya ha embestido los muros exteriores de la Mansión X, reventando los generadores eléctricos y dejando el complejo en penumbra.\n\n«LA CRISIS ACTUAL»\nLa Escuela de Xavier está a oscuras y los sistemas de contención fallan. Marko avanza por los pasillos derribando muros en busca de Cerebro, mientras los estudiantes mutantes evacuan hacia los hangares subterráneos.\n\n«MISIÓN DEL EQUIPO»\nStorm y Spider-Woman deben combatir a ciegas en los pasillos destrozados, protegiendo a los jóvenes y arrancando el casco a Juggernaut antes de que alcance la cámara de Cerebro.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 4 - DERROTA)»\nEl Green Goblin logró detonar sus bombas de dispersión en el puente y escapar entre el humo químico. La emergencia colapsó los sistemas de respuesta y la señal de socorro de Westchester llegó tarde: Cain Marko (Juggernaut) ya ha embestido los muros exteriores de la Mansión X, reventando los generadores eléctricos y dejando el complejo en penumbra.\n\n«LA CRISIS ACTUAL»\nLa Escuela de Xavier está a oscuras y los sistemas de contención fallan. Marko avanza por los pasillos derribando muros en busca de la cámara blindada de Cerebro donde el Profesor Xavier coordina la defensa psiónica, mientras los estudiantes mutantes evacuan hacia los hangares subterráneos.\n\n«MISIÓN DEL EQUIPO»\nStorm y Spider-Woman deben combatir a ciegas en los pasillos destrozados, protegiendo a los jóvenes y arrancando el casco a Juggernaut antes de que alcance la cámara de Cerebro.",
     "locations": [
       {
         "name": "Xavier Institute",
@@ -1787,7 +1787,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: DEFENSA HEROICA EN LA OSCURIDAD!",
-      "epilogue": "En medio de los pasillos en penumbra, Cyclops y Storm logran desprender el casco de Juggernaut, dejándolo noqueado a metros de la puerta de Cerebro. Las lecturas del arnés de Marko revelan la firma de Venom en los Túneles Morlock. De una fisura temporal aparece Miguel O'Hara (Spider-Man 2099) para advertirles sobre el peligro de esa criatura. ¡Spider-Man 2099 se incorpora al roster activo!",
+      "epilogue": "En medio de los pasillos en penumbra, Cyclops y Storm logran desprender el casco de Juggernaut, dejándolo noqueado a metros de la puerta blindada donde el Profesor Xavier resguarda Cerebro. Las lecturas del arnés de Marko revelan la firma de un Venom torturado en los Túneles Morlock. De repente, una distorsión temporal de taquiones resplandece y de ella emerge Miguel O'Hara (Spider-Man 2099): un genetista de Alchemax del año 2099 que viajó al presente guiado por su IA Lyla para impedir que la infección mutagénica arrase con el futuro de la Tierra. Miguel advierte que deben purgar a Eddie Brock antes de que el virus se vuelva irreversible. ¡Spider-Man 2099 se incorpora al roster activo!",
       "unlockedHeroes": [
         "spider_2099"
       ],
@@ -1799,7 +1799,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: DAÑOS GRAVES EN EL SUBSUELO",
-      "epilogue": "Juggernaut destroza el suelo del vestíbulo antes de ser repelido, fracturando las cloacas de la ciudad. El impacto despierta a un Venom enfurecido y drogado en las profundidades. Spider-Man 2099 se materializa para evacuar a los héroes heridos.",
+      "epilogue": "Juggernaut destroza el suelo del vestíbulo antes de ser repelido, fracturando las cloacas de la ciudad y desatando el frenesí de un Venom drogado en las profundidades. Un portal temporal de taquiones se abre entre las ruinas y Miguel O'Hara (Spider-Man 2099) —el Spider-Man del futuro armado con garras, visión acelerada y traje de moléculas inestables— se materializa para evacuar a los heridos y liderar el descenso táctico hacia las cloacas para salvar la línea temporal.",
       "unlockedHeroes": [
         "spider_2099"
       ],
@@ -1908,8 +1908,8 @@ const CAMPAIGN_CHAPTERS = [
       }
     },
     "winOutcome": {
-      "title": "¡VICTORIA: REDENCIÓN SIMBIÓTICA Y LA PISTA DE GENOSHA!",
-      "epilogue": "La purga sónica de 2099 y la bioelectricidad de Miles logran expulsar el mutágeno sintético sin herir de muerte al simbionte. Eddie Brock recupera el control de su cuerpo, con la masa negra envolviéndolo con firmeza protectora. Con voz gutural pero cuerda, Venom ruge la verdad: \"¡Osborn no actuaba solo! ¡El Amo del Magnetismo, Erik Lehnsherr, recibió los cargamentos de biomasa en su santuario de Asteroide M / Genosha creyendo que salvarían a los mutantes del virus Legacy!\". Eddie Brock jura redimirse y luchar junto a ellos. En ese instante, un portal cósmico parpadea y de él cae Peter Porker (Spider-Ham) con un martillo gigante: \"¿Alguien pidió refuerzos de otra dimensión?\". ¡Venom (Héroe) y Spider-Ham se unen al equipo activo!",
+      "title": "¡VICTORIA: REDENCIÓN SIMBIÓTICA Y LA LLEGADA DE SPIDER-HAM!",
+      "epilogue": "La purga sónica de Spider-Man 2099 y la bioelectricidad de Miles logran expulsar el mutágeno sintético de Osborn sin matar al simbionte. Eddie Brock recupera el control de su mente, y la masa negra alienígena lo envuelve como un protector blindado. Con voz gutural pero cuerda, Venom revela la conspiración: \"¡Osborn no actuaba solo! ¡El Amo del Magnetismo, Erik Lehnsherr, recibió los cargamentos de biomasa en su santuario de Asteroide M / Genosha creyendo que salvarían a los mutantes del virus Legacy!\". Eddie jura redimirse y luchar como el 'Protector Letal' junto a ellos. En ese instante, la sobrecarga sónica y bioeléctrica fractura el tejido interdimensional: con un estallido cómico de '¡PLOP!', una brecha caricaturesca se abre en el techo y de ella cae de morros al lodo Peter Porker (Spider-Ham). Limpiándose el hocico y sacando un descomunal martillo de madera de su bolsillo trasero, Porker se presenta: proviene de la Tierra-8311 (un universo de animales de caricatura donde una araña fue picada por una cerdita radiactiva) y se rige por la 'Toon Force'. ¿Alguien pidió refuerzos cómicos? ¡Venom (Héroe) y Spider-Ham se unen formalmente al equipo activo!",
       "unlockedHeroes": [
         "venom_hero",
         "spider_ham"
@@ -1921,8 +1921,8 @@ const CAMPAIGN_CHAPTERS = [
       "bonusText": "Venom (Héroe) y Spider-Ham desbloqueados. Ventaja \"Zarcillo Protector Aliado\" obtenida. Viajan al santuario de Magneto (Capítulo 7A)."
     },
     "lossOutcome": {
-      "title": "DERROTA: VENOM ESCAPA MALHERIDO",
-      "epilogue": "El simbionte huye por las corrientes subterráneas hacia la bahía, pero en su rastro deja fragmentos celulares con frecuencias electromagnéticas que apuntan directamente a Asteroide M y Genosha. Eddie Brock logra dominar al simbionte a duras penas y regresa para unirse a los héroes, junto al recién llegado Spider-Ham.",
+      "title": "DERROTA: VENOM ESCAPA MALHERIDO Y APARECE SPIDER-HAM",
+      "epilogue": "Venom escapa por las corrientes subterráneas hacia la bahía, pero en su agonía deja receptores que apuntan directamente al santuario de Magneto en Asteroide M y Genosha. Eddie Brock logra dominar al simbionte en las aguas y regresa jurando redimirse como aliado. Además, la onda expansiva del combate abre una brecha multiversal de la que emerge Peter Porker (Spider-Ham), el cerdito arácnido de la Tierra-8311 armado con su martillo de dibujos animados y su insólita 'Toon Force', dispuesto a ayudar a la alianza. ¡Ambos se suman a la expedición hacia Genosha!",
       "unlockedHeroes": [
         "venom_hero",
         "spider_ham"
@@ -1967,7 +1967,7 @@ const CAMPAIGN_CHAPTERS = [
       "spider_woman"
     ],
     "comicReference": "Spider-Man: Maximum Carnage & Uncanny X-Men",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 5 - DERROTA)»\nJuggernaut arrasó la planta baja de la Mansión X, dañando gravemente las subestaciones subterráneas. El colapso provocó un sismo que fracturó las cloacas y los Túneles Morlock bajo Manhattan. El impacto liberó a Venom de su cámara de contención clandestina, pero el trauma sumió al simbionte en un frenesí homicida.\n\n«LA CRISIS ACTUAL»\nEn la oscuridad total de las cloacas, Venom acecha con zarcillos gigantescos derribando pilares del metro subterráneo. Cuadrillas de rescate civil están atrapadas entre los vagones aplastados.\n\n«MISIÓN DEL EQUIPO»\nSpider-Man 2099 y Miles Morales deben rescatar a los trabajadores del metro y utilizar pulsos eléctricos de alta frecuencia para aturdir al monstruo antes de que el túnel entero se desplome.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 5 - DERROTA)»\nJuggernaut arrasó la planta baja de la Mansión X, dañando gravemente las subestaciones subterráneas. El colapso provocó un sismo que fracturó las cloacas y los Túneles Morlock bajo Manhattan. El impacto liberó a Venom de su cámara de contención clandestina, pero el trauma sumió al simbionte en un frenesí homicida.\n\n«LA CRISIS ACTUAL»\nEn la oscuridad total de las cloacas, Venom acecha con zarcillos gigantescos derribando pilares del metro subterráneo. Cuadrillas de rescate civil están atrapadas entre los vagones aplastados. Spider-Man 2099 utiliza su visión acelerada y garras para abrir paso.\n\n«MISIÓN DEL EQUIPO»\nSpider-Man 2099 y Miles Morales deben rescatar a los trabajadores del metro y utilizar pulsos eléctricos de alta frecuencia para aturdir al monstruo antes de que el túnel entero se desplome.",
     "locations": [
       {
         "name": "Morlock Tunnels",
@@ -2032,8 +2032,8 @@ const CAMPAIGN_CHAPTERS = [
       }
     },
     "winOutcome": {
-      "title": "¡VICTORIA: TRUCE SUBTERRÁNEA Y LA ALIANZA CON BROCK!",
-      "epilogue": "Acorralado y aliviado del dolor por los pulsos de Miguel, Eddie Brock recupera el juicio: \"¡Magneto cree que este mutágeno es el futuro de su pueblo! ¡Tiene las muestras maestras en Asteroide M / Genosha!\". Brock ofrece su poder simbiótico a la causa para enmendar sus actos. En ese momento, Spider-Ham aparece saltando desde una caja de alcantarilla: \"¡Menuda fiesta tienen montada aquí abajo!\". ¡Venom (Héroe) y Spider-Ham se unen formalmente al equipo activo!",
+      "title": "¡VICTORIA: TREGUA SUBTERRÁNEA Y LA LLEGADA DE SPIDER-HAM!",
+      "epilogue": "Acorralado y aliviado del dolor por los pulsos de Miguel, Eddie Brock recupera el juicio: \"¡Magneto cree que este mutágeno es el futuro de su pueblo! ¡Tiene las muestras maestras en Asteroide M / Genosha!\". Brock ofrece su poder simbiótico a la causa para enmendar sus actos. En ese momento, la distorsión dimensional abre una grieta cósmica en el techo de la cloaca y de ella cae Peter Porker (Spider-Ham): un cerdito antropomórfico de la Tierra-8311 con poderes de caricatura ('Toon Force') y un mazo gigante de madera. \"¡Menuda fiesta tienen montada aquí abajo!\", bromea Porker. ¡Venom (Héroe) y Spider-Ham se unen formalmente al equipo activo!",
       "unlockedHeroes": [
         "venom_hero",
         "spider_ham"
@@ -2046,7 +2046,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: HUIDA CAÓTICA HACIA GENOSHA",
-      "epilogue": "Venom escapa hacia el océano, pero deja tras de sí coordenadas que apuntan al reino de Magneto en Genosha. Eddie Brock logra serenarse en las aguas de la bahía y se une al equipo, mientras Spider-Ham llega para aportar su humor y martillo.",
+      "epilogue": "Venom escapa hacia el océano, pero deja tras de sí coordenadas que apuntan al reino de Magneto en Genosha. Eddie Brock logra serenarse en las aguas de la bahía y se une al equipo, mientras Peter Porker (Spider-Ham) emerge de una grieta multiversal de dibujos animados con su mazo Toon para sumarse a la expedición.",
       "unlockedHeroes": [
         "venom_hero",
         "spider_ham"
@@ -2091,7 +2091,7 @@ const CAMPAIGN_CHAPTERS = [
       "storm"
     ],
     "comicReference": "X-Men: Magneto Testament & House of M",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 6 - VICTORIA)»\nEn los túneles subterráneos de Manhattan, la purga sónica de Spider-Man 2099 y la bioelectricidad de Miles lograron salvar a Eddie Brock de la muerte. Recuperado y consciente, Venom reveló la escalofriante verdad: Erik Lehnsherr (Magneto) había recibido los cargamentos originales de biomasa en su santuario de Asteroide M / Genosha, engañado por Norman Osborn con la promesa de que la sustancia protegería a los mutantes del virus Legacy y de los Centinelas.\n\n«LA CRISIS ACTUAL»\nVenom (ahora como héroe aliado) y Spider-Ham viajan junto a Cyclops al santuario de Magneto en Genosha para mostrarle los análisis de Beast y apelar a su nobleza antes de que desate una catástrofe global. Sin embargo, Magneto, convencido de que los humanos quieren sabotear su paraíso mutante, despliega sus escudos electromagnéticos de guerra.\n\n«MISIÓN DEL EQUIPO»\nSometer las defensas magnéticas de Erik, desarticular sus lanzas de metal y obligarlo a escuchar la verdad sobre el virus mutagénico de Osborn.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 6 - VICTORIA)»\nEn los túneles subterráneos de Manhattan, la purga sónica de Spider-Man 2099 y la bioelectricidad de Miles lograron salvar a Eddie Brock de la muerte. Recuperado y consciente, Venom reveló la escalofriante verdad: Erik Lehnsherr (Magneto) había recibido los cargamentos originales de biomasa en su santuario de Asteroide M / Genosha, engañado por Norman Osborn con la promesa de que la sustancia protegería a los mutantes del virus Legacy y de los Centinelas.\n\n«LA CRISIS ACTUAL Y EL FACTOR TOON»\nVenom (ahora como héroe aliado tras ser purgado) y Spider-Ham viajan junto a Cyclops al santuario de Magneto en Asteroide M / Genosha para mostrarle los análisis de Beast y apelar a su nobleza. Spider-Ham, llegado desde la Tierra-8311 a través de la brecha cuántica en las cloacas, utiliza la surrealista 'Toon Force' (sacando martillos gigantes de madera y desarmando torretas con lógica de caricatura) para desconcertar las defensas férreas de Magneto mientras Cyclops intenta parlamentar.\n\n«MISIÓN DEL EQUIPO»\nSometer las defensas magnéticas de Erik, desarticular sus lanzas de metal y obligarlo a escuchar la verdad sobre el virus mutagénico de Osborn.",
     "locations": [
       {
         "name": "Asteroid M",
@@ -2157,7 +2157,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: LA REDENCIÓN SOLEMNE DE MAGNETO!",
-      "epilogue": "Los escudos de Magneto colapsan y las pruebas holográficas de Beast se despliegan en la sala: el mutágeno K-Gene no estaba diseñado para fortalecer el gen X, sino para mutar a humanos y mutantes en una colmena obediente para Cletus Kasady (Carnage). Horrorizado por haber sido el peón de Osborn, Erik Lehnsherr desciende solemnemente de su trono: \"Charles... tenía razón. He sido cegado por mi ira. No permitiré que esa abominación destruya a mis hermanos\". Magneto jura lealtad a la alianza y entrega los códigos de una célula clandestina en los Muelles de Brooklyn, donde Mystique ha estado cargando los contenedores de Carnage en cargueros navales. Mystique, dándose cuenta de que la vida misma está en juego, pacta un alto al fuego. ¡Magneto (Héroe) y Mystique (Héroe) se unen a la causa!",
+      "epilogue": "Los escudos de Magneto colapsan y las pruebas holográficas de Beast se despliegan en la sala del trono: el mutágeno K-Gene no estaba diseñado para salvar a los mutantes, sino para servir de catalizador a una pesadilla biológica incubada en secreto: ¡Cletus Kasady, un sádico asesino en serie recluido en Ravencroft cuya sangre se fusionó a nivel celular con la cría del simbionte alienígena, dando nacimiento a CARNAGE! Horrorizado por haber sido manipulado como un títere por Osborn para gestar un genocidio biológico, Erik Lehnsherr desciende solemnemente de su trono: \"Charles... tenía razón. He sido cegado por mi orgullo. No permitiré que esa abominación destruya a mis hermanos ni a este planeta\". Magneto jura lealtad a la alianza y entrega los códigos de una célula clandestina en los Muelles de Brooklyn, donde Mystique custodiaba los cargamentos. Mystique, dándose cuenta de que Carnage aniquilará a toda forma de vida, pacta el alto al fuego. ¡Magneto (Héroe) y Mystique (Héroe) se unen a la causa!",
       "unlockedHeroes": [
         "magneto_hero",
         "mystique_hero"
@@ -2170,7 +2170,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: MAGNETO SE RETIRA EN CONFLICTO MORAL",
-      "epilogue": "Una explosión electromagnética rechaza a los héroes, pero en medio de la contienda un enlace satelital alerta a Magneto: una facción renegada en los Muelles de Brooklyn ya comenzó a dispersar el virus sin su consentimiento. Erik comprende con amargura que fue engañado y ordena una retirada táctica, pactando una tregua armada con los héroes.",
+      "epilogue": "Una explosión electromagnética rechaza a los héroes, pero en medio de la contienda un enlace satelital alerta a Magneto: una facción renegada en los Muelles de Brooklyn ya comenzó a dispersar el virus sin su consentimiento. Erik comprende con amargura que fue engañado y que una criatura sanguinaria llamada Carnage está suelta; ordena una retirada táctica, pactando una tregua armada con los héroes.",
       "unlockedHeroes": [
         "magneto_hero",
         "mystique_hero"
@@ -2215,7 +2215,7 @@ const CAMPAIGN_CHAPTERS = [
       "spider_2099"
     ],
     "comicReference": "X-Men: Magneto Rex & House of M",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 6 - DERROTA)»\nVenom escapó malherido hacia el mar tras una batalla brutal en las cloacas, pero en su retirada dejó fragmentos de tejido adheridos a receptores con el sello de la Hermandad. Cerebro confirmó lo peor: Magneto movilizó sus fuerzas en Genosha, creyendo que los héroes atacaron a Venom para arrebatarle una supuesta cura genética para su pueblo.\n\n«LA CRISIS ACTUAL»\nLa fortaleza de Genosha está en estado de máxima alerta bélica. Misiles magnéticos y torretas de defensa rodean la isla mientras Magneto se prepara para defender su santuario a toda costa.\n\n«MISIÓN DEL EQUIPO»\nInfiltrarse en medio del fuego antiaéreo, desactivar las baterías de defensa y derribar la barrera de Erik antes de que inicie un contraataque a escala mundial.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 6 - DERROTA)»\nVenom escapó malherido hacia el mar tras una batalla brutal en las cloacas, pero en su retirada dejó fragmentos de tejido adheridos a receptores con el sello de la Hermandad. Cerebro confirmó lo peor: Magneto movilizó sus fuerzas en Genosha, creyendo que los héroes atacaron a Venom para arrebatarle una supuesta cura genética para su pueblo.\n\n«LA CRISIS ACTUAL»\nLa fortaleza de Genosha está en estado de máxima alerta bélica. Misiles magnéticos y torretas de defensa rodean la isla mientras Magneto se prepara para defender su santuario a toda costa. Spider-Ham salta por los techos metálicos con su mazo Toon para sabotear las baterías antiaéreas.\n\n«MISIÓN DEL EQUIPO»\nInfiltrarse en medio del fuego antiaéreo, desactivar las baterías de defensa y derribar la barrera de Erik antes de que inicie un contraataque a escala mundial.",
     "locations": [
       {
         "name": "Asteroid M",
@@ -2281,7 +2281,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: TREGUA ARMADA Y LA VERDAD AL DESCUBIERTO!",
-      "epilogue": "Con el generador orbital destrozado, Magneto cae de rodillas mientras las pantallas de la estación muestran la traición de la Hermandad: en los Muelles de Brooklyn, Mystique ha perdido el control del cargamento y el virus de Carnage se está multiplicando sin freno. Horrorizado, Magneto reconoce su error: \"He sido un insensato. Detengamos esto juntos antes de que el mundo perezca\". ¡Magneto y Mystique se unen al bando de los héroes!",
+      "epilogue": "Con el generador orbital destrozado, Magneto cae de rodillas mientras las pantallas de la estación muestran la traición de la Hermandad: en los Muelles de Brooklyn, el cargamento ha liberado el virus carmesí de Carnage —el monstruo nacido de la sangre del asesino convicto Cletus Kasady en Ravencroft—. Horrorizado por la monstruosidad que ayudó a incubar, Magneto reconoce su ceguera: \"He sido un insensato. Detengamos esto juntos antes de que el mundo perezca en una masacre\". ¡Magneto y Mystique se unen al bando de los héroes!",
       "unlockedHeroes": [
         "magneto_hero",
         "mystique_hero"
@@ -2294,7 +2294,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     "lossOutcome": {
       "title": "DERROTA: FUGA DE LAS BIO-ARMAS HACIA BROOKLYN",
-      "epilogue": "La batalla termina en tablas cuando una transmisión urgente interrumpe el combate: un buque cargado con las bio-armas acaba de zarpar hacia Nueva York sin órdenes. Magneto y los héroes declaran una tregua de emergencia para volar juntos a los Muelles de Brooklyn.",
+      "epilogue": "La batalla termina en tablas cuando una transmisión urgente interrumpe el combate: un buque cargado con las bio-armas de Carnage acaba de zarpar hacia Nueva York sin órdenes. Magneto y los héroes declaran una tregua de emergencia para volar juntos a los Muelles de Brooklyn.",
       "unlockedHeroes": [
         "magneto_hero",
         "mystique_hero"
@@ -2339,7 +2339,7 @@ const CAMPAIGN_CHAPTERS = [
       "spider_ham"
     ],
     "comicReference": "Wolverine: Weapon X & Spider-Man: Maximum Carnage",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 7 - VICTORIA)»\nAnte las pruebas y el valor de los héroes, el orgullo de Magneto se quebró en su trono de Asteroide M. Al comprender que Norman Osborn lo manipuló para gestar un arma de exterminio simbiótico, el Amo del Magnetismo bajó los brazos con solemnidad: «Xavier tenía razón... casi condeno a nuestra especie». Con su redención en marcha, Erik entregó a los héroes los códigos de una instalación encubierta en los Muelles de Brooklyn, donde una célula renegada de Mystique está cargando los contenedores simbióticos en barcazas hacia el océano.\n\n«LA CRISIS ACTUAL»\nWolverine y Ghost-Spider lideran la operación encubierta de asalto nocturno en los muelles. Las barcazas están listas para zarpar con detonadores temporizados para dispersar las esporas carmesíes.\n\n«MISIÓN DEL EQUIPO»\nInfiltrarse en los almacenes portuarios, cortar los amarres de las barcazas, desactivar los explosivos navales y capturar a Mystique antes de la ignición.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 7 - VICTORIA)»\nAnte las pruebas y el valor de los héroes, el orgullo de Magneto se quebró en su trono de Asteroide M. Al comprender que Norman Osborn lo manipuló para gestar un arma de exterminio simbiótico, el Amo del Magnetismo bajó los brazos con solemnidad: «Xavier tenía razón... casi condeno a nuestra especie». Con su redención en marcha, Erik entregó a los héroes las coordenadas y frecuencias de una instalación encubierta en los Muelles de Brooklyn, donde una célula renegada de Mystique está cargando los contenedores simbióticos en barcazas hacia el océano. Además, Felicia Hardy (Black Cat) utiliza las claves maestras de Oscorp que sustrajo en su robo inicial para interceptar los radares navales, guiando con precisión quirúrgica a Wolverine y Ghost-Spider (Gwen Stacy de Tierra-65) directo a las grúas de embarque.\n\n«LA CRISIS ACTUAL»\nWolverine y Ghost-Spider lideran la operación encubierta de asalto nocturno en los muelles de Brooklyn. Tres barcazas fuertemente custodiadas por mercenarios de Mystique están listas para zarpar con detonadores temporizados para dispersar las esporas mutagénicas en mar abierto.\n\n«MISIÓN DEL EQUIPO»\nInfiltrarse en los almacenes portuarios con sigilo feral y saltos acrobáticos, cortar los amarres de las barcazas con garras de adamantium, desactivar los explosivos navales con las telarañas de Gwen y capturar a Mystique antes de la ignición.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -2372,10 +2372,10 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Mystique): Inicia en BROOKLYN BRIDGE — Mystique supervisa el embarque de los contenedores en los muelles.",
-      "👤 JORGE (Wolverine): Inicia en BROOKLYN BRIDGE — Logan avanza por debajo de las grúas portuarias en sigilo.",
-      "🌸 ESPOSA (Ghost-Spider): Inicia en SIMS TOWER — Gwen Stacy vigila las barcazas desde los mástiles de carga.",
-      "⭐ APOYO (Black Cat, si juega): Inicia en OSCORP TOWER — Felicia sabotea los sistemas de control de las compuertas navales.",
+      "😈 VILLANO (Mystique): Inicia en BROOKLYN BRIDGE — Mystique supervisa el embarque de los contenedores en los muelles clandestinos.",
+      "👤 JORGE (Wolverine): Inicia en BROOKLYN BRIDGE — Logan avanza por debajo de las grúas portuarias en sigilo feral.",
+      "🌸 ESPOSA (Ghost-Spider): Inicia en SIMS TOWER — Gwen Stacy vigila las barcazas desde los mástiles de carga superiores.",
+      "⭐ APOYO (Black Cat, si juega): Inicia en OSCORP TOWER — Felicia sabotea los sistemas de control y esclusas navales.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
       "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
@@ -2404,8 +2404,8 @@ const CAMPAIGN_CHAPTERS = [
       }
     },
     "winOutcome": {
-      "title": "¡VICTORIA: PUERTO ASEGURADO PERO LA BESTIA DESPIERTA!",
-      "epilogue": "La infiltración en los muelles fue impecable: las cargas navales fueron desactivadas y Mystique fue sometida. Sin embargo, en el último contenedor los sellos criogénicos estaban rotos: ¡Cletus Kasady ya había absorbido la cepa alfa, transformándose en CARNAGE! Y para ganar tiempo, Kasady infectó el exoesqueleto de Rhino con zarcillos simbióticos gigantescos. La bestia blindada ruge ahora en el centro de Manhattan destruyendo barricadas. Magneto (Héroe) llega en auxilio de la alianza para detener al titán.",
+      "title": "¡VICTORIA: PUERTO ASEGURADO PERO CARNAGE DESPIERTA!",
+      "epilogue": "La infiltración en los muelles fue impecable: las cargas navales fueron neutralizadas y Mystique fue sometida. Sin embargo, al abrir el contenedor criogénico maestro descubren el horror: ¡los sellos de titanio están destrozados desde adentro! Cletus Kasady, el psicópata asesino serial de Ravencroft Institute, abrió el receptáculo y absorbió la cepa viva. El simbionte alienígena carmesí se fusionó directamente en su torrente sanguíneo a nivel celular, engendrando a CARNAGE: un monstruo imparable con brazos convertidos en guadañas, hachas y zarcillos cortantes de bio-masa roja. Para cubrir su ascenso a Sims Tower, Kasady infectó el exoesqueleto de Rhino con zarcillos simbióticos gigantescos, enviando al coloso enfurecido hacia Manhattan. Magneto (Héroe) se presenta en el puerto listo para redimirse y liderar la defensa con los héroes.",
       "unlockedPerks": [
         "perk_cartoon_mallet"
       ],
@@ -2413,8 +2413,8 @@ const CAMPAIGN_CHAPTERS = [
       "bonusText": "Ventaja \"Martillo Toon de Spider-Ham\" obtenida. Magneto (Héroe) se une a la defensa en Manhattan (Capítulo 9A)."
     },
     "lossOutcome": {
-      "title": "DERROTA: EXPLOSIÓN EN LOS MUELLES Y RUINAS",
-      "epilogue": "Una detonación en el carguero tiñe el cielo de rojo y libera a un Rhino potenciado con fluidos simbióticos que embiste hacia Times Square derribando edificios. Los héroes deben replegarse a Manhattan para una defensa de emergencia.",
+      "title": "DERROTA: EXPLOSIÓN EN LOS MUELLES Y NACIMIENTO DE CARNAGE",
+      "epilogue": "Una detonación en el carguero cubre los muelles de humo y fuego rojo. De entre las ruinas brota la risa sanguinaria de Cletus Kasady, quien ha fusionado el simbionte carmesí con su sangre, renaciendo como CARNAGE. El engendro corta las grúas con látigos y filos cortantes antes de trepar hacia Sims Tower, dejando a un Rhino poseído por parásitos simbióticos que embiste hacia Midtown destruyendo barricadas. La alianza debe replegarse urgentemente hacia Manhattan para una defensa perimetral de emergencia.",
       "nextChapter": "9B",
       "penalties": "El humo tóxico cubre la ciudad; el combate en el Cap. 9B comenzará con barricadas rotas.",
       "bonusText": "La alianza se reorganiza en Manhattan para contener a la bestia (Capítulo 9B)."
@@ -2455,7 +2455,7 @@ const CAMPAIGN_CHAPTERS = [
       "beast"
     ],
     "comicReference": "Maximum Carnage & Wolverine: Blood Hungry",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 7 - DERROTA)»\nEl choque en Asteroide M culminó en una onda de choque electromagnética que dispersó a los héroes. Aunque Magneto mantuvo su posición, las alarmas de su propia fortaleza le alertaron de una traición interna: una facción renegada liderada por Mystique desobedeció sus órdenes y trasladó las reservas de bio-armas a los Muelles de Brooklyn para venderlas al mejor postor. Aterrado por la pérdida de control, Magneto envía una señal abierta a los héroes.\n\n«LA CRISIS ACTUAL»\nSin tiempo para planear y con el equipo exhausto, Wolverine y Ghost-Spider asaltan los muelles a toda velocidad para impedir que los barcos zarpen con el mutágeno hacia alta mar.\n\n«MISIÓN DEL EQUIPO»\nRomper el cerco de mercenarios en los muelles, evitar que el buque principal escape y neutralizar a Mystique antes de que detone las cargas de encubrimiento.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 7 - DERROTA)»\nEl choque en Asteroide M culminó en una onda de choque electromagnética que dispersó a los héroes. Aunque Magneto mantuvo su posición, las alarmas de su propia fortaleza le alertaron de una traición inadmisible: una facción renegada liderada por Mystique desobedeció sus órdenes directas y trasladó las reservas de bio-armas a los Muelles de Brooklyn para venderlas al bajo mundo criminal. Aterrado por las consecuencias biológicas, Magneto envía las coordenadas a la Patrulla X. Felicia Hardy (Black Cat), rastreando las rutas navales desde el Daily Bugle con los datos que robó en Oscorp, coordina el despliegue con Wolverine y Ghost-Spider (Gwen Stacy de Tierra-65).\n\n«LA CRISIS ACTUAL»\nSin tiempo para planear y con el equipo al límite de sus fuerzas, Wolverine y Ghost-Spider asaltan los muelles a toda velocidad para impedir que el buque carguero zarpe con las bio-armas hacia mar abierto.\n\n«MISIÓN DEL EQUIPO»\nRomper el cerco de mercenarios en los muelles con sigilo y velocidad acrobática, bloquear el timón del barco y neutralizar a Mystique antes de que detone las cargas de encubrimiento.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -2521,13 +2521,13 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: CARGAMENTO FRENADO EN EL LÍMITE!",
-      "epilogue": "Ghost-Spider y Logan logran encallar el buque mercante contra el muelle, pero de las entrañas del barco surge un colosal rugido: Aleksei Sytsevich (Rhino) emerge modificado con zarcillos simbióticos rojos que cubren su armadura. Kasady ha escapado hacia el centro de la ciudad y Rhino es su punta de lanza. Magneto (Héroe) se presenta en el puerto listo para luchar junto a los héroes en Manhattan.",
+      "epilogue": "Ghost-Spider y Logan logran encallar el buque mercante contra el muelle, pero al irrumpir en las bodegas inferiores descubren el contenedor alfa abierto y empapado de sangre. Cletus Kasady, el demente homicida de Ravencroft, se ha fusionado con la cepa roja a nivel celular: ¡ha nacido CARNAGE, una masa voraz de cuchillas vivientes y sed insaciable de carnicería! Para ganar tiempo mientras escala hacia Sims Tower para infectar las antenas de transmisión, Kasady infectó el traje acorazado de Rhino con zarcillos simbióticos. Aleksei Sytsevich ruge como un ariete poseído que embiste hacia Midtown derribando puentes. Magneto (Héroe) se presenta en el puerto listo para redimirse y salvar Manhattan codo a codo con los héroes.",
       "nextChapter": "9A",
       "bonusText": "Victoria táctica. Magneto (Héroe) se une a la defensa en Manhattan (Capítulo 9A)."
     },
     "lossOutcome": {
-      "title": "DERROTA: EXPLOSIÓN QUÍMICA Y MARCHA DE LA BESTIA",
-      "epilogue": "El buque estalla y de las llamas brota un Rhino gigante poseído por el simbionte carmesí. La bestia avanza hacia Manhattan derribando puentes. La alianza debe replegarse urgentemente para una última defensa perimetral.",
+      "title": "DERROTA: EXPLOSIÓN QUÍMICA Y LA MARCHA DE LA BESTIA",
+      "epilogue": "El buque estalla y una densa humareda carmesí inunda la bahía. De entre los escombros incandescentes surge CARNAGE (Cletus Kasady fundido con el simbionte rojo), quien azota el muelle con látigos y filos cortantes antes de trepar por los puentes rumbo a Sims Tower. A su paso deja a Rhino mutado con zarcillos simbióticos que destrozan las defensas perimetrales hacia Manhattan. La alianza debe replegarse de urgencia para una última defensa perimetral desesperada.",
       "nextChapter": "9B",
       "penalties": "El centro de la ciudad está desprotegido; en el Cap. 9B las defensas comenzarán colapsadas.",
       "bonusText": "La historia avanza hacia el choque perimetral en Manhattan (Capítulo 9B)."
@@ -2568,7 +2568,7 @@ const CAMPAIGN_CHAPTERS = [
       "beast"
     ],
     "comicReference": "Avengers vs X-Men & Maximum Carnage",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 8 - VICTORIA)»\nLa infiltración en los muelles fue un éxito rotundo: los detonadores navales fueron desactivados y Mystique quedó acorralada. Sin embargo, su captura destapó el horror definitivo: un contenedor maestro ya había sido abierto. El asesino convicto Cletus Kasady absorbió la cepa madre. Al fusionarse el simbionte con su propia sangre psicópata, nació el monstruo supremo: ¡CARNAGE, una entidad carmesí de puro sadismo capaz de transformar sus brazos en guadañas y cuchillas afiladas! Para blindar su ascensión, Kasady inyectó los restos de la masa mutagénica en Rhino, transformándolo en una colosal bestia acorazada con zarcillos simbióticos de choque.\n\n«LA CRISIS ACTUAL»\nCon Manhattan en llamas, Magneto (ahora como Héroe y protector) se materializa junto a Spider-Woman para levantar un frente defensivo y derribar al titán antes de que alcance la torre central.\n\n«MISIÓN DEL EQUIPO»\nMagneto utiliza su control ferroso para aplastar las placas blindadas de Rhino, mientras Spider-Woman y Jean Grey disuelven los zarcillos orgánicos para despejar el camino hacia el Gran Final.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 8 - VICTORIA)»\nLa infiltración en los muelles fue un éxito rotundo: los detonadores navales fueron desactivados y Mystique quedó acorralada. Sin embargo, su captura destapó el horror definitivo: un contenedor maestro ya había sido abierto. El asesino convicto Cletus Kasady absorbió la cepa madre. Al fusionarse el simbionte carmesí directamente con su sangre a nivel celular, nació el monstruo supremo: ¡CARNAGE, una entidad sanguinaria capaz de moldear sus extremidades en guadañas y hachas vivientes! Para blindar su ascensión a la cima de Sims Tower, Kasady inyectó los restos de la masa mutagénica en el exoesqueleto de Aleksei Sytsevich (Rhino), dotándolo de una colosal armadura bio-simbiótica con zarcillos de choque que ahora arrasa Midtown.\n\n«LA CRISIS ACTUAL»\nCon Manhattan en llamas, Jessica Drew (Spider-Woman) —la audaz espía bio-mejorada de S.H.I.E.L.D. e Hydra armada con alas planeadoras y letales ráfagas venenosas— vuela entre los rascacielos uniendo fuerzas con Magneto (ahora como Héroe y protector jurado de mutantes y humanos) y Jean Grey para levantar un frente defensivo perimetral antes de que la bestia alcance la torre de comunicaciones.\n\n«MISIÓN DEL EQUIPO»\nMagneto utiliza su control ferroso para fracturar el exoesqueleto blindado de Rhino, mientras Spider-Woman y Jean Grey disuelven los zarcillos orgánicos con descargas bioeléctricas y telequinesis para despejar el camino hacia el enfrentamiento final.",
     "locations": [
       {
         "name": "Daily Bugle",
@@ -2634,13 +2634,13 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: EL ARIETE DERRIBADO Y ACCESO LIBRE A LA TORRE!",
-      "epilogue": "Con una demostración sobrehumana de magnetismo y bioelectricidad, Magneto y Spider-Woman despojan a Rhino de su armadura y lo derriban en el asfalto. El perímetro de Manhattan queda asegurado. Sin embargo, en la cima de Sims Tower, la masa roja de Carnage ha cubierto el cielo de Manhattan. Cletus Kasady ríe entre relámpagos carmesíes. Peter Parker (Spider-Man) regresa al frente junto a Storm y Magneto para el choque final por el destino del planeta. ¡Es la hora de la Máxima Carnage!",
+      "epilogue": "Con una demostración sobrehumana de magnetismo ferroso y bioelectricidad venenosa, Magneto y Spider-Woman disuelven los parásitos carmesíes y derriban al coloso Aleksei sobre el asfalto. El perímetro de Manhattan queda asegurado y los civiles son escoltados a refugios subterráneos. Sin embargo, en la aguja de telecomunicaciones de Sims Tower, la masa roja de Carnage ha teñido las nubes de Nueva York. Cletus Kasady ríe demencialmente entre relámpagos carmesíes mientras prepara la dispersión atmosférica. Peter Parker (Spider-Man) regresa a la vanguardia junto a Storm y Magneto para el choque final por el destino de la Tierra. ¡Es la hora de la Máxima Matanza!",
       "nextChapter": "10A",
-      "bonusText": "¡Acceso con iniciativa al Gran Final (Capítulo 10A)! La alianza enfrenta a Carnage con la moral al máximo."
+      "bonusText": "¡Acceso con iniciativa al Gran Final (Capítulo 10A)! La alianza mutante-arácnida enfrenta a Carnage con la moral al máximo."
     },
     "lossOutcome": {
       "title": "DERROTA: BARRICADAS ROTAS Y ASALTO DESESPERADO",
-      "epilogue": "Rhino derriba las barreras de metal y aplasta las defensas antes de sucumbir a sus propias heridas. Aunque la bestia cae, el camino queda en ruinas y Carnage completa la infección de los satélites de Sims Tower. Los héroes avanzan heridos y sin aliento hacia la torre central en una última resistencia desesperada.",
+      "epilogue": "Rhino derriba las barreras de metal y aplasta las defensas antes de sucumbir a sus propias heridas por sobrecarga simbiótica. Aunque la bestia cae inconsciente, las calles de Midtown quedan en ruinas y Carnage completa la infección de las antenas satelitales en Sims Tower. Los héroes avanzan heridos, exhaustos y sin aliento hacia la torre central en una última resistencia desesperada.",
       "nextChapter": "10B",
       "penalties": "La ciudad arde; en el Cap. 10B Carnage comenzará con mayor propagación de infección.",
       "bonusText": "Avanzan a la Última Resistencia Desesperada contra Carnage (Capítulo 10B)."
@@ -2681,7 +2681,7 @@ const CAMPAIGN_CHAPTERS = [
       "cyclops"
     ],
     "comicReference": "Maximum Carnage & X-Men: Mutant Genesis",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 8 - DERROTA)»\nEl asalto a los muelles derivó en una serie de explosiones en cadena que incendiaron los almacenes portuarios. Del fuego emergió la pesadilla: Cletus Kasady consumió la cepa mutagénica completa, renaciendo como CARNAGE: un simbionte carmesí sediento de caos absoluto que fusionó su tejido con la sangre de su huésped. En su estela de caos, dotó a Rhino de una armadura bio-simbiótica viviente que arrasa las barricadas policiales en Midtown Manhattan.\n\n«LA CRISIS ACTUAL»\nLas sirenas de evacuación civil suenan sin descanso. Magneto desciende de los cielos como redentor aliado para unir fuerzas con Spider-Woman e intentar frenar a la bestia antes de que Carnage alcance la cima de Sims Tower.\n\n«MISIÓN DEL EQUIPO»\nEvacuar a los civiles atrapados bajo los escombros de Times Square y contener las embestidas de Rhino a través de campos de fuerza y rayos psíquicos.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 8 - DERROTA)»\nEl asalto a los muelles derivó en una serie de explosiones en cadena que incendiaron los almacenes portuarios. Del fuego emergió la pesadilla: Cletus Kasady consumió la cepa mutagénica completa, renaciendo como CARNAGE: un simbionte carmesí psicópata que fusionó su tejido vivo con la sangre de su huésped. En su estela de caos, dotó a Rhino de una armadura bio-simbiótica viviente que arrasa las barricadas policiales en Midtown Manhattan.\n\n«LA CRISIS ACTUAL»\nLas sirenas de evacuación civil suenan sin descanso. Jessica Drew (Spider-Woman), tras evacuar a los heridos con sus alas planeadoras y disparar ráfagas bio-venenosas contra los zarcillos parásitos, se coordina con Magneto (en su redención como protector de inocentes) y Jean Grey para frenar las embestidas de Rhino antes de que Carnage sature el centro de la metrópoli.\n\n«MISIÓN DEL EQUIPO»\nEvacuar a los civiles atrapados bajo los escombros de Times Square y contener la furia ciega de Rhino a través de campos de contención magnética y escudos psíquicos.",
     "locations": [
       {
         "name": "Daily Bugle",
@@ -2734,7 +2734,7 @@ const CAMPAIGN_CHAPTERS = [
         "title": "¡ESCUDO DE HIERRO MAGNÉTICO!",
         "type": "Bajo Presión (1ª Misión Completa)",
         "badge": "Defensa Infranqueable",
-        "text": "Magneto detiene la embestida en seco: <strong>Inflige 2 de daño a Rhino y retira 1 Matón de la avenida.</strong>",
+        "text": "Magneto detiene la embestida en seco: <strong>Inflige 2 de daño a Rhino e retira 1 Matón de la avenida.</strong>",
         "flavor": "Un muro de toneladas de acero frena los cuernos de la bestia a centímetros de los civiles."
       },
       "accelerated": {
@@ -2747,13 +2747,13 @@ const CAMPAIGN_CHAPTERS = [
     },
     "winOutcome": {
       "title": "¡VICTORIA: EL FRENTE SE SOSTIENE A DURAS PENAS!",
-      "epilogue": "Con un sobreesfuerzo agónico, Magneto y Spider-Woman doblegan a Rhino y salvan a los últimos civiles de Midtown. Pero en lo alto de Sims Tower, la luna se tiñe de carmesí: Carnage ha mutado por completo y su reinado de terror está por desatarse. Peter Parker y Storm llegan volando para la batalla definitiva.",
+      "epilogue": "Con un sobreesfuerzo agónico, Magneto comprime los componentes metálicos de la armadura de Rhino mientras Spider-Woman descarga una sobrecarga bioeléctrica que noquea a la bestia. Los últimos civiles de Midtown son rescatados a tiempo. Pero en lo alto de Sims Tower, la luna se tiñe de carmesí: Carnage ha mutado por completo y su reinado de terror está por desatarse sobre la ciudad. Peter Parker y Storm llegan a toda velocidad para la batalla definitiva.",
       "nextChapter": "10A",
       "bonusText": "Victoria heroica. Avanzan al Gran Final de la campaña (Capítulo 10A)."
     },
     "lossOutcome": {
       "title": "DERROTA: LA CIUDAD CAE ANTE EL SIMBIONTE",
-      "epilogue": "Rhino aplasta las últimas líneas antes de desplomarse, dejando Manhattan abierta para Carnage. Cletus Kasady ríe desde la torre más alta mientras hordas de zarcillos rojos caen del cielo. Con las fuerzas al límite, la alianza avanza hacia su última resistencia desesperada.",
+      "epilogue": "Rhino aplasta las últimas líneas de contención antes de desplomarse por el agotamiento simbiótico, dejando el corazón de Manhattan a merced de Carnage. Cletus Kasady ríe desde la torre más alta mientras hordas de zarcillos carmesíes llueven desde las cornisas. Con las fuerzas al límite, la alianza avanza hacia su última resistencia desesperada.",
       "nextChapter": "10B",
       "penalties": "La marea roja cubre la ciudad; el combate final en el Cap. 10B será agónico y despiadado.",
       "bonusText": "Avanzan a la Última Resistencia Desesperada en Sims Tower (Capítulo 10B)."
@@ -2794,7 +2794,7 @@ const CAMPAIGN_CHAPTERS = [
       "wolverine"
     ],
     "comicReference": "Maximum Carnage (Tom DeFalco & Mark Bagley) & Uncanny X-Men",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 9 - VICTORIA)»\n¡El frente coordinado de la alianza logró abatir al titánico Rhino en una demostración asombrosa de poder magnético y bioeléctrico! Pero en lo alto de Sims Tower, la masa carmesí de Carnage cubre el cielo de Manhattan. Cletus Kasady ríe mientras sus zarcillos infectan la red de antenas de telecomunicaciones, buscando convertir a cada habitante de la ciudad en un huésped voraz.\n\n«LA CRISIS FINAL»\nPeter Parker (Spider-Man), Storm y Magneto unen sus fuerzas en la misión definitiva: un ataque coordinado de redes sónicas, relámpagos celestiales y campos electromagnéticos para disolver el núcleo simbiótico y salvar al mundo de la Máxima Mutación.\n\n«MISIÓN DEL EQUIPO»\nSometer a Carnage en la azotea de Sims Tower, proteger a los últimos civiles y purgar la infección simbiótica antes de que consuma el planeta.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 9 - VICTORIA)»\n¡El frente coordinado de la alianza logró abatir al titánico Rhino en una demostración asombrosa de poder magnético y bioeléctrico! Pero en lo alto de Sims Tower, la pesadilla definitiva ha tomado forma: CARNAGE (Cletus Kasady, el psicópata asesino serial de Ravencroft cuyo torrente sanguíneo mutó con el simbionte rojo produciendo cuchillas, púas y guadañas vivientes de bio-masa celular) ha infectado las antenas de radiodifusión satelital para proyectar una señal mutagénica que desate una matanza masiva e irreversible en la población.\n\n«LA CRISIS FINAL»\nPeter Parker (Spider-Man), Storm (Ororo Munroe con su dominio de las tormentas celestiales) y Magneto (en la cumbre de su redención como salvador del planeta) unen sus fuerzas en la misión definitiva: un asalto aéreo y frontal coordinado con condensadores sónicos de red, relámpagos de alta tensión y un vórtice electromagnético para purgar el simbionte y neutralizar a Kasady.\n\n«MISIÓN DEL EQUIPO»\nSometer a Carnage en la azotea de Sims Tower, proteger a los últimos civiles atrapados en las cornisas y vaporizar el núcleo simbiótico antes de que consuma la Tierra.",
     "locations": [
       {
         "name": "Sims Tower",
@@ -2904,7 +2904,7 @@ const CAMPAIGN_CHAPTERS = [
       "miles_morales"
     ],
     "comicReference": "Maximum Carnage & Age of Apocalypse",
-    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 9 - DERROTA)»\nLa embestida de Rhino simbiótico desbarató las líneas defensivas, permitiendo a Carnage asentar su nido en la cúspide de Sims Tower. Grandes llamaradas rojas brotan de los rascacielos y zarcillos carmesíes bloquean las avenidas de Manhattan. La ciudad está al borde del abismo. Sin refuerzos, heridos pero determinados a no rendirse jamás, Peter Parker (Spider-Man), Storm y Magneto (con su capa ondeando entre el humo) avanzan hacia la torre central en una última resistencia desesperada.\n\n«LA CRISIS FINAL»\nKasady ha liberado esporas mutagenas sobre toda la atmósfera de Nueva York. Si no es destruido en los próximos minutos, la infección alcanzará el continente entero.\n\n«MISIÓN DEL EQUIPO»\nCombatir con el corazón en la mano, superar el dolor de las heridas previas y dar el golpe de gracia a Carnage en la cima del mundo.",
+    "synopsis": "«ANTERIORMENTE... (CONEXIÓN CON PASO 9 - DERROTA)»\nLa embestida de Rhino simbiótico desbarató las líneas defensivas, permitiendo a Carnage anidar en la cúspide de Sims Tower. Grandes llamaradas rojas brotan de los rascacielos y zarcillos carmesíes bloquean las avenidas de Manhattan. La ciudad está al borde del abismo. Cletus Kasady, armado con zarcillos vivientes y hojas cortantes forjadas con su propia sangre mutada por el simbionte, ha comenzado a saturar la atmósfera con esporas mortales. Sin refuerzos, heridos pero determinados a no rendirse jamás, Peter Parker (Spider-Man), Storm y Magneto (con su capa ondeando entre el humo) avanzan hacia la torre central en una última resistencia desesperada.\n\n«LA CRISIS FINAL»\nKasady ha liberado esporas mutagénicas sobre toda la atmósfera de Nueva York. Si no es destruido en los próximos minutos, la infección alcanzará el continente entero.\n\n«MISIÓN DEL EQUIPO»\nCombatir con el corazón en la mano, superar el dolor de las heridas previas y dar el golpe de gracia a Carnage en la cima del mundo.",
     "locations": [
       {
         "name": "Sims Tower",
