@@ -11,7 +11,7 @@ class CampaignStorage {
     return {
       version: 1,
       startedAt: new Date().toISOString(),
-      currentChapterId: 1,
+      currentChapterId: '1',
       unlockedHeroes: ['spider_man', 'miles_morales', 'wolverine', 'cyclops'],
       unlockedPerks: [],
       activePerks: [],
@@ -90,11 +90,11 @@ class CampaignStorage {
   }
 
   recordGameResult(chapterId, result, selectedHeroes = [], notes = '') {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === chapterId);
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(chapterId));
     if (!chapter) return;
 
     const entry = {
-      chapterId,
+      chapterId: String(chapterId),
       chapterTitle: chapter.title,
       villainId: chapter.villainId,
       result, // 'win' | 'loss'
@@ -118,7 +118,7 @@ class CampaignStorage {
         chapter.winOutcome.unlockedPerks.forEach(p => this.unlockPerk(p));
       }
       if (chapter.winOutcome.nextChapter) {
-        this.state.currentChapterId = chapter.winOutcome.nextChapter;
+        this.state.currentChapterId = String(chapter.winOutcome.nextChapter);
       }
     } else {
       this.state.gameStats.totalLosses++;
@@ -130,7 +130,7 @@ class CampaignStorage {
         chapter.lossOutcome.unlockedPerks.forEach(p => this.unlockPerk(p));
       }
       if (chapter.lossOutcome.nextChapter) {
-        this.state.currentChapterId = chapter.lossOutcome.nextChapter;
+        this.state.currentChapterId = String(chapter.lossOutcome.nextChapter);
       }
     }
 

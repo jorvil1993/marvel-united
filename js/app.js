@@ -4,12 +4,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Estado local de la partida activa en curso (Modo 2 Jugadores fijos + 1 Opcional)
   const activeMatch = {
-    chapterId: 1,
-    heroSlot1: 'spider_man',   // Jorge (Jugador 1)
-    heroSlot2: 'wolverine',    // Esposa (Jugadora 2)
-    heroSlot3: null,           // 3er Héroe Opcional de Apoyo
-    villainHp: 15,
-    villainMaxHp: 15,
+    chapterId: '1',
+    heroSlot1: 'cyclops',   // Jorge (Jugador 1)
+    heroSlot2: 'miles_morales',    // Esposa (Jugadora 2)
+    heroSlot3: 'black_cat',           // 3er Héroe Opcional de Apoyo
+    villainHp: 5,
+    villainMaxHp: 5,
     civiliansSaved: 0,
     thugsDefeated: 0,
     threatsCleared: 0,
@@ -69,62 +69,203 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 1. TIMELINE & MAPA DE CAMPAÑA
+  // 1. TIMELINE & MAPA DE CAMPAÑA (Árbol de 10 Entregas con Ramificaciones)
   // =========================================================================
   function renderTimeline() {
     const container = document.getElementById('timelineNodesContainer');
     if (!container) return;
 
     container.innerHTML = '';
-    const currentId = campaignStorage.state.currentChapterId;
+    const history = campaignStorage.state.history || [];
+    const currentChapterId = String(campaignStorage.state.currentChapterId || '1');
+    const currentStep = history.length + 1;
+    const isCampaignFinished = history.length >= 10;
 
-    CAMPAIGN_CHAPTERS.forEach(chapter => {
-      const isCurrent = chapter.id === currentId;
-      const historyItem = campaignStorage.state.history.find(h => h.chapterId === chapter.id);
-      const isCompleted = !!historyItem;
-      const isWin = historyItem && historyItem.result === 'win';
-      const isLoss = historyItem && historyItem.result === 'loss';
-      const isLocked = chapter.id > currentId && !isCompleted;
+    // Header Banner
+    const banner = document.createElement('div');
+    banner.style.cssText = 'background:linear-gradient(135deg, rgba(226,54,54,0.25) 0%, rgba(30,41,59,0.95) 100%);border:2px solid var(--comic-yellow);border-radius:12px;padding:14px;margin-bottom:18px;box-shadow:0 4px 15px rgba(0,0,0,0.4);';
+    banner.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span class="badge badge-yellow">★ CAMPAÑA EN CURSO</span>
+        <span style="font-size:0.75rem;color:var(--comic-yellow);font-weight:bold;">${Math.min(10, currentStep)} de 10 Entregas</span>
+      </div>
+      <h2 style="font-family:var(--font-comic);font-size:1.2rem;color:#fff;margin:0 0 6px 0;">
+        ${isCampaignFinished ? '¡LA MUTACIÓN MÁXIMA HA LLEGADO A SU FIN!' : `BATALLA #${currentStep}: ${CAMPAIGN_CHAPTERS.find(c => String(c.id) === currentChapterId)?.title || 'En combate'}`}
+      </h2>
+      <p style="font-size:0.78rem;color:#cbd5e1;margin:0;line-height:1.4;">
+        ${isCampaignFinished 
+          ? 'Has completado los 10 números de esta saga. Revisa tu crónica de victorias y derrotas o explora otros caminos alternativos.'
+          : '<strong>Sin revanchas:</strong> Toda victoria otorga aliados y ventajas; toda derrota desata crisis y consecuencias que transforman el siguiente número.'}
+      </p>
+    `;
+    container.appendChild(banner);
 
-      const card = document.createElement('div');
-      let statusClass = 'locked';
-      if (isCurrent) statusClass = 'current';
-      else if (isWin) statusClass = 'completed-win';
-      else if (isLoss) statusClass = 'completed-loss';
+    // List of 10 Issues
+    for (let step = 1; step <= 10; step++) {
+      if (step <= history.length) {
+        // PAST PLAYED STEP
+        const hEntry = history[step - 1];
+        const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(hEntry.chapterId)) || {
+          id: hEntry.chapterId,
+          title: hEntry.chapterTitle,
+          actTitle: 'BATALLA REGISTRADA',
+          synopsis: 'Misión concluida.',
+          villainId: hEntry.villainId
+        };
+        const isWin = hEntry.result === 'win';
+        const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
 
-      card.className = `node-card ${statusClass}`;
-
-      const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
-      const hero1 = CAMPAIGN_HEROES[chapter.assignedHeroSlot1] || CAMPAIGN_HEROES['cyclops'];
-      const hero2 = CAMPAIGN_HEROES[chapter.assignedHeroSlot2] || CAMPAIGN_HEROES['miles_morales'];
-      const hero3 = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
-
-      card.innerHTML = `
-        <div class="node-badge">${isWin ? '✓' : isLoss ? '✕' : chapter.id}</div>
-        <div class="node-header">
-          <span class="node-act">${chapter.actTitle}</span>
-          <span class="node-villain-tag">😈 ${villain.name || 'Jefe'}</span>
-        </div>
-        <h3 class="node-title">${chapter.title}</h3>
-        <div style="font-size:0.75rem;color:var(--comic-yellow);font-weight:bold;margin:4px 0 6px 0;line-height:1.2;">
-          👥 <strong>Héroes Asignados:</strong> <span style="color:#fff;">${hero1.name} & ${hero2.name}</span>
-          ${hero3 ? `<span style="font-size:0.68rem;color:#c4b5fd;display:block;">⭐ 3er Héroe (José / Apoyo): ${hero3.name}</span>` : ''}
-        </div>
-        <p class="node-summary">${chapter.synopsis.slice(0, 115)}...</p>
-        <div class="node-footer">
-          <span>${isWin ? '<strong style="color:var(--success-green)">✓ VICTORIA REGISTRADA</strong>' : isLoss ? '<strong style="color:var(--marvel-red)">✕ DERROTA (SUPERADA)</strong>' : isCurrent ? '<strong style="color:var(--comic-yellow)">▶ CAPÍTULO ACTIVO</strong>' : '🔒 Bloqueado'}</span>
-          <span>${isCurrent ? '<button class="badge badge-yellow" style="cursor:pointer">JUGAR EN MESA ➔</button>' : ''}</span>
-        </div>
-      `;
-
-      if (!isLocked) {
+        const card = document.createElement('div');
+        card.className = `node-card ${isWin ? 'completed-win' : 'completed-loss'}`;
+        card.innerHTML = `
+          <div class="node-badge" style="background:${isWin ? 'var(--success-green)' : 'var(--marvel-red)'};color:#fff;border-color:#fff;">${isWin ? '✓' : '✕'}</div>
+          <div class="node-header">
+            <span class="node-act">${chapter.actTitle || ''} • ENTREGA #${step}</span>
+            <span class="node-villain-tag">😈 ${villain.name || chapter.villainId || ''}</span>
+          </div>
+          <h3 class="node-title">${chapter.title}</h3>
+          <div style="font-size:0.75rem;color:${isWin ? 'var(--success-green)' : 'var(--marvel-red)'};font-weight:bold;margin:2px 0 4px 0;">
+            ${isWin ? '✓ VICTORIA HISTÓRICA' : '✕ DERROTA (CONSECUENCIAS ASUMIDAS)'}
+          </div>
+          <div style="font-size:0.72rem;color:#cbd5e1;line-height:1.3;">
+            👥 <strong>Héroes:</strong> ${(hEntry.selectedHeroes || []).map(h => CAMPAIGN_HEROES[h]?.name || h).join(', ')}
+          </div>
+          <p class="node-summary" style="margin-top:4px;font-size:0.72rem;color:#94a3b8;">
+            ${isWin ? (chapter.winOutcome?.bonusText || chapter.winOutcome?.epilogue?.slice(0, 120) || 'Objetivo cumplido.') : (chapter.lossOutcome?.penalties || chapter.lossOutcome?.epilogue?.slice(0, 120) || 'Consecuencias tácticas asumidas.')}
+          </p>
+        `;
         card.addEventListener('click', () => {
           loadChapterIntoMatch(chapter.id);
           switchTab('match');
         });
-      }
+        container.appendChild(card);
+      } else if (step === currentStep && !isCampaignFinished) {
+        // CURRENT ACTIVE STEP
+        const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === currentChapterId) || CAMPAIGN_CHAPTERS[0];
+        const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
+        const hero1 = CAMPAIGN_HEROES[chapter.assignedHeroSlot1] || CAMPAIGN_HEROES['cyclops'];
+        const hero2 = CAMPAIGN_HEROES[chapter.assignedHeroSlot2] || CAMPAIGN_HEROES['miles_morales'];
+        const hero3 = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
 
-      container.appendChild(card);
+        const card = document.createElement('div');
+        card.className = 'node-card current';
+        card.innerHTML = `
+          <div class="node-badge" style="background:var(--comic-yellow);color:var(--text-dark);border-color:#fff;font-size:1.1rem;">▶</div>
+          <div class="node-header">
+            <span class="node-act" style="color:var(--comic-yellow);">${chapter.actTitle} • ENTREGA #${step} DE 10</span>
+            <span class="node-villain-tag">😈 ${villain.name}</span>
+          </div>
+          <h3 class="node-title" style="font-size:1.1rem;color:#fff;">${chapter.title}</h3>
+          
+          ${chapter.comicReference ? `<div style="font-size:0.68rem;background:rgba(246,201,14,0.15);border-left:3px solid var(--comic-yellow);padding:3px 6px;margin:3px 0 6px 0;color:var(--comic-yellow);font-weight:600;">📖 Inspirado en: ${chapter.comicReference}</div>` : ''}
+
+          <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:6px 8px;margin:4px 0 8px 0;">
+            <div style="font-size:0.72rem;color:var(--comic-cyan);font-weight:bold;margin-bottom:4px;">👥 PATRULLA OBLIGATORIA ASIGNADA:</div>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <div style="display:flex;align-items:center;gap:4px;">
+                <img src="${hero1.avatar}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                <span style="font-size:0.72rem;color:#fff;"><strong>Jorge:</strong> ${hero1.name}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;">
+                <img src="${hero2.avatar}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                <span style="font-size:0.72rem;color:#fff;"><strong>Esposa:</strong> ${hero2.name}</span>
+              </div>
+              ${hero3 ? `
+              <div style="display:flex;align-items:center;gap:4px;">
+                <img src="${hero3.avatar}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                <span style="font-size:0.72rem;color:#c4b5fd;">⭐ <strong>Apoyo:</strong> ${hero3.name}</span>
+              </div>` : ''}
+            </div>
+          </div>
+
+          <p class="node-summary" style="font-size:0.76rem;line-height:1.35;color:#cbd5e1;">${chapter.synopsis.slice(0, 160)}...</p>
+
+          <div style="margin:8px 0;font-size:0.7rem;background:rgba(0,0,0,0.3);border-radius:6px;padding:6px 8px;display:flex;flex-direction:column;gap:4px;">
+            <div style="color:var(--success-green);"><strong>✓ Si Ganan:</strong> ${chapter.winOutcome?.bonusText || 'Avanzan con ventaja'}</div>
+            <div style="color:#f87171;"><strong>✕ Si Pierden:</strong> ${chapter.lossOutcome?.penalties || chapter.lossOutcome?.bonusText || 'Consecuencias inmediatas'}</div>
+          </div>
+
+          <button id="btnPlayActiveChapter" class="btn-primary" style="width:100%;margin-top:6px;padding:10px;font-size:0.88rem;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;">
+            <span>🎮</span> JUGAR ESTE CAPÍTULO EN MESA ➔
+          </button>
+        `;
+
+        card.querySelector('#btnPlayActiveChapter')?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          loadChapterIntoMatch(chapter.id);
+          switchTab('match');
+        });
+
+        card.addEventListener('click', () => {
+          loadChapterIntoMatch(chapter.id);
+          switchTab('match');
+        });
+
+        container.appendChild(card);
+      } else {
+        // FUTURE LOCKED STEP
+        const card = document.createElement('div');
+        card.className = 'node-card locked';
+        card.innerHTML = `
+          <div class="node-badge" style="background:#1e293b;color:#64748b;border-color:#334155;">🔒</div>
+          <div class="node-header">
+            <span class="node-act">ENTREGA #${step} DE 10</span>
+            <span class="node-villain-tag" style="background:#334155;color:#94a3b8;">Por revelar</span>
+          </div>
+          <h3 class="node-title" style="color:#64748b;">Destino Cósmico Reservado</h3>
+          <p class="node-summary" style="color:#64748b;font-size:0.74rem;">Esta batalla se desbloqueará y adaptará según las decisiones, victorias o derrotas del equipo en los números anteriores.</p>
+        `;
+        container.appendChild(card);
+      }
+    }
+
+    // MULTIVERSE EXPLORER ACCORDION (18 Chapters)
+    const multiverseSection = document.createElement('div');
+    multiverseSection.style.cssText = 'margin-top:24px;border-top:1px dashed #334155;padding-top:16px;';
+    multiverseSection.innerHTML = `
+      <button id="btnToggleMultiverse" class="btn-secondary" style="width:100%;padding:10px;font-size:0.82rem;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;">
+        <span>🗺️</span> Ver Mapa Completo del Multiverso (18 Escenarios y Ramificaciones)
+      </button>
+      <div id="multiverseGridContainer" style="display:none;margin-top:14px;flex-direction:column;gap:12px;"></div>
+    `;
+    container.appendChild(multiverseSection);
+
+    const toggleBtn = multiverseSection.querySelector('#btnToggleMultiverse');
+    const multiGrid = multiverseSection.querySelector('#multiverseGridContainer');
+
+    toggleBtn?.addEventListener('click', () => {
+      const isVisible = multiGrid.style.display === 'flex';
+      multiGrid.style.display = isVisible ? 'none' : 'flex';
+      toggleBtn.innerHTML = isVisible
+        ? '<span>🗺️</span> Ver Mapa Completo del Multiverso (18 Escenarios y Ramificaciones)'
+        : '<span>▲</span> Ocultar Mapa Completo del Multiverso';
+
+      if (!isVisible && multiGrid.children.length === 0) {
+        // Render 18 scenarios
+        CAMPAIGN_CHAPTERS.forEach(c => {
+          const v = CAMPAIGN_VILLAINS[c.villainId] || {};
+          const h1 = CAMPAIGN_HEROES[c.assignedHeroSlot1] || { name: c.assignedHeroSlot1 };
+          const h2 = CAMPAIGN_HEROES[c.assignedHeroSlot2] || { name: c.assignedHeroSlot2 };
+          const isCurrentInMulti = String(c.id) === currentChapterId;
+          const wasPlayed = history.some(h => String(h.chapterId) === String(c.id));
+
+          const item = document.createElement('div');
+          item.style.cssText = `background:#111827;border:1px solid ${isCurrentInMulti ? 'var(--comic-yellow)' : wasPlayed ? '#22c55e' : '#374151'};border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:4px;font-size:0.75rem;`;
+          item.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong style="color:var(--comic-yellow);font-size:0.8rem;">[Nodo ${c.id}] ${c.title}</strong>
+              <span class="badge ${wasPlayed ? 'badge-green' : isCurrentInMulti ? 'badge-yellow' : 'badge-blue'}">${wasPlayed ? 'JUGADO' : isCurrentInMulti ? 'ACTUAL' : `Entrega #${c.step}`}</span>
+            </div>
+            <div style="color:#cbd5e1;">😈 <strong>Villano:</strong> ${v.name} • 👥 <strong>Patrulla:</strong> ${h1.name} & ${h2.name}</div>
+            <div style="color:#94a3b8;font-size:0.7rem;">📖 <strong>Inspiración:</strong> ${c.comicReference || 'Marvel Comics'}</div>
+            <div style="display:flex;gap:12px;margin-top:4px;font-size:0.68rem;">
+              <span style="color:var(--success-green);">✓ Victoria ➔ Nodo ${c.winOutcome?.nextChapter || 'Fin'}</span>
+              <span style="color:#f87171;">✕ Derrota ➔ Nodo ${c.lossOutcome?.nextChapter || 'Fin'}</span>
+            </div>
+          `;
+          multiGrid.appendChild(item);
+        });
+      }
     });
   }
 
@@ -132,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. COMPANION EN MESA: PARTIDA ACTIVA
   // =========================================================================
   function loadChapterIntoMatch(chapterId) {
-    activeMatch.chapterId = chapterId;
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === chapterId) || CAMPAIGN_CHAPTERS[0];
+    activeMatch.chapterId = String(chapterId);
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(chapterId)) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
 
     // Asignación automática y obligatoria de la patrulla del capítulo
@@ -174,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function recalculateVillainHp() {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
     const numHeroes = activeMatch.getSelectedHeroes().length;
     const oldMax = activeMatch.villainMaxHp;
@@ -191,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderActiveMatch() {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
 
     // Header info
@@ -268,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
       titleEl.innerHTML = `Elegir Héroe: <span style="color:#fff;">${slotLabels[currentPickerSlot]}</span>`;
     }
 
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
     const squad = chapter.squadOptions || ['cyclops', 'miles_morales', 'black_cat', 'spider_man'];
 
     if (subtitleEl) {
@@ -490,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modeBadge.className = 'badge badge-blue';
       }
 
-      const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+      const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
       const hero3Data = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
       const hero3Label = hero3Data ? hero3Data.name : 'Apoyo';
 
@@ -616,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function triggerEventCard(eventType) {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
     let eventData = chapter.events[eventType];
 
     if (!eventData && eventType === 'crisis') {
@@ -699,7 +840,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function handleMatchResult(result) {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId);
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId));
     if (!chapter) return;
 
     const outcome = result === 'win' ? chapter.winOutcome : chapter.lossOutcome;
@@ -715,27 +856,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modal de desenlace
-    const retryBtn = document.getElementById('btnRetryOutcomeModal');
     const closeBtn = document.getElementById('closeOutcomeModalBtn');
 
-    document.getElementById('outcomeBadge').textContent = result === 'win' ? '¡VICTORIA ÉPICA!' : 'DERROTA TÁCTICA';
+    document.getElementById('outcomeBadge').textContent = result === 'win' ? '¡VICTORIA ÉPICA!' : 'DERROTA NARRATIVA';
     document.getElementById('outcomeBadge').className = `badge ${result === 'win' ? 'badge-green' : 'badge-red'}`;
     document.getElementById('outcomeTitle').textContent = outcome.title;
     document.getElementById('outcomeEpilogue').textContent = outcome.epilogue;
     document.getElementById('outcomeBonus').textContent = outcome.bonusText || outcome.penalties || '';
 
-    if (result === 'win') {
-      if (retryBtn) retryBtn.style.display = 'none';
-      if (closeBtn) {
-        closeBtn.textContent = 'Continuar al Siguiente Capítulo ➔';
-        closeBtn.className = 'btn-primary';
-      }
-    } else {
-      if (retryBtn) retryBtn.style.display = 'block';
-      if (closeBtn) {
-        closeBtn.textContent = 'Aceptar Derrota y Continuar Historia ➔';
-        closeBtn.className = 'btn-secondary';
-      }
+    if (closeBtn) {
+      closeBtn.textContent = 'Aceptar Consecuencias y Avanzar en la Historia ➔';
+      closeBtn.className = 'btn-primary';
     }
 
     // Desbloqueos visuales en el modal
@@ -769,16 +900,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Volver a cargar la siguiente misión o volver al timeline
     loadChapterIntoMatch(campaignStorage.state.currentChapterId);
     switchTab('timeline');
-  });
-
-  document.getElementById('btnRetryOutcomeModal')?.addEventListener('click', () => {
-    outcomeModal.classList.remove('active');
-    soundFX.playClick();
-    // Restaurar capítulo actual para la revancha y resetear partida
-    campaignStorage.state.currentChapterId = activeMatch.chapterId;
-    campaignStorage.saveState();
-    loadChapterIntoMatch(activeMatch.chapterId);
-    switchTab('match');
   });
 
   // =========================================================================
