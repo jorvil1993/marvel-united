@@ -348,17 +348,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO I: LA SOMBRA EN MANHATTAN",
     "title": "Capítulo 1: Asalto a Medianoche en Oscorp",
     "villainId": "rhino",
-    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot1": "spider_man",
     "assignedHeroSlot2": "miles_morales",
     "assignedHeroSlot3": "black_cat",
     "squadOptions": [
-      "cyclops",
+      "spider_man",
       "miles_morales",
       "black_cat",
-      "spider_man"
+      "cyclops"
     ],
     "comicReference": "Champions Vol. 2 (Mark Waid) & Ultimate Spider-Man",
-    "synopsis": "Miles Morales patrullaba Brooklyn investigando robos de generadores de energía cuando detectó un apagón repentino en los laboratorios de Oscorp en Midtown. Al infiltrarse por la ventilación, se topa de frente con Scott Summers (Cíclope), quien rastreaba una fuga de radiación mutante detectada por Cerebro. Antes de poder coordinarse, las compuertas de titanio revientan en pedazos: ¡Rhino ha sido contratado para saquear las cámaras criogénicas donde Norman Osborn almacena bio-muestras mutantes y tejido simbiótico! Cíclope y Miles deberán unir la bioelectricidad del rayo veneno con los rayos ópticos de conmoción para frenar al bruto antes de que Manhattan sea contaminada. Y en las vigas del techo, la Gata Negra (Felicia Hardy) vigila lista para apoyar.",
+    "synopsis": "Peter Parker y Miles Morales patrullan la noche de Nueva York cuando las sirenas de emergencia chillan al unísono: ¡un asalto masivo sacude la torre de laboratorios de Oscorp! Al infiltrarse, descubren a Rhino derribando compuertas blindadas con furia ciega. Pero no busca dinero: Norman Osborn ha estado almacenando bio-muestras mutantes robadas y muestras de tejido simbiótico. Antes de que el bruto escape con las sustancias, Peter y Miles deben coordinar sus redes y bioelectricidad para contenerlo. En las alturas de los conductos de ventilación, la escurridiza Gata Negra (Felicia Hardy) vigila lista para apoyar en el momento oportuno.",
     "locations": [
       {
         "name": "Oscorp Tower",
@@ -391,12 +391,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Rhino): Inicia en OSCORP TOWER — Rhino derriba las compuertas acorazadas de Norman Osborn para saquear bio-muestras mutantes y tejido simbiótico.",
-      "👤 JORGE (Cíclope (Scott)): Inicia en MIDTOWN HIGH SCHOOL — Cíclope vigilaba el sector tras detectar picos inusuales de radiación con Cerebro cerca del instituto.",
-      "🌸 ESPOSA (Miles Morales): Inicia en OSCORP TOWER — Miles Morales se infiltró por los ductos de ventilación tras ver el apagón repentino en la torre.",
-      "⭐ APOYO (Gata Negra (Felicia), si juega): Inicia en DAILY BUGLE — Gata Negra vigila desde las alturas de la redacción lista para cortar la ruta de escape de los contrabandistas.",
+      "😈 VILLANO (Rhino): Inicia en OSCORP TOWER — Rhino derriba las compuertas de la bóveda de bio-muestras subterránea de Osborn.",
+      "👤 JORGE (Spider-Man (Peter Parker)): Inicia en MIDTOWN HIGH SCHOOL — Spider-Man (Peter) acude a toda velocidad balanceándose desde Queens al escuchar las alarmas.",
+      "🌸 ESPOSA (Miles Morales): Inicia en OSCORP TOWER — Miles Morales se infiltra sigilosamente por los ductos de ventilación de la torre.",
+      "⭐ APOYO (Gata Negra (Felicia Hardy), si juega): Inicia en DAILY BUGLE — Gata Negra vigila desde la azotea del Bugle para cortar la ruta de escape de los camiones de asalto.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Muros de Refuerzo: La estructura de Oscorp tiembla. Cada vez que Rhino active BAM, coloca 1 Matón en su ubicación SOLO SI hay espacio libre (sin Desbordamiento).",
     "events": {
@@ -444,28 +444,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Oscorp Tower",
-        "reason": "Rhino derriba las compuertas acorazadas de Norman Osborn para saquear bio-muestras mutantes y tejido simbiótico."
+        "reason": "Rhino derriba las compuertas de la bóveda de bio-muestras subterránea de Osborn."
       },
       "hero1": {
         "location": "Midtown High School",
-        "reason": "Cíclope vigilaba el sector tras detectar picos inusuales de radiación con Cerebro cerca del instituto."
+        "reason": "Spider-Man (Peter) acude a toda velocidad balanceándose desde Queens al escuchar las alarmas."
       },
       "hero2": {
         "location": "Oscorp Tower",
-        "reason": "Miles Morales se infiltró por los ductos de ventilación tras ver el apagón repentino en la torre."
+        "reason": "Miles Morales se infiltra sigilosamente por los ductos de ventilación de la torre."
       },
       "hero3": {
         "location": "Daily Bugle",
-        "reason": "Gata Negra vigila desde las alturas de la redacción lista para cortar la ruta de escape de los contrabandistas."
-      },
-      "locations": [
-        "Oscorp Tower",
-        "Midtown High School",
-        "Central Park",
-        "Daily Bugle",
-        "Brooklyn Bridge",
-        "Sims Tower"
-      ]
+        "reason": "Gata Negra vigila desde la azotea del Bugle para cortar la ruta de escape de los camiones de asalto."
+      }
     }
   },
   {
@@ -476,16 +468,16 @@ const CAMPAIGN_CHAPTERS = [
     "title": "Capítulo 2A: Cacería Feral en Central Park (Ruta con Iniciativa)",
     "villainId": "sabretooth",
     "assignedHeroSlot1": "wolverine",
-    "assignedHeroSlot2": "spider_man",
+    "assignedHeroSlot2": "cyclops",
     "assignedHeroSlot3": "beast",
     "squadOptions": [
       "wolverine",
-      "spider_man",
+      "cyclops",
       "beast",
-      "black_cat"
+      "spider_man"
     ],
     "comicReference": "Astonishing Spider-Man & Wolverine (Jason Aaron)",
-    "synopsis": "Gracias a los datos rescatados por Gata Negra en Oscorp, la alianza llega a tiempo a Central Park. Victor Creed (Dientes de Sable) ha sido enviado para eliminar testigos civiles en la niebla nocturna. Logan (Wolverine) capta el olor a sangre de su viejo enemigo y llama de urgencia a su compañero Peter Parker (Spider-Man). Con la iniciativa de su lado, Peter teje redes de contención entre los árboles para proteger a los guardaparques mientras Logan rastrea a Creed en la penumbra, apoyados desde el laboratorio móvil por Hank McCoy (Bestia).",
+    "synopsis": "Mientras los héroes arácnidos aseguran los discos duros de Oscorp, en Westchester la alarma de Cerebro se dispara: ¡Dientes de Sable (Victor Creed) ha sido desplegado en Central Park para cazar mutantes fugitivos y probar el suero robado! Lobezno (Logan) capta el rastro de sangre de su viejo enemigo y Cíclope (Scott Summers) lidera la patrulla táctica de los X-Men para acordonar el parque antes de que caiga la noche. Desde el laboratorio de la Mansión, Hank McCoy (Bestia) rastrea lecturas biológicas en tiempo real.",
     "locations": [
       {
         "name": "Central Park",
@@ -518,12 +510,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Dientes de Sable): Inicia en CENTRAL PARK — Dientes de Sable acecha en la espesura del parque nocturno buscando eliminar testigos civiles.",
-      "👤 JORGE (Lobezno (Logan)): Inicia en CENTRAL PARK — Lobezno ha rastreado el olor a sangre de Creed hasta la arboleda y se lanza a interceptarlo.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en MIDTOWN HIGH SCHOOL — Spider-Man (Peter) patrullaba cerca y acude a toda prisa al oír los rugidos ferales entre los árboles.",
-      "⭐ APOYO (Bestia (Hank), si juega): Inicia en DAILY BUGLE — Bestia coordina la búsqueda desde un laboratorio móvil en el centro para monitorear lecturas biológicas.",
+      "😈 VILLANO (Dientes de Sable): Inicia en CENTRAL PARK — Dientes de Sable acecha en la espesura del parque nocturno buscando eliminar testigos.",
+      "👤 JORGE (Lobezno (Logan)): Inicia en CENTRAL PARK — Lobezno rastrea el hedor de Creed hasta la arboleda y se lanza al combate cuerpo a cuerpo.",
+      "🌸 ESPOSA (Cíclope (Scott Summers)): Inicia en MIDTOWN HIGH SCHOOL — Cíclope coordina el perímetro exterior guiando la evacuación con rayos de advertencia.",
+      "⭐ APOYO (Bestia (Dr. Hank McCoy), si juega): Inicia en DAILY BUGLE — Bestia monitorea las transmisiones policiales desde un furgón científico en el centro.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Rastreo de Presa: Dientes de Sable acecha al Héroe con menos cartas en mano, pero los Héroes en Central Park pueden esconderse entre los árboles.",
     "events": {
@@ -571,28 +563,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Central Park",
-        "reason": "Dientes de Sable acecha en la espesura del parque nocturno buscando eliminar testigos civiles."
+        "reason": "Dientes de Sable acecha en la espesura del parque nocturno buscando eliminar testigos."
       },
       "hero1": {
         "location": "Central Park",
-        "reason": "Lobezno ha rastreado el olor a sangre de Creed hasta la arboleda y se lanza a interceptarlo."
+        "reason": "Lobezno rastrea el hedor de Creed hasta la arboleda y se lanza al combate cuerpo a cuerpo."
       },
       "hero2": {
         "location": "Midtown High School",
-        "reason": "Spider-Man (Peter) patrullaba cerca y acude a toda prisa al oír los rugidos ferales entre los árboles."
+        "reason": "Cíclope coordina el perímetro exterior guiando la evacuación con rayos de advertencia."
       },
       "hero3": {
         "location": "Daily Bugle",
-        "reason": "Bestia coordina la búsqueda desde un laboratorio móvil en el centro para monitorear lecturas biológicas."
-      },
-      "locations": [
-        "Central Park",
-        "Midtown High School",
-        "Daily Bugle",
-        "Oscorp Tower",
-        "Brooklyn Bridge",
-        "Morlock Tunnels"
-      ]
+        "reason": "Bestia monitorea las transmisiones policiales desde un furgón científico en el centro."
+      }
     }
   },
   {
@@ -602,17 +586,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO I: LA SOMBRA EN MANHATTAN",
     "title": "Capítulo 2B: Asedio Mediático en el Daily Bugle (Ruta Bajo Presión)",
     "villainId": "mystique_villain",
-    "assignedHeroSlot1": "ghost_spider",
-    "assignedHeroSlot2": "jean_grey",
-    "assignedHeroSlot3": "spider_woman",
+    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot2": "beast",
+    "assignedHeroSlot3": "spider_man",
     "squadOptions": [
-      "ghost_spider",
-      "jean_grey",
-      "spider_woman",
-      "spider_man"
+      "cyclops",
+      "beast",
+      "spider_man",
+      "miles_morales"
     ],
     "comicReference": "All-New X-Men & Spider-Gwen",
-    "synopsis": "¡Crisis total en Manhattan! Tras la fuga de Rhino en Oscorp, el Daily Bugle ha emitido boletines extraordinarios culpando a Spider-Man y a los X-Men de terrorismo. Mística se ha infiltrado en el edificio del periódico suplantando a los directores editoriales para alimentar la paranoia. Gwen Stacy (Ghost-Spider), indignada por las noticias falsas, acude a los tejados del Bugle donde Jean Grey detecta una intensa onda de manipulación mental. Deben asaltar la redacción para detener la transmisión satelital antes de que la ciudad declare la cacería de mutantes.",
+    "synopsis": "Tras la fuga de Rhino, la Hermandad de Mutantes pasa a la ofensiva mediática: Mística se infiltra en las rotativas del Daily Bugle imprimiendo portadas que culpan a los mutantes de terrorismo y desastre en Oscorp. Scott Summers (Cíclope) y Hank McCoy (Bestia) irrumpen en el edificio para desenmascarar la farsa y evitar que la histeria anti-mutante incendie la ciudad, mientras Peter Parker se apresura desde el exterior para desmentir las noticias falsas.",
     "locations": [
       {
         "name": "Daily Bugle",
@@ -623,12 +607,12 @@ const CAMPAIGN_CHAPTERS = [
       {
         "name": "Oscorp Tower",
         "img": "./assets/locations/oscorp.jpg",
-        "startHero3": true
+        "startHero2": true
       },
       {
         "name": "Midtown High School",
         "img": "./assets/locations/midtown_high.jpg",
-        "startHero2": true
+        "startHero3": true
       },
       {
         "name": "Brooklyn Bridge",
@@ -645,12 +629,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (mystique_villain): Inicia en DAILY BUGLE — Mística se ha infiltrado en la rotativa del Bugle para imprimir portadas falsas culpando a mutantes y arañas del desastre.",
-      "👤 JORGE (Ghost-Spider (Gwen)): Inicia en DAILY BUGLE — Cíclope entra por la recepción con su visor listo para desmentir la difamación y frenar el pánico mediático.",
-      "🌸 ESPOSA (Jean Grey): Inicia en MIDTOWN HIGH SCHOOL — Spider-Man corre desde Queens tras ver los titulares del periódico difamando a los héroes.",
-      "⭐ APOYO (Spider-Woman (Jessica), si juega): Inicia en OSCORP TOWER — Bestia analiza los restos químicos en los escombros de Oscorp buscando pruebas de la inocencia mutante.",
+      "😈 VILLANO (mystique_villain): Inicia en DAILY BUGLE — Mística transmite propaganda falsa y manipula la rotativa del periódico.",
+      "👤 JORGE (Cíclope (Scott Summers)): Inicia en DAILY BUGLE — Cíclope entra por la recepción principal con su visor listo para frenar la difamación.",
+      "🌸 ESPOSA (Bestia (Dr. Hank McCoy)): Inicia en OSCORP TOWER — Bestia recolecta muestras forenses para demostrar la inocencia de los héroes ante la prensa.",
+      "⭐ APOYO (Spider-Man (Peter Parker), si juega): Inicia en MIDTOWN HIGH SCHOOL — Spider-Man corre desde Queens al ver los periódicos difamando a los vigilantes.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Flashes y Megafonía: Mística usa a los reporteros como escudos. Gastar 1 acción Heroica calma a los fotógrafos.",
     "events": {
@@ -699,28 +683,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Daily Bugle",
-        "reason": "Mística se ha infiltrado en la rotativa del Bugle para imprimir portadas falsas culpando a mutantes y arañas del desastre."
+        "reason": "Mística transmite propaganda falsa y manipula la rotativa del periódico."
       },
       "hero1": {
         "location": "Daily Bugle",
-        "reason": "Cíclope entra por la recepción con su visor listo para desmentir la difamación y frenar el pánico mediático."
+        "reason": "Cíclope entra por la recepción principal con su visor listo para frenar la difamación."
       },
       "hero2": {
-        "location": "Midtown High School",
-        "reason": "Spider-Man corre desde Queens tras ver los titulares del periódico difamando a los héroes."
+        "location": "Oscorp Tower",
+        "reason": "Bestia recolecta muestras forenses para demostrar la inocencia de los héroes ante la prensa."
       },
       "hero3": {
-        "location": "Oscorp Tower",
-        "reason": "Bestia analiza los restos químicos en los escombros de Oscorp buscando pruebas de la inocencia mutante."
-      },
-      "locations": [
-        "Daily Bugle",
-        "Oscorp Tower",
-        "Midtown High School",
-        "Brooklyn Bridge",
-        "Central Park",
-        "Sims Tower"
-      ]
+        "location": "Midtown High School",
+        "reason": "Spider-Man corre desde Queens al ver los periódicos difamando a los vigilantes."
+      }
     }
   },
   {
@@ -730,17 +706,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO I: LA SOMBRA EN MANHATTAN",
     "title": "Capítulo 3A: Desarticulando a la Impostora en el Daily Bugle",
     "villainId": "mystique_villain",
-    "assignedHeroSlot1": "ghost_spider",
-    "assignedHeroSlot2": "jean_grey",
-    "assignedHeroSlot3": "spider_woman",
+    "assignedHeroSlot1": "storm",
+    "assignedHeroSlot2": "ghost_spider",
+    "assignedHeroSlot3": "wolverine",
     "squadOptions": [
+      "storm",
       "ghost_spider",
-      "jean_grey",
-      "spider_woman",
+      "wolverine",
       "spider_man"
     ],
     "comicReference": "All-New X-Men & Spider-Gwen",
-    "synopsis": "Con Dientes de Sable neutralizado, la alianza intercepta los planes de Mística antes de que monte su campaña de desprestigio en el Daily Bugle. Gwen Stacy y Jean Grey asaltan el edificio con las pruebas de Oscorp en mano. Mística se ve acorralada y activa guardias armados y trampas de gas para cubrir su escape.",
+    "synopsis": "¡La alianza mutante y arácnida se formaliza! Tormenta (Ororo Munroe) y Gwen Stacy (Ghost-Spider) unen fuerzas para asaltar Sims Tower, donde Mística intenta transferir las patentes genéticas robadas a servidores extranjeros. Tormenta oculta el rascacielos bajo nubes tormentosas mientras Gwen trepa por los ventanales con acrobacias imposibles. En el subsuelo, Lobezno vigila las salidas de alcantarillado.",
     "locations": [
       {
         "name": "Sims Tower",
@@ -773,12 +749,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (mystique_villain): Inicia en SIMS TOWER — Mística se ha camuflado en las suites ejecutivas de la torre para transferir patentes genéticas robadas.",
-      "👤 JORGE (Ghost-Spider (Gwen)): Inicia en CENTRAL PARK — Tormenta desata niebla densa y vientos cruzados sobre la torre para cegar las cámaras de seguridad.",
-      "🌸 ESPOSA (Jean Grey): Inicia en SIMS TOWER — Ghost-Spider (Gwen) trepa sigilosamente por los ventanales de cristal para sorprender a Raven en su oficina.",
-      "⭐ APOYO (Spider-Woman (Jessica), si juega): Inicia en MORLOCK TUNNELS — Lobezno bloquea las salidas subterráneas para evitar que Mística se desvanezca en la red de alcantarillas.",
+      "😈 VILLANO (mystique_villain): Inicia en SIMS TOWER — Mística se camufla en las suites ejecutivas de la torre para transferir patentes robadas.",
+      "👤 JORGE (Tormenta (Ororo Munroe)): Inicia en CENTRAL PARK — Tormenta desata niebla densa sobre la torre para cegar las cámaras de seguridad.",
+      "🌸 ESPOSA (Ghost-Spider (Gwen Stacy)): Inicia en SIMS TOWER — Ghost-Spider (Gwen) trepa sigilosamente por los ventanales de cristal hacia la oficina.",
+      "⭐ APOYO (Lobezno (Logan), si juega): Inicia en MORLOCK TUNNELS — Lobezno bloquea las salidas subterráneas para evitar que Mística se desvanezca en la red de cloacas.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Guerra de Evidencias: Con las pruebas en mano, los héroes reducen en 1 el coste de limpiar Amenazas.",
     "events": {
@@ -827,28 +803,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Sims Tower",
-        "reason": "Mística se ha camuflado en las suites ejecutivas de la torre para transferir patentes genéticas robadas."
+        "reason": "Mística se camufla en las suites ejecutivas de la torre para transferir patentes robadas."
       },
       "hero1": {
         "location": "Central Park",
-        "reason": "Tormenta desata niebla densa y vientos cruzados sobre la torre para cegar las cámaras de seguridad."
+        "reason": "Tormenta desata niebla densa sobre la torre para cegar las cámaras de seguridad."
       },
       "hero2": {
         "location": "Sims Tower",
-        "reason": "Ghost-Spider (Gwen) trepa sigilosamente por los ventanales de cristal para sorprender a Raven en su oficina."
+        "reason": "Ghost-Spider (Gwen) trepa sigilosamente por los ventanales de cristal hacia la oficina."
       },
       "hero3": {
         "location": "Morlock Tunnels",
-        "reason": "Lobezno bloquea las salidas subterráneas para evitar que Mística se desvanezca en la red de alcantarillas."
-      },
-      "locations": [
-        "Sims Tower",
-        "Daily Bugle",
-        "Central Park",
-        "Brooklyn Bridge",
-        "Morlock Tunnels",
-        "Oscorp Tower"
-      ]
+        "reason": "Lobezno bloquea las salidas subterráneas para evitar que Mística se desvanezca en la red de cloacas."
+      }
     }
   },
   {
@@ -858,17 +826,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO I: LA SOMBRA EN MANHATTAN",
     "title": "Capítulo 3B: Alarma en las Sombras del Daily Bugle",
     "villainId": "mystique_villain",
-    "assignedHeroSlot1": "ghost_spider",
-    "assignedHeroSlot2": "jean_grey",
-    "assignedHeroSlot3": "spider_woman",
+    "assignedHeroSlot1": "wolverine",
+    "assignedHeroSlot2": "spider_woman",
+    "assignedHeroSlot3": "cyclops",
     "squadOptions": [
-      "ghost_spider",
-      "jean_grey",
+      "wolverine",
       "spider_woman",
-      "spider_man"
+      "cyclops",
+      "black_cat"
     ],
     "comicReference": "All-New X-Men & Spider-Gwen",
-    "synopsis": "Tras la fuga de Dientes de Sable en Central Park, Mística aprovecha el pánico para difundir grabaciones manipuladas acusando a los héroes de la violencia en el parque. Gwen Stacy y Jean Grey deben infiltrarse contrarreloj en el Daily Bugle para desactivar las cámaras y frenar la histeria colectiva.",
+    "synopsis": "Dientes de Sable se atrinchera en los Túneles Morlock bajo Manhattan, buscando eliminar a los mutantes refugiados. Lobezno desciende al fango subterráneo con sus garras desenvainadas, acompañado por la letal puntería de Jessica Drew (Spider-Woman), cuyos rayos bioeléctricos iluminan los túneles oscuros. Cíclope coordina el cerco desde la superficie.",
     "locations": [
       {
         "name": "Morlock Tunnels",
@@ -901,12 +869,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (mystique_villain): Inicia en MORLOCK TUNNELS — Dientes de Sable ha arrinconado a mutantes desarmados en los conductos inundados bajo Manhattan.",
-      "👤 JORGE (Ghost-Spider (Gwen)): Inicia en MORLOCK TUNNELS — Lobezno desciende a las aguas negras con sus garras de adamantium desenvainadas para el choque definitivo.",
-      "🌸 ESPOSA (Jean Grey): Inicia en CENTRAL PARK — Spider-Woman (Jessica Drew) rastrea feromonas y cubre las rejillas de ventilación superiores del parque.",
-      "⭐ APOYO (Spider-Woman (Jessica), si juega): Inicia en BROOKLYN BRIDGE — Coloso monta guardia en las rampas del puente para evitar que Creed intente una fuga hacia el río.",
+      "😈 VILLANO (mystique_villain): Inicia en MORLOCK TUNNELS — Dientes de Sable arrincona a mutantes desarmados en los conductos inundados bajo Manhattan.",
+      "👤 JORGE (Lobezno (Logan)): Inicia en MORLOCK TUNNELS — Lobezno desciende a las aguas negras con sus garras de adamantium listas para el choque.",
+      "🌸 ESPOSA (Spider-Woman (Jessica Drew)): Inicia en CENTRAL PARK — Spider-Woman (Jessica Drew) rastrea feromonas y cubre las rejillas de ventilación superiores del parque.",
+      "⭐ APOYO (Cíclope (Scott Summers), si juega): Inicia en BROOKLYN BRIDGE — Cíclope monta guardia en las rampas del puente para evitar que Creed intente una fuga hacia el río.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Prensa Hostil: Cada vez que un héroe resulte herido, añade 1 ficha de Exposición.",
     "events": {
@@ -955,11 +923,11 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Morlock Tunnels",
-        "reason": "Dientes de Sable ha arrinconado a mutantes desarmados en los conductos inundados bajo Manhattan."
+        "reason": "Dientes de Sable arrincona a mutantes desarmados en los conductos inundados bajo Manhattan."
       },
       "hero1": {
         "location": "Morlock Tunnels",
-        "reason": "Lobezno desciende a las aguas negras con sus garras de adamantium desenvainadas para el choque definitivo."
+        "reason": "Lobezno desciende a las aguas negras con sus garras de adamantium listas para el choque."
       },
       "hero2": {
         "location": "Central Park",
@@ -967,16 +935,8 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero3": {
         "location": "Brooklyn Bridge",
-        "reason": "Coloso monta guardia en las rampas del puente para evitar que Creed intente una fuga hacia el río."
-      },
-      "locations": [
-        "Morlock Tunnels",
-        "Central Park",
-        "Brooklyn Bridge",
-        "Midtown High School",
-        "Daily Bugle",
-        "Oscorp Tower"
-      ]
+        "reason": "Cíclope monta guardia en las rampas del puente para evitar que Creed intente una fuga hacia el río."
+      }
     }
   },
   {
@@ -986,17 +946,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO I: LA SOMBRA EN MANHATTAN",
     "title": "Capítulo 3C: Cacería con Pistas Claras en Central Park",
     "villainId": "sabretooth",
-    "assignedHeroSlot1": "wolverine",
-    "assignedHeroSlot2": "spider_man",
-    "assignedHeroSlot3": "beast",
+    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot2": "spider_2099",
+    "assignedHeroSlot3": "wolverine",
     "squadOptions": [
+      "cyclops",
+      "spider_2099",
       "wolverine",
-      "spider_man",
-      "beast",
-      "black_cat"
+      "miles_morales"
     ],
     "comicReference": "Astonishing Spider-Man & Wolverine",
-    "synopsis": "Habiendo desenmascarado a Mística en el Bugle, Gwen y Jean enviaron las coordenadas del escondite de Dientes de Sable en Central Park. Logan y Peter van con las pistas claras para neutralizar a Creed antes de que escape con las muestras genéticas restantes.",
+    "synopsis": "Dientes de Sable salta sobre el puente de Brooklyn, destrozando cables y arrojando vehículos al río. Cíclope acude al frente plantando cara a la bestia con ráfagas ópticas de conmoción, asistido por Miguel O'Hara (Spider-Man 2099), recién llegado a través de una grieta temporal alertado por la catástrofe genética. Lobezno sube por los pilares del puente para cortar la retirada de Creed.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -1029,12 +989,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Dientes de Sable): Inicia en BROOKLYN BRIDGE — Dientes de Sable ha saltado sobre el tráfico del puente, destrozando cables y arrojando vehículos al vacío.",
-      "👤 JORGE (Lobezno (Logan)): Inicia en BROOKLYN BRIDGE — Coloso clava sus botas de acero en el asfalto para resistir el impacto de camiones y proteger a las familias.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en SIMS TOWER — Spider-Man 2099 desciende en planeo con sus garras térmicas directo hacia el centro del puente.",
-      "⭐ APOYO (Bestia (Hank), si juega): Inicia en MORLOCK TUNNELS — Lobezno trepa a toda prisa por los pilares del puente emergiendo desde el desagüe fluvial.",
+      "😈 VILLANO (Dientes de Sable): Inicia en BROOKLYN BRIDGE — Dientes de Sable destroza cables del puente y arroja vehículos al vacío.",
+      "👤 JORGE (Cíclope (Scott Summers)): Inicia en BROOKLYN BRIDGE — Cíclope planta sus botas en el asfalto conteniendo a la bestia con rayos ópticos calculados.",
+      "🌸 ESPOSA (Spider-Man 2099 (Miguel O'Hara)): Inicia en SIMS TOWER — Spider-Man 2099 desciende en planeo con sus garras térmicas directo hacia el centro del puente.",
+      "⭐ APOYO (Lobezno (Logan), si juega): Inicia en MORLOCK TUNNELS — Lobezno trepa a toda prisa por los pilares del puente emergiendo desde el desagüe fluvial.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Cercando a la Bestia: Los héroes pueden usar acciones de Ataque para obligar a Creed a retroceder.",
     "events": {
@@ -1082,11 +1042,11 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Brooklyn Bridge",
-        "reason": "Dientes de Sable ha saltado sobre el tráfico del puente, destrozando cables y arrojando vehículos al vacío."
+        "reason": "Dientes de Sable destroza cables del puente y arroja vehículos al vacío."
       },
       "hero1": {
         "location": "Brooklyn Bridge",
-        "reason": "Coloso clava sus botas de acero en el asfalto para resistir el impacto de camiones y proteger a las familias."
+        "reason": "Cíclope planta sus botas en el asfalto conteniendo a la bestia con rayos ópticos calculados."
       },
       "hero2": {
         "location": "Sims Tower",
@@ -1095,15 +1055,7 @@ const CAMPAIGN_CHAPTERS = [
       "hero3": {
         "location": "Morlock Tunnels",
         "reason": "Lobezno trepa a toda prisa por los pilares del puente emergiendo desde el desagüe fluvial."
-      },
-      "locations": [
-        "Brooklyn Bridge",
-        "Morlock Tunnels",
-        "Daily Bugle",
-        "Central Park",
-        "Sims Tower",
-        "Midtown High School"
-      ]
+      }
     }
   },
   {
@@ -1113,17 +1065,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO I: LA SOMBRA EN MANHATTAN",
     "title": "Capítulo 3D: Cacería en Central Park Bajo Estado de Sitio",
     "villainId": "sabretooth",
-    "assignedHeroSlot1": "wolverine",
-    "assignedHeroSlot2": "spider_man",
-    "assignedHeroSlot3": "beast",
+    "assignedHeroSlot1": "jean_grey",
+    "assignedHeroSlot2": "miles_morales",
+    "assignedHeroSlot3": "storm",
     "squadOptions": [
-      "wolverine",
-      "spider_man",
-      "beast",
-      "black_cat"
+      "jean_grey",
+      "miles_morales",
+      "storm",
+      "spider_man"
     ],
     "comicReference": "Astonishing Spider-Man & Wolverine",
-    "synopsis": "Con la opinión pública envenenada por las mentiras de Mística, la policía y matones armados patrullan Central Park. Entre el caos, Dientes de Sable aprovecha para cazar a civiles y héroes por igual. Wolverine y Spider-Man deben internarse en el parque esquivando a las fuerzas del orden mientras neutralizan al sádico Creed.",
+    "synopsis": "Mística detona cargas incendiarias en el Daily Bugle para destruir las evidencias de su conspiración. Jean Grey alza barreras telequinéticas para sofocar las explosiones y evitar que el edificio colapse sobre los transeúntes, mientras Miles Morales desciende por las cornisas rescatando a los periodistas con redes elásticas. Tormenta cubre el cielo provocando un aguacero sobre Midtown.",
     "locations": [
       {
         "name": "Daily Bugle",
@@ -1156,12 +1108,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Dientes de Sable): Inicia en DAILY BUGLE — Mística ha detonado cargas incendiarias en los archivos históricos del Bugle para quemar pruebas incriminatorias.",
-      "👤 JORGE (Lobezno (Logan)): Inicia en DAILY BUGLE — Jean Grey alza barreras telequinéticas para contener el fuego y evitar que el edificio colapse.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en DAILY BUGLE — Miles Morales rescata a los reporteros atrapados descolgándolos con redes por las cornisas.",
-      "⭐ APOYO (Bestia (Hank), si juega): Inicia en CENTRAL PARK — Tormenta invoca lluvia torrencial sobre la manzana para sofocar las chispas que amenazan Midtown.",
+      "😈 VILLANO (Dientes de Sable): Inicia en DAILY BUGLE — Mística detona cargas incendiarias en los archivos históricos del Bugle.",
+      "👤 JORGE (Jean Grey (Marvel Girl)): Inicia en DAILY BUGLE — Jean Grey alza barreras telequinéticas para contener el fuego y sostener la estructura.",
+      "🌸 ESPOSA (Miles Morales): Inicia en DAILY BUGLE — Miles Morales rescata a los reporteros atrapados descolgándolos con redes por las cornisas.",
+      "⭐ APOYO (Tormenta (Ororo Munroe), si juega): Inicia en CENTRAL PARK — Tormenta invoca lluvia torrencial sobre la manzana para sofocar las chispas que amenazan Midtown.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Fuego Cruzado: Matones patrullan el parque. Cada vez que Creed active BAM, mueve 1 Matón a su casilla (sin Desbordamiento).",
     "events": {
@@ -1209,11 +1161,11 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Daily Bugle",
-        "reason": "Mística ha detonado cargas incendiarias en los archivos históricos del Bugle para quemar pruebas incriminatorias."
+        "reason": "Mística detona cargas incendiarias en los archivos históricos del Bugle."
       },
       "hero1": {
         "location": "Daily Bugle",
-        "reason": "Jean Grey alza barreras telequinéticas para contener el fuego y evitar que el edificio colapse."
+        "reason": "Jean Grey alza barreras telequinéticas para contener el fuego y sostener la estructura."
       },
       "hero2": {
         "location": "Daily Bugle",
@@ -1222,15 +1174,7 @@ const CAMPAIGN_CHAPTERS = [
       "hero3": {
         "location": "Central Park",
         "reason": "Tormenta invoca lluvia torrencial sobre la manzana para sofocar las chispas que amenazan Midtown."
-      },
-      "locations": [
-        "Daily Bugle",
-        "Brooklyn Bridge",
-        "Oscorp Tower",
-        "Midtown High School",
-        "Central Park",
-        "Sims Tower"
-      ]
+      }
     }
   },
   {
@@ -1240,28 +1184,28 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO II: EL ALZAMIENTO DE LA HERMANDAD",
     "title": "Capítulo 4A: Interceptación Aérea en el Puente (Duende Verde)",
     "villainId": "green_goblin",
-    "assignedHeroSlot1": "storm",
-    "assignedHeroSlot2": "spider_woman",
-    "assignedHeroSlot3": "miles_morales",
+    "assignedHeroSlot1": "spider_man",
+    "assignedHeroSlot2": "cyclops",
+    "assignedHeroSlot3": "beast",
     "squadOptions": [
-      "storm",
-      "spider_woman",
-      "miles_morales",
+      "spider_man",
+      "cyclops",
+      "beast",
       "ghost_spider"
     ],
     "comicReference": "Secret Invasion & A+X (Avengers + X-Men)",
-    "synopsis": "Con los datos obtenidos en el Acto I, la alianza intercepta a Norman Osborn justo cuando despega con su planeador en el puente de Brooklyn. Osborn busca bombardear Manhattan para crear una distracción y enviar a Juggernaut a demoler la Mansión X. Tormenta (Ororo Munroe) y Spider-Woman (Jessica Drew) lideran la intercepción aérea con ventaja estratégica.",
+    "synopsis": "Norman Osborn (Duende Verde) se desenmascara y despliega su flota de planeadores cargados de neurotoxina mutagénica. Peter Parker y Scott Summers lideran el contraataque combinado: el líder mutante y el héroe arácnido coordinan el cielo y la tierra para derribar al magnate psicópata antes de que rocíe la ciudad. Bestia hackea las fábricas subterráneas de Oscorp para desactivar las bombas de calabaza.",
     "locations": [
       {
         "name": "Oscorp Tower",
         "img": "./assets/locations/oscorp.jpg",
         "startVillain": true,
-        "startHero1": true
+        "startHero2": true
       },
       {
         "name": "Midtown High School",
         "img": "./assets/locations/midtown_high.jpg",
-        "startHero2": true
+        "startHero1": true
       },
       {
         "name": "Central Park",
@@ -1273,22 +1217,22 @@ const CAMPAIGN_CHAPTERS = [
       },
       {
         "name": "Brooklyn Bridge",
-        "img": "./assets/locations/brooklyn_bridge.jpg",
-        "startHero3": true
+        "img": "./assets/locations/brooklyn_bridge.jpg"
       },
       {
         "name": "Xavier Institute",
-        "img": "./assets/locations/xavier_institute.jpg"
+        "img": "./assets/locations/xavier_institute.jpg",
+        "startHero3": true
       }
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Duende Verde): Inicia en OSCORP TOWER — Norman Osborn (Duende Verde) despega de su helipuerto cargado de bombas de calabaza con neurotoxina mutagénica.",
-      "👤 JORGE (Tormenta (Ororo)): Inicia en OSCORP TOWER — Bestia se infiltra en el taller de investigación subterráneo saboteando los dispensadores de gas del planeador.",
-      "🌸 ESPOSA (Spider-Woman (Jessica)): Inicia en MIDTOWN HIGH SCHOOL — Spider-Man (Peter) patrulla su vecindario cuando detecta la estela de humo esmeralda del planeador.",
-      "⭐ APOYO (Miles Morales, si juega): Inicia en BROOKLYN BRIDGE — Ghost-Spider (Gwen) vigila los corredores aéreos del río para interceptar misiles desviados.",
+      "😈 VILLANO (Duende Verde): Inicia en OSCORP TOWER — Norman Osborn (Duende Verde) despega de su helipuerto cargado de bombas de calabaza mutagénicas.",
+      "👤 JORGE (Spider-Man (Peter Parker)): Inicia en MIDTOWN HIGH SCHOOL — Spider-Man (Peter) patrulla su vecindario cuando detecta la estela de humo del planeador.",
+      "🌸 ESPOSA (Cíclope (Scott Summers)): Inicia en OSCORP TOWER — Cíclope irrumpe por el helipuerto con salvas ópticas para cortar el despegue de Osborn.",
+      "⭐ APOYO (Bestia (Dr. Hank McCoy), si juega): Inicia en XAVIER INSTITUTE — Bestia sabotea los servidores de producción de bombas desde la red central de Cerebro.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Bombardeo Aéreo: El Duende vuela entre edificios. Acciones heroicas apagan incendios.",
     "events": {
@@ -1337,28 +1281,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Oscorp Tower",
-        "reason": "Norman Osborn (Duende Verde) despega de su helipuerto cargado de bombas de calabaza con neurotoxina mutagénica."
+        "reason": "Norman Osborn (Duende Verde) despega de su helipuerto cargado de bombas de calabaza mutagénicas."
       },
       "hero1": {
-        "location": "Oscorp Tower",
-        "reason": "Bestia se infiltra en el taller de investigación subterráneo saboteando los dispensadores de gas del planeador."
+        "location": "Midtown High School",
+        "reason": "Spider-Man (Peter) patrulla su vecindario cuando detecta la estela de humo del planeador."
       },
       "hero2": {
-        "location": "Midtown High School",
-        "reason": "Spider-Man (Peter) patrulla su vecindario cuando detecta la estela de humo esmeralda del planeador."
+        "location": "Oscorp Tower",
+        "reason": "Cíclope irrumpe por el helipuerto con salvas ópticas para cortar el despegue de Osborn."
       },
       "hero3": {
-        "location": "Brooklyn Bridge",
-        "reason": "Ghost-Spider (Gwen) vigila los corredores aéreos del río para interceptar misiles desviados."
-      },
-      "locations": [
-        "Oscorp Tower",
-        "Midtown High School",
-        "Central Park",
-        "Daily Bugle",
-        "Brooklyn Bridge",
-        "Xavier Institute"
-      ]
+        "location": "Xavier Institute",
+        "reason": "Bestia sabotea los servidores de producción de bombas desde la red central de Cerebro."
+      }
     }
   },
   {
@@ -1368,17 +1304,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO II: EL ALZAMIENTO DE LA HERMANDAD",
     "title": "Capítulo 4B: Lluvia de Fuego sobre Manhattan (Duende Verde)",
     "villainId": "green_goblin",
-    "assignedHeroSlot1": "storm",
-    "assignedHeroSlot2": "spider_woman",
-    "assignedHeroSlot3": "miles_morales",
+    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot2": "ghost_spider",
+    "assignedHeroSlot3": "spider_2099",
     "squadOptions": [
-      "storm",
-      "spider_woman",
-      "miles_morales",
-      "ghost_spider"
+      "cyclops",
+      "ghost_spider",
+      "spider_2099",
+      "spider_man"
     ],
     "comicReference": "Secret Invasion & A+X (Avengers + X-Men)",
-    "synopsis": "Norman Osborn toma por sorpresa a la ciudad lanzando un ataque masivo de bombas incendiarias. Las alarmas de los rascacielos aúllan mientras Jessica Drew y Ororo Munroe deben rescatar contrarreloj a familias atrapadas en los puentes antes de derribar al loco del planeador.",
+    "synopsis": "El Duende Verde bombardea las torres de suspensión del puente de Brooklyn amenazando con sumergir Manhattan en el caos. Cíclope y Gwen Stacy (Ghost-Spider) forman un dúo letal: Scott derriba misiles con rayos ópticos de alta frecuencia mientras Gwen intercepta las bombas al vuelo con redes acolchadas. Miguel O'Hara (Spider-Man 2099) rastrea la señal de telemetría del planeador.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -1411,12 +1347,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Duende Verde): Inicia en BROOKLYN BRIDGE — El Duende Verde bombardea las torres de suspensión del puente amenazando con aislar Manhattan del continente.",
-      "👤 JORGE (Tormenta (Ororo)): Inicia en MIDTOWN HIGH SCHOOL — Cíclope dispara salvas ópticas ascendentes guiadas por Cerebro para neutralizar las bombas en pleno vuelo.",
-      "🌸 ESPOSA (Spider-Woman (Jessica)): Inicia en BROOKLYN BRIDGE — Ghost-Spider (Gwen Stacy) intercepta los explosivos tejiendo redes acolchadas antes de que toquen los cables.",
-      "⭐ APOYO (Miles Morales, si juega): Inicia en SIMS TOWER — Spider-Man 2099 analiza los patrones de vuelo del planeador con su computadora Lyla desde las alturas.",
+      "😈 VILLANO (Duende Verde): Inicia en BROOKLYN BRIDGE — El Duende Verde bombardea las torres de suspensión del puente para aislar Manhattan.",
+      "👤 JORGE (Cíclope (Scott Summers)): Inicia en MIDTOWN HIGH SCHOOL — Cíclope dispara salvas ópticas ascendentes guiadas por Cerebro para neutralizar las bombas en vuelo.",
+      "🌸 ESPOSA (Ghost-Spider (Gwen Stacy)): Inicia en BROOKLYN BRIDGE — Ghost-Spider (Gwen Stacy) intercepta los explosivos tejiendo redes acolchadas antes de que toquen los cables.",
+      "⭐ APOYO (Spider-Man 2099 (Miguel O'Hara), si juega): Inicia en SIMS TOWER — Spider-Man 2099 analiza los patrones de vuelo del planeador con Lyla desde las alturas.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Bombardeo Imparable: En cada BAM del Duende, coloca 1 Matón en una casilla con espacio libre.",
     "events": {
@@ -1465,11 +1401,11 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Brooklyn Bridge",
-        "reason": "El Duende Verde bombardea las torres de suspensión del puente amenazando con aislar Manhattan del continente."
+        "reason": "El Duende Verde bombardea las torres de suspensión del puente para aislar Manhattan."
       },
       "hero1": {
         "location": "Midtown High School",
-        "reason": "Cíclope dispara salvas ópticas ascendentes guiadas por Cerebro para neutralizar las bombas en pleno vuelo."
+        "reason": "Cíclope dispara salvas ópticas ascendentes guiadas por Cerebro para neutralizar las bombas en vuelo."
       },
       "hero2": {
         "location": "Brooklyn Bridge",
@@ -1477,16 +1413,8 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero3": {
         "location": "Sims Tower",
-        "reason": "Spider-Man 2099 analiza los patrones de vuelo del planeador con su computadora Lyla desde las alturas."
-      },
-      "locations": [
-        "Brooklyn Bridge",
-        "Oscorp Tower",
-        "Daily Bugle",
-        "Midtown High School",
-        "Central Park",
-        "Sims Tower"
-      ]
+        "reason": "Spider-Man 2099 analiza los patrones de vuelo del planeador con Lyla desde las alturas."
+      }
     }
   },
   {
@@ -1496,17 +1424,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO II: EL ALZAMIENTO DE LA HERMANDAD",
     "title": "Capítulo 5A: El Asedio a la Mansión X (Defensa con Trampas de Gravedad)",
     "villainId": "juggernaut",
-    "assignedHeroSlot1": "beast",
+    "assignedHeroSlot1": "jean_grey",
     "assignedHeroSlot2": "spider_2099",
-    "assignedHeroSlot3": "cyclops",
+    "assignedHeroSlot3": "miles_morales",
     "squadOptions": [
-      "beast",
+      "jean_grey",
       "spider_2099",
-      "cyclops",
+      "miles_morales",
       "wolverine"
     ],
     "comicReference": "Timestorm 2009/2099 & X-Men: Danger Room Sessions",
-    "synopsis": "¡Alarma roja en Westchester! Cain Marko (Juggernaut) embiste los muros del Instituto Xavier para robar Cerebro. Sin embargo, la advertencia previa permitió a Hank McCoy (Bestia) y a Miguel O'Hara (Spider-Man 2099, recién llegado del futuro) activar generadores de gravedad artificial de la Sala de Peligro. Con trampas de desaceleración listas, la patrulla encara al gigante imparable.",
+    "synopsis": "Juggernaut (Cain Marko), contratado por Osborn para destruir la Mansión X, embiste con la fuerza cósmica de Cyttorak. Jean Grey levanta barreras telequinéticas para amortiguar el impacto colosal, mientras Miguel O'Hara (Spider-Man 2099) reprograma los generadores de la Sala de Peligro para crear laberintos holográficos que confundan al coloso imparable. Miles Morales vigila las entradas subterráneas en modo camuflaje.",
     "locations": [
       {
         "name": "Xavier Institute",
@@ -1539,12 +1467,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Juggernaut): Inicia en XAVIER INSTITUTE — Juggernaut (Cain Marko) revienta los portones de hierro de la Mansión X arrasando el jardín botánico frontal.",
-      "👤 JORGE (Bestia (Hank)): Inicia en XAVIER INSTITUTE — Coloso aguarda firme en las escalinatas de la entrada para frenar el ariete imparable de su hermanastro.",
-      "🌸 ESPOSA (spider_2099): Inicia en THE DANGER ROOM — Spider-Man 2099 activa el sistema holográfico de combate de la Sala de Peligro para crear barreras de choque.",
-      "⭐ APOYO (Cíclope (Scott), si juega): Inicia en HANGAR BAY — Jean Grey resguarda a los estudiantes mutantes en el búnker subterráneo junto al Blackbird.",
+      "😈 VILLANO (Juggernaut): Inicia en XAVIER INSTITUTE — Juggernaut revienta los portones de hierro de la Mansión X arrasando el jardín frontal.",
+      "👤 JORGE (Jean Grey (Marvel Girl)): Inicia en XAVIER INSTITUTE — Jean Grey alza escudos telequinéticos masivos para resistir la embestida en el vestíbulo.",
+      "🌸 ESPOSA (Spider-Man 2099 (Miguel O'Hara)): Inicia en THE DANGER ROOM — Spider-Man 2099 activa el sistema holográfico de combate para crear campos de fuerza sónicos.",
+      "⭐ APOYO (Miles Morales, si juega): Inicia en HANGAR BAY — Miles Morales resguarda a los estudiantes mutantes en el búnker subterráneo junto al Blackbird.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Masa Imparable: Juggernaut empuja a los héroes si entra a su casilla, pero la tecnología de la Sala de Peligro puede tenderle trampas.",
     "events": {
@@ -1592,28 +1520,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Xavier Institute",
-        "reason": "Juggernaut (Cain Marko) revienta los portones de hierro de la Mansión X arrasando el jardín botánico frontal."
+        "reason": "Juggernaut revienta los portones de hierro de la Mansión X arrasando el jardín frontal."
       },
       "hero1": {
         "location": "Xavier Institute",
-        "reason": "Coloso aguarda firme en las escalinatas de la entrada para frenar el ariete imparable de su hermanastro."
+        "reason": "Jean Grey alza escudos telequinéticos masivos para resistir la embestida en el vestíbulo."
       },
       "hero2": {
         "location": "The Danger Room",
-        "reason": "Spider-Man 2099 activa el sistema holográfico de combate de la Sala de Peligro para crear barreras de choque."
+        "reason": "Spider-Man 2099 activa el sistema holográfico de combate para crear campos de fuerza sónicos."
       },
       "hero3": {
         "location": "Hangar Bay",
-        "reason": "Jean Grey resguarda a los estudiantes mutantes en el búnker subterráneo junto al Blackbird."
-      },
-      "locations": [
-        "Xavier Institute",
-        "The Danger Room",
-        "Hangar Bay",
-        "Central Park",
-        "Morlock Tunnels",
-        "Midtown High School"
-      ]
+        "reason": "Miles Morales resguarda a los estudiantes mutantes en el búnker subterráneo junto al Blackbird."
+      }
     }
   },
   {
@@ -1623,17 +1543,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO II: EL ALZAMIENTO DE LA HERMANDAD",
     "title": "Capítulo 5B: Asedio a la Mansión X a Oscuras (Brecha Crítica)",
     "villainId": "juggernaut",
-    "assignedHeroSlot1": "beast",
-    "assignedHeroSlot2": "spider_2099",
-    "assignedHeroSlot3": "cyclops",
+    "assignedHeroSlot1": "jean_grey",
+    "assignedHeroSlot2": "miles_morales",
+    "assignedHeroSlot3": "wolverine",
     "squadOptions": [
-      "beast",
-      "spider_2099",
-      "cyclops",
-      "wolverine"
+      "jean_grey",
+      "miles_morales",
+      "wolverine",
+      "spider_2099"
     ],
     "comicReference": "Timestorm 2009/2099 & X-Men: Danger Room Sessions",
-    "synopsis": "A oscuras y con las defensas perimetrales caídas tras el ataque del Duende, Cain Marko irrumpe en el patio principal de la Mansión X aplastando estatuas y muros. Hank McCoy y Miguel O'Hara deben defender a los estudiantes cara a cara sin sistemas automáticos.",
+    "synopsis": "Juggernaut penetra en el subsuelo de la Mansión X destruyendo el generador eléctrico. A oscuras, Jean Grey vincula las mentes de los héroes por telepatía mientras Miles Morales se desliza en silencio aprovechando su camuflaje para golpear las articulaciones de Marko con descargas bioeléctricas de alta potencia. Lobezno emerge por los túneles de servicio para asaltar la espalda del gigante.",
     "locations": [
       {
         "name": "Hangar Bay",
@@ -1666,12 +1586,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Juggernaut): Inicia en HANGAR BAY — Juggernaut ha penetrado al subsuelo demoliendo los transformadores principales y aplastando el fuselaje del Blackbird.",
-      "👤 JORGE (Bestia (Hank)): Inicia en THE DANGER ROOM — Jean Grey utiliza telepatía para vincular los sentidos de los héroes a oscuras durante la falla eléctrica.",
-      "🌸 ESPOSA (spider_2099): Inicia en XAVIER INSTITUTE — Miles Morales se desliza en modo camuflaje entre los escombros del piso superior para atacar por sorpresa.",
-      "⭐ APOYO (Cíclope (Scott), si juega): Inicia en MORLOCK TUNNELS — Lobezno emerge por el túnel de emergencia de la escuela para flanquear a Marko por la espalda.",
+      "😈 VILLANO (Juggernaut): Inicia en HANGAR BAY — Juggernaut destruye los transformadores de respaldo y aplasta el fuselaje del Blackbird.",
+      "👤 JORGE (Jean Grey (Marvel Girl)): Inicia en THE DANGER ROOM — Jean Grey utiliza telepatía para vincular los sentidos de los héroes en la penumbra total.",
+      "🌸 ESPOSA (Miles Morales): Inicia en XAVIER INSTITUTE — Miles Morales se mueve camuflado en las sombras atacando las junturas de la armadura con bioelectricidad.",
+      "⭐ APOYO (Lobezno (Logan), si juega): Inicia en MORLOCK TUNNELS — Lobezno emerge por el túnel de emergencia de la escuela para flanquear a Marko por la retaguardia.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Asedio en Penumbra: Juggernaut avanza 1 espacio extra en cada BAM.",
     "events": {
@@ -1719,28 +1639,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Hangar Bay",
-        "reason": "Juggernaut ha penetrado al subsuelo demoliendo los transformadores principales y aplastando el fuselaje del Blackbird."
+        "reason": "Juggernaut destruye los transformadores de respaldo y aplasta el fuselaje del Blackbird."
       },
       "hero1": {
         "location": "The Danger Room",
-        "reason": "Jean Grey utiliza telepatía para vincular los sentidos de los héroes a oscuras durante la falla eléctrica."
+        "reason": "Jean Grey utiliza telepatía para vincular los sentidos de los héroes en la penumbra total."
       },
       "hero2": {
         "location": "Xavier Institute",
-        "reason": "Miles Morales se desliza en modo camuflaje entre los escombros del piso superior para atacar por sorpresa."
+        "reason": "Miles Morales se mueve camuflado en las sombras atacando las junturas de la armadura con bioelectricidad."
       },
       "hero3": {
         "location": "Morlock Tunnels",
-        "reason": "Lobezno emerge por el túnel de emergencia de la escuela para flanquear a Marko por la espalda."
-      },
-      "locations": [
-        "Hangar Bay",
-        "The Danger Room",
-        "Xavier Institute",
-        "Morlock Tunnels",
-        "Central Park",
-        "Muir Island"
-      ]
+        "reason": "Lobezno emerge por el túnel de emergencia de la escuela para flanquear a Marko por la retaguardia."
+      }
     }
   },
   {
@@ -1750,17 +1662,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO II: EL ALZAMIENTO DE LA HERMANDAD",
     "title": "Capítulo 6A: La Hora del Simbionte —¿Monstruo o Aliado?",
     "villainId": "venom_villain",
-    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot1": "storm",
     "assignedHeroSlot2": "spider_man",
-    "assignedHeroSlot3": "jean_grey",
+    "assignedHeroSlot3": "beast",
     "squadOptions": [
-      "cyclops",
+      "storm",
       "spider_man",
-      "jean_grey",
-      "storm"
+      "beast",
+      "miles_morales"
     ],
     "comicReference": "Marvel Super Heroes Secret Wars (1984) & Spider-Man and the X-Men",
-    "synopsis": "En los túneles subterráneos de los Morlocks, una masa negra simbiótica devora patrullas y genera pánico. Peter Parker reconoce el patrón al instante: se trata de Venom (Eddie Brock), quien ha enloquecido por la presencia de una frecuencia mutante roja. Peter convence a Scott Summers (Cíclope) de no aniquilarlo, sino rescatar al hombre dentro del monstruo: Scott calcula los rebotes de sus rayos ópticos para generar calor extremo y aturdir al simbionte sin dañarlo, mientras Peter lo cerca con telaraña sónica y Jean Grey proyecta una sonda mental para devolverle la cordura a Eddie Brock.",
+    "synopsis": "Eddie Brock (Venom) ha sido infectado con toxinas mutantes descontroladas por Oscorp en Central Park. Peter Parker se niega a matar a su viejo rival y busca una oportunidad de redención: apela a la humanidad de Eddie mientras Tormenta modula relámpagos y truenos sónicos controlados para separar al simbionte de su mente torturada. Bestia prepara el suero estabilizador en un laboratorio móvil.",
     "locations": [
       {
         "name": "Central Park",
@@ -1793,12 +1705,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (venom_villain): Inicia en CENTRAL PARK — Eddie Brock pierde el control del simbionte alienígena, desatando una vorágine negra sobre los senderos del parque.",
-      "👤 JORGE (Cíclope (Scott)): Inicia en MIDTOWN HIGH SCHOOL — Tormenta modula relámpagos de baja frecuencia para generar ondas acústicas que debiliten al simbionte.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en CENTRAL PARK — Spider-Man (Peter) se acerca a corta distancia buscando la mirada de Eddie para apelar a su humanidad.",
-      "⭐ APOYO (Jean Grey, si juega): Inicia en OSCORP TOWER — Bestia calibra los cañones de ultrasonido en el laboratorio de Osborn para una descarga quirúrgica.",
+      "😈 VILLANO (venom_villain): Inicia en CENTRAL PARK — Eddie Brock pierde el control del simbionte alienígena, desatando una vorágine negra sobre los senderos.",
+      "👤 JORGE (Tormenta (Ororo Munroe)): Inicia en MIDTOWN HIGH SCHOOL — Tormenta modula relámpagos de baja frecuencia para generar ondas acústicas que debiliten al parásito.",
+      "🌸 ESPOSA (Spider-Man (Peter Parker)): Inicia en CENTRAL PARK — Spider-Man (Peter) se acerca a corta distancia buscando la mirada de Eddie para apelar a su humanidad.",
+      "⭐ APOYO (Bestia (Dr. Hank McCoy), si juega): Inicia en OSCORP TOWER — Bestia calibra los cañones de ultrasonido en el laboratorio de Osborn para una descarga quirúrgica.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Frenesí de Zarcillos: Las vibraciones sónicas y el calor calman al simbionte.",
     "events": {
@@ -1846,11 +1758,11 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Central Park",
-        "reason": "Eddie Brock pierde el control del simbionte alienígena, desatando una vorágine negra sobre los senderos del parque."
+        "reason": "Eddie Brock pierde el control del simbionte alienígena, desatando una vorágine negra sobre los senderos."
       },
       "hero1": {
         "location": "Midtown High School",
-        "reason": "Tormenta modula relámpagos de baja frecuencia para generar ondas acústicas que debiliten al simbionte."
+        "reason": "Tormenta modula relámpagos de baja frecuencia para generar ondas acústicas que debiliten al parásito."
       },
       "hero2": {
         "location": "Central Park",
@@ -1859,15 +1771,7 @@ const CAMPAIGN_CHAPTERS = [
       "hero3": {
         "location": "Oscorp Tower",
         "reason": "Bestia calibra los cañones de ultrasonido en el laboratorio de Osborn para una descarga quirúrgica."
-      },
-      "locations": [
-        "Central Park",
-        "Daily Bugle",
-        "Morlock Tunnels",
-        "Oscorp Tower",
-        "Midtown High School",
-        "Xavier Institute"
-      ]
+      }
     }
   },
   {
@@ -1877,17 +1781,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO II: EL ALZAMIENTO DE LA HERMANDAD",
     "title": "Capítulo 6B: Choque Feral en la Oscuridad (Venom Fuera de Control)",
     "villainId": "venom_villain",
-    "assignedHeroSlot1": "cyclops",
-    "assignedHeroSlot2": "spider_man",
-    "assignedHeroSlot3": "jean_grey",
+    "assignedHeroSlot1": "wolverine",
+    "assignedHeroSlot2": "spider_woman",
+    "assignedHeroSlot3": "cyclops",
     "squadOptions": [
+      "wolverine",
+      "spider_woman",
       "cyclops",
-      "spider_man",
-      "jean_grey",
-      "storm"
+      "ghost_spider"
     ],
     "comicReference": "Marvel Super Heroes Secret Wars & Spider-Man/X-Men",
-    "synopsis": "Con la escuela en reparaciones, Peter y Scott deben adentrarse a ciegas en los túneles Morlock donde Venom ataca con una violencia desenfrenada. La oscuridad es total y las vibraciones del subterráneo dificultan la comunicación.",
+    "synopsis": "Venom se refugia en los Morlock Tunnels herido y enloquecido por el dolor. Lobezno rastrea el hedor a alquitrán orgánico a través de las aguas negras, acompañado por Jessica Drew (Spider-Woman), cuyos rayos bio-químicos aturden las masas de zarcillos negros. Cíclope coordina el acordonamiento en la superficie para salvar a Brock de sí mismo.",
     "locations": [
       {
         "name": "Morlock Tunnels",
@@ -1920,12 +1824,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (venom_villain): Inicia en MORLOCK TUNNELS — Venom se ha refugiado enfurecido en las cloacas profundas, atacando a ciegas impulsado por el dolor sónico.",
-      "👤 JORGE (Cíclope (Scott)): Inicia en MORLOCK TUNNELS — Lobezno avanza con sigilo rastreando el rastro aceitoso y el hedor alienígena entre las tuberías.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en CENTRAL PARK — Spider-Woman (Jessica) sella las compuertas de drenaje del parque con masa adhesiva bio-química.",
-      "⭐ APOYO (Jean Grey, si juega): Inicia en DAILY BUGLE — Cíclope coordina con las sirenas de emergencia de la ciudad para canalizar a Venom hacia una trampa.",
+      "😈 VILLANO (venom_villain): Inicia en MORLOCK TUNNELS — Venom se refugia en las cloacas profundas atacando a ciegas por dolor sónico.",
+      "👤 JORGE (Lobezno (Logan)): Inicia en MORLOCK TUNNELS — Lobezno avanza con sigilo rastreando el rastro aceitoso y el hedor alienígena entre las tuberías.",
+      "🌸 ESPOSA (Spider-Woman (Jessica Drew)): Inicia en CENTRAL PARK — Spider-Woman (Jessica) sella las compuertas de drenaje del parque con masa adhesiva bio-química.",
+      "⭐ APOYO (Cíclope (Scott Summers), si juega): Inicia en DAILY BUGLE — Cíclope coordina con las sirenas de emergencia de la ciudad para canalizar a Venom hacia una trampa.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Oscuridad Subterránea: Los héroes gastan 1 acción extra para moverse entre lugares subterráneos.",
     "events": {
@@ -1973,7 +1877,7 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Morlock Tunnels",
-        "reason": "Venom se ha refugiado enfurecido en las cloacas profundas, atacando a ciegas impulsado por el dolor sónico."
+        "reason": "Venom se refugia en las cloacas profundas atacando a ciegas por dolor sónico."
       },
       "hero1": {
         "location": "Morlock Tunnels",
@@ -1986,15 +1890,7 @@ const CAMPAIGN_CHAPTERS = [
       "hero3": {
         "location": "Daily Bugle",
         "reason": "Cíclope coordina con las sirenas de emergencia de la ciudad para canalizar a Venom hacia una trampa."
-      },
-      "locations": [
-        "Morlock Tunnels",
-        "Central Park",
-        "Daily Bugle",
-        "Oscorp Tower",
-        "Brooklyn Bridge",
-        "Xavier Institute"
-      ]
+      }
     }
   },
   {
@@ -2004,17 +1900,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 7A: La Ley del Más Fuerte en Genosha (Conferencia por la Supervivencia)",
     "villainId": "magneto_villain",
-    "assignedHeroSlot1": "spider_2099",
-    "assignedHeroSlot2": "wolverine",
-    "assignedHeroSlot3": "ghost_spider",
+    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot2": "spider_2099",
+    "assignedHeroSlot3": "storm",
     "squadOptions": [
+      "cyclops",
       "spider_2099",
-      "wolverine",
-      "ghost_spider",
-      "jean_grey"
+      "storm",
+      "magneto_hero"
     ],
     "comicReference": "2099: World of Tomorrow & Astonishing X-Men",
-    "synopsis": "La alianza viaja en el Blackbird hacia la isla de Genosha con los testimonios y pruebas recuperadas. Creyendo que el virus simbiótico es una bioarma humana para exterminar mutantes, Magneto prepara un pulso electromagnético masivo. Logan (Wolverine), arriesgando su vida ante los poderes de Magneto sobre el metal, se interna en la ciudadela junto a Spider-Man 2099 (Miguel O'Hara), quien usa armamento de Alchemax no ferromagnético para esquivar los campos de fuerza. Juntos deben confrontar a Erik y mostrarle los archivos del futuro: si no se unen contra Carnage, ni humanos ni mutantes sobrevivirán.",
+    "synopsis": "¡LA REDENCIÓN DE MAGNETO! Convencido de que la mutación simbiótica es un complot humano para exterminar a los mutantes, Magneto prepara un pulso electromagnético desde Genosha. Cíclope y Miguel O'Hara vuelan a la islaelaela para mostrarle la verdad con datos holográficos irrefutables del futuro: el virus de Carnage destruirá tanto a humanos como a mutantes por igual. Con Tormenta como mediadora diplomática, Erik Lehnsherr comprende la amenaza existencial y decide unirse a la causa como Anti-Héroe protector de la alianza.",
     "locations": [
       {
         "name": "Genosha",
@@ -2048,11 +1944,11 @@ const CAMPAIGN_CHAPTERS = [
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
       "😈 VILLANO (magneto_villain): Inicia en GENOSHA — Magneto preside la asamblea en la ciudadela mutante protegido por un domo electromagnético polarizado.",
-      "👤 JORGE (spider_2099): Inicia en GENOSHA — Cíclope lidera la comitiva diplomática en persona, dispuesto a apelar al sueño de Xavier sin ceder terreno.",
-      "🌸 ESPOSA (Lobezno (Logan)): Inicia en MUIR ISLAND — Spider-Man 2099 monitorea el campo gravitatorio y las líneas de fuerza terrestre desde el laboratorio de Moira.",
-      "⭐ APOYO (Ghost-Spider (Gwen), si juega): Inicia en ASTEROID M — Tormenta aguarda en la estación orbital como embajadora de paz reconocida y respetada por Lehnsherr.",
+      "👤 JORGE (Cíclope (Scott Summers)): Inicia en GENOSHA — Cíclope lidera la comitiva diplomática en persona, dispuesto a convencer a Erik sin ceder terreno.",
+      "🌸 ESPOSA (Spider-Man 2099 (Miguel O'Hara)): Inicia en MUIR ISLAND — Spider-Man 2099 proyecta las pruebas temporales y biológicas de la extinción mutante provocada por Carnage.",
+      "⭐ APOYO (Tormenta (Ororo Munroe), si juega): Inicia en ASTEROID M — Tormenta aguarda en la estación orbital como embajadora de paz respetada por Erik Lehnsherr.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Muro Magnético: El metal obedece a Erik, pero los héroes pueden canalizar energías tácticas para neutralizar sus campos.",
     "events": {
@@ -2104,24 +2000,16 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero1": {
         "location": "Genosha",
-        "reason": "Cíclope lidera la comitiva diplomática en persona, dispuesto a apelar al sueño de Xavier sin ceder terreno."
+        "reason": "Cíclope lidera la comitiva diplomática en persona, dispuesto a convencer a Erik sin ceder terreno."
       },
       "hero2": {
         "location": "Muir Island",
-        "reason": "Spider-Man 2099 monitorea el campo gravitatorio y las líneas de fuerza terrestre desde el laboratorio de Moira."
+        "reason": "Spider-Man 2099 proyecta las pruebas temporales y biológicas de la extinción mutante provocada por Carnage."
       },
       "hero3": {
         "location": "Asteroid M",
-        "reason": "Tormenta aguarda en la estación orbital como embajadora de paz reconocida y respetada por Lehnsherr."
-      },
-      "locations": [
-        "Genosha",
-        "Asteroid M",
-        "Muir Island",
-        "Hangar Bay",
-        "Xavier Institute",
-        "Sims Tower"
-      ]
+        "reason": "Tormenta aguarda en la estación orbital como embajadora de paz respetada por Erik Lehnsherr."
+      }
     }
   },
   {
@@ -2131,17 +2019,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 7B: Incursión Hostil en Genosha (Choque con el Caudillo)",
     "villainId": "magneto_villain",
-    "assignedHeroSlot1": "spider_2099",
-    "assignedHeroSlot2": "wolverine",
-    "assignedHeroSlot3": "ghost_spider",
+    "assignedHeroSlot1": "wolverine",
+    "assignedHeroSlot2": "spider_man",
+    "assignedHeroSlot3": "cyclops",
     "squadOptions": [
-      "spider_2099",
       "wolverine",
-      "ghost_spider",
-      "jean_grey"
+      "spider_man",
+      "cyclops",
+      "magneto_hero"
     ],
     "comicReference": "2099: World of Tomorrow & Astonishing X-Men",
-    "synopsis": "Sin testimonios concluyentes, los héroes son recibidos como invasores en Genosha. Magneto levanta barricadas de acero triturado y tormentas de inducción electromagnética. Miguel O'Hara y Logan deben abrirse paso a la fuerza hasta la sala del trono para someter temporalmente a Erik y obligarlo a escuchar la verdad.",
+    "synopsis": "Magneto se atrinchera en el Asteroide M, preparando un pulso de choque orbital. Lobezno y Peter Parker abordan la estación espacial presurizada en una misión desesperada. En medio del combate entre metales retorcidos, Peter logra conectar la transmisión que revela que Norman Osborn manipuló los laboratorios de Genosha. Magneto, al ver la traición humana de Osborn, detiene el ataque y ofrece su poder magnético para salvar a la Tierra de Carnage.",
     "locations": [
       {
         "name": "Asteroid M",
@@ -2174,12 +2062,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (magneto_villain): Inicia en ASTEROID M — Magneto concentra energía magnética orbital listo para paralizar todos los sistemas tecnológicos de la Tierra.",
-      "👤 JORGE (spider_2099): Inicia en GENOSHA — Lobezno sabotea las plataformas de lanzamiento en tierra para abordar el transbordador espacial a la fuerza.",
-      "🌸 ESPOSA (Lobezno (Logan)): Inicia en HANGAR BAY — Spider-Man (Peter) se sujeta con redes de polímero térmico al fuselaje exterior del Blackbird presurizado.",
-      "⭐ APOYO (Ghost-Spider (Gwen), si juega): Inicia en ASTEROID M — Coloso desafía la influencia magnética resistiendo el torbellino de metralla metálica con pura fuerza de voluntad.",
+      "😈 VILLANO (magneto_villain): Inicia en ASTEROID M — Magneto concentra energía magnética orbital listo para paralizar la red tecnológica terrestre.",
+      "👤 JORGE (Lobezno (Logan)): Inicia en GENOSHA — Lobezno asalta las plataformas de lanzamiento para abordar el transbordador espacial a la fuerza.",
+      "🌸 ESPOSA (Spider-Man (Peter Parker)): Inicia en HANGAR BAY — Spider-Man (Peter) se sujeta con redes de polímero al fuselaje exterior del Blackbird presurizado.",
+      "⭐ APOYO (Cíclope (Scott Summers), si juega): Inicia en ASTEROID M — Cíclope aguarda en la escotilla principal buscando el diálogo antes de la detonación orbital.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Vórtice Electromagnético: Cada BAM de Magneto atrae a los héroes hacia su ubicación y les inflige 1 herida si tienen metal.",
     "events": {
@@ -2227,28 +2115,20 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Asteroid M",
-        "reason": "Magneto concentra energía magnética orbital listo para paralizar todos los sistemas tecnológicos de la Tierra."
+        "reason": "Magneto concentra energía magnética orbital listo para paralizar la red tecnológica terrestre."
       },
       "hero1": {
         "location": "Genosha",
-        "reason": "Lobezno sabotea las plataformas de lanzamiento en tierra para abordar el transbordador espacial a la fuerza."
+        "reason": "Lobezno asalta las plataformas de lanzamiento para abordar el transbordador espacial a la fuerza."
       },
       "hero2": {
         "location": "Hangar Bay",
-        "reason": "Spider-Man (Peter) se sujeta con redes de polímero térmico al fuselaje exterior del Blackbird presurizado."
+        "reason": "Spider-Man (Peter) se sujeta con redes de polímero al fuselaje exterior del Blackbird presurizado."
       },
       "hero3": {
         "location": "Asteroid M",
-        "reason": "Coloso desafía la influencia magnética resistiendo el torbellino de metralla metálica con pura fuerza de voluntad."
-      },
-      "locations": [
-        "Asteroid M",
-        "Genosha",
-        "Hangar Bay",
-        "Muir Island",
-        "Xavier Institute",
-        "The Savage Land"
-      ]
+        "reason": "Cíclope aguarda en la escotilla principal buscando el diálogo antes de la detonación orbital."
+      }
     }
   },
   {
@@ -2258,17 +2138,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 8A: Infiltración Silenciosa en los Muelles de Brooklyn",
     "villainId": "mystique_villain",
-    "assignedHeroSlot1": "spider_ham",
-    "assignedHeroSlot2": "mystique_hero",
+    "assignedHeroSlot1": "storm",
+    "assignedHeroSlot2": "spider_ham",
     "assignedHeroSlot3": "black_cat",
     "squadOptions": [
+      "storm",
       "spider_ham",
-      "mystique_hero",
       "black_cat",
-      "spider_woman"
+      "mystique_hero"
     ],
     "comicReference": "Spider-Verse (Dan Slott) & X-Men Black: Mystique",
-    "synopsis": "Para asaltar la fábrica clandestina en los muelles de Brooklyn donde se sintetizan las cepas rojas de Carnage, se requiere sigilo absoluto y desorientación. Mística, ahora aliada por la supervivencia mutante, utiliza sus habilidades de camuflaje para vulnerar las esclusas biométricas. A su lado, Peter Porker (Spider-Ham), recién llegado del multiverso animado, desafía la gravedad y la física con su martillo de caricatura, demoliendo las defensas de seguridad de la forma más cómica e impredecible posible, con la Gata Negra cubriendo la retaguardia.",
+    "synopsis": "Para neutralizar el virus antes de que Carnage despierte, la alianza viaja a Muir Island para recuperar los secuenciadores de ADN del laboratorio de Moira MacTaggert. Mística intenta sabotear los terminales, pero Spider-Ham (Peter Porker) se desliza por las tuberías desatando el caos cómico con martillos gigantes y trampas cartoon. Tormenta y Gata Negra aprovechan la distracción para forzar la caja fuerte y sellar la alianza.",
     "locations": [
       {
         "name": "Muir Island",
@@ -2302,11 +2182,11 @@ const CAMPAIGN_CHAPTERS = [
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
       "😈 VILLANO (mystique_villain): Inicia en MUIR ISLAND — Mística vulnera las terminales del centro genético escocés para copiar los secuenciadores de ADN mutante.",
-      "👤 JORGE (Spider-Ham (Peter Porker)): Inicia en HANGAR BAY — Tormenta vuela a la vanguardia disimulando la llegada de los héroes con un manto de nubes marinas bajas.",
-      "🌸 ESPOSA (mystique_hero): Inicia en MUIR ISLAND — Spider-Ham (Peter Porker) se escurre cómicamente por las tuberías de desagüe con un mazo gigante a la espalda.",
-      "⭐ APOYO (Gata Negra (Felicia), si juega): Inicia en MUIR ISLAND — Gata Negra fuerza la caja fuerte de los servidores para salvar los datos antes de que Mística ejecute el borrado.",
+      "👤 JORGE (Tormenta (Ororo Munroe)): Inicia en HANGAR BAY — Tormenta vuela a la vanguardia disimulando la llegada de los héroes con un manto de nubes marinas bajas.",
+      "🌸 ESPOSA (Spider-Ham (Peter Porker)): Inicia en MUIR ISLAND — Spider-Ham (Peter Porker) se escurre cómicamente por las tuberías de desagüe con un mazo gigante a la espalda.",
+      "⭐ APOYO (Gata Negra (Felicia Hardy), si juega): Inicia en MUIR ISLAND — Gata Negra fuerza la caja fuerte de los servidores para salvar los datos antes de que Mística borre los archivos.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Prueba de Reflejos: Mística evalúa la coordinación de los héroes.",
     "events": {
@@ -2372,16 +2252,8 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero3": {
         "location": "Muir Island",
-        "reason": "Gata Negra fuerza la caja fuerte de los servidores para salvar los datos antes de que Mística ejecute el borrado."
-      },
-      "locations": [
-        "Muir Island",
-        "Hangar Bay",
-        "Xavier Institute",
-        "Sims Tower",
-        "Central Park",
-        "Morlock Tunnels"
-      ]
+        "reason": "Gata Negra fuerza la caja fuerte de los servidores para salvar los datos antes de que Mística borre los archivos."
+      }
     }
   },
   {
@@ -2391,17 +2263,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 8B: Asalto Clandestino de Emergencia a los Muelles",
     "villainId": "mystique_villain",
-    "assignedHeroSlot1": "spider_ham",
-    "assignedHeroSlot2": "mystique_hero",
-    "assignedHeroSlot3": "black_cat",
+    "assignedHeroSlot1": "wolverine",
+    "assignedHeroSlot2": "spider_ham",
+    "assignedHeroSlot3": "beast",
     "squadOptions": [
+      "wolverine",
       "spider_ham",
-      "mystique_hero",
-      "black_cat",
-      "spider_woman"
+      "beast",
+      "mystique_hero"
     ],
     "comicReference": "Spider-Verse (Dan Slott) & X-Men Black",
-    "synopsis": "Sin la cobertura de Magneto, los héroes deben asaltar los almacenes clandestinos de Brooklyn a la desesperada. Spider-Ham y Mística intentan sabotear las válvulas maestras de bio-infección antes de que los tanques revienten sobre el río.",
+    "synopsis": "Mística intenta transmitir el virus modificado desde la antena de Sims Tower. Lobezno y Spider-Ham forman una de las parejas más inesperadas y letales de la historia: la furia feral de Logan combinada con las tartas explosivas y muelles elásticos de Peter Porker dejan fuera de combate a los mercenarios de la Hermandad. Bestia bloquea las frecuencias satelitales.",
     "locations": [
       {
         "name": "Sims Tower",
@@ -2434,12 +2306,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (mystique_villain): Inicia en SIMS TOWER — Mística se atrinchera en la torre de comunicaciones cargando el código malicioso en una antena satelital masiva.",
-      "👤 JORGE (Spider-Ham (Peter Porker)): Inicia en MORLOCK TUNNELS — Lobezno corta de cuajo los cables troncales de energía en el subsuelo para dejar sin energía el transmisor.",
-      "🌸 ESPOSA (mystique_hero): Inicia en SIMS TOWER — Spider-Ham llena el hueco del ascensor con tartas de merengue y muelles para atrapar a los guardias mercenarios.",
-      "⭐ APOYO (Gata Negra (Felicia), si juega): Inicia en MUIR ISLAND — Bestia hackea la señal desde los laboratorios de la isla sobrecargando el receptor de la antena.",
+      "😈 VILLANO (mystique_villain): Inicia en SIMS TOWER — Mística se atrinchera en la torre de comunicaciones cargando el código en una antena satelital masiva.",
+      "👤 JORGE (Lobezno (Logan)): Inicia en MORLOCK TUNNELS — Lobezno corta de cuajo los cables troncales de energía en el subsuelo para dejar sin energía el transmisor.",
+      "🌸 ESPOSA (Spider-Ham (Peter Porker)): Inicia en SIMS TOWER — Spider-Ham llena el hueco del ascensor con tartas de merengue y muelles para atrapar a los guardias mercenarios.",
+      "⭐ APOYO (Bestia (Dr. Hank McCoy), si juega): Inicia en MUIR ISLAND — Bestia hackea la señal desde los laboratorios de la isla sobrecargando el receptor de la antena.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Válvulas a Presión: Los héroes sufren 1 de daño si terminan su turno en casillas con 2 o más matones.",
     "events": {
@@ -2494,7 +2366,7 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Sims Tower",
-        "reason": "Mística se atrinchera en la torre de comunicaciones cargando el código malicioso en una antena satelital masiva."
+        "reason": "Mística se atrinchera en la torre de comunicaciones cargando el código en una antena satelital masiva."
       },
       "hero1": {
         "location": "Morlock Tunnels",
@@ -2507,15 +2379,7 @@ const CAMPAIGN_CHAPTERS = [
       "hero3": {
         "location": "Muir Island",
         "reason": "Bestia hackea la señal desde los laboratorios de la isla sobrecargando el receptor de la antena."
-      },
-      "locations": [
-        "Sims Tower",
-        "Muir Island",
-        "Morlock Tunnels",
-        "Hangar Bay",
-        "Daily Bugle",
-        "Central Park"
-      ]
+      }
     }
   },
   {
@@ -2525,17 +2389,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 9A: El Frente Unido en Manhattan (Defensa Perimetral con Iniciativa)",
     "villainId": "rhino",
-    "assignedHeroSlot1": "storm",
-    "assignedHeroSlot2": "venom_hero",
-    "assignedHeroSlot3": "miles_morales",
+    "assignedHeroSlot1": "beast",
+    "assignedHeroSlot2": "spider_woman",
+    "assignedHeroSlot3": "venom_hero",
     "squadOptions": [
-      "storm",
+      "beast",
+      "spider_woman",
       "venom_hero",
-      "miles_morales",
-      "cyclops"
+      "spider_man"
     ],
     "comicReference": "Venomverse & X-Men Red",
-    "synopsis": "¡El cerco a Manhattan! Rhino, sobrecargado con tejido simbiótico rojo que multiplica su blindaje, lidera el ataque para aislar el perímetro exterior antes del despertar de Carnage. Eddie Brock (Venom), redimido y enfurecido por la corrupción de su linaje, se lanza de frente en un choque monumental de fuerza bruta. Desde lo alto, Tormenta desata tempestades y rayos para calcinar los zarcillos parásitos de la armadura de Rhino, mientras Miles Morales teje barreras bioeléctricas para impedir que la embestida rompa el cordón de evacuación de civiles.",
+    "synopsis": "¡LA PESADILLA COMIENZA! Rhino ha sido poseído por la masa roja de Carnage y embiste como una locomotora simbiótica contra Central Park. Hank McCoy (Bestia) pilotea un transportador con cañones sónicos de frecuencia disolvente, mientras Jessica Drew (Spider-Woman) dispara ráfagas de bio-veneno en picada. Y desde las cornisas del Daily Bugle, ¡Venom (Eddie Brock, ahora aliado!) ruge con furia protectora para aplastar a la bestia roja.",
     "locations": [
       {
         "name": "Central Park",
@@ -2569,11 +2433,11 @@ const CAMPAIGN_CHAPTERS = [
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
       "😈 VILLANO (Rhino): Inicia en CENTRAL PARK — Rhino, poseído por zarcillos rojos simbióticos de Carnage, arremete contra las defensas de Central Park.",
-      "👤 JORGE (Tormenta (Ororo)): Inicia en OSCORP TOWER — Bestia avanza veloz en un transporte táctico cargando los cañones sónicos de frecuencia disolvente.",
-      "🌸 ESPOSA (venom_hero): Inicia en CENTRAL PARK — Spider-Woman (Jessica) descarga ráfagas de veneno bioeléctrico para desintegrar los tentáculos parásitos.",
-      "⭐ APOYO (Miles Morales, si juega): Inicia en DAILY BUGLE — Venom (Eddie Brock, aliado) ruge desde el Bugle y se lanza con ferocidad fraternal contra la infección roja.",
+      "👤 JORGE (Bestia (Dr. Hank McCoy)): Inicia en OSCORP TOWER — Bestia avanza veloz en un transporte táctico cargando los cañones sónicos de frecuencia disolvente.",
+      "🌸 ESPOSA (Spider-Woman (Jessica Drew)): Inicia en CENTRAL PARK — Spider-Woman (Jessica) descarga ráfagas de veneno bioeléctrico para desintegrar los tentáculos parásitos.",
+      "⭐ APOYO (Venom (Eddie Brock - Anti-Héroe), si juega): Inicia en DAILY BUGLE — Venom (Eddie Brock, héroe aliado) ruge desde el Bugle y se lanza con ferocidad fraternal contra la infección roja.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Sinergia Total: Cada vez que completéis una misión heroica, los héroes se curan 1 punto de daño.",
     "events": {
@@ -2627,16 +2491,8 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero3": {
         "location": "Daily Bugle",
-        "reason": "Venom (Eddie Brock, aliado) ruge desde el Bugle y se lanza con ferocidad fraternal contra la infección roja."
-      },
-      "locations": [
-        "Central Park",
-        "Daily Bugle",
-        "Midtown High School",
-        "Oscorp Tower",
-        "Brooklyn Bridge",
-        "Xavier Institute"
-      ]
+        "reason": "Venom (Eddie Brock, héroe aliado) ruge desde el Bugle y se lanza con ferocidad fraternal contra la infección roja."
+      }
     }
   },
   {
@@ -2646,17 +2502,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 9B: Ruptura de Barricadas en Manhattan (Rhino Simbiótico Desatado)",
     "villainId": "rhino",
-    "assignedHeroSlot1": "storm",
-    "assignedHeroSlot2": "venom_hero",
-    "assignedHeroSlot3": "miles_morales",
+    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot2": "ghost_spider",
+    "assignedHeroSlot3": "jean_grey",
     "squadOptions": [
-      "storm",
-      "venom_hero",
-      "miles_morales",
-      "cyclops"
+      "cyclops",
+      "ghost_spider",
+      "jean_grey",
+      "venom_hero"
     ],
     "comicReference": "Venomverse & X-Men Red",
-    "synopsis": "¡Las líneas de contención han colapsado! Rhino, completamente recubierto de biomasa carmesí que lo vuelve invulnerable a ataques convencionales, lidera una estampida demoledora a través de la 5ª Avenida. Tormenta y Venom deben improvisar un frente de rescate y combate brutal para evitar que la marea roja devore a los refugiados civiles.",
+    "synopsis": "Rhino Simbiótico destruye los controles del puente de Brooklyn amenazando con desbordar la plaga sobre Queens. Cíclope y Gwen Stacy defienden la barricada: Scott derriba a las masas infectadas con disparos ópticos calculados mientras Gwen teje redes gigantes de contención. Jean Grey rescata telequinéticamente los vehículos con civiles antes del colapso.",
     "locations": [
       {
         "name": "Brooklyn Bridge",
@@ -2690,11 +2546,11 @@ const CAMPAIGN_CHAPTERS = [
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
       "😈 VILLANO (Rhino): Inicia en BROOKLYN BRIDGE — Rhino Simbiótico destruye las barricadas del puente abriendo paso a hordas de infectados hacia Manhattan.",
-      "👤 JORGE (Tormenta (Ororo)): Inicia en BROOKLYN BRIDGE — Coloso se interpone en medio del puente plantando sus puños blindados para contener la estampida alienígena.",
-      "🌸 ESPOSA (venom_hero): Inicia en BROOKLYN BRIDGE — Ghost-Spider (Gwen) teje una telaraña de seguridad gigante bajo el puente para salvar a los peatones que caen.",
-      "⭐ APOYO (Miles Morales, si juega): Inicia en MIDTOWN HIGH SCHOOL — Jean Grey levanta telequinéticamente los autobuses escolares fuera del alcance del puente destruido.",
+      "👤 JORGE (Cíclope (Scott Summers)): Inicia en BROOKLYN BRIDGE — Cíclope se interpone en medio del puente plantando sus rayos ópticos para contener la estampida alienígena.",
+      "🌸 ESPOSA (Ghost-Spider (Gwen Stacy)): Inicia en BROOKLYN BRIDGE — Ghost-Spider (Gwen) teje una telaraña de seguridad gigante bajo el puente para salvar a los peatones que caen.",
+      "⭐ APOYO (Jean Grey (Marvel Girl), si juega): Inicia en MIDTOWN HIGH SCHOOL — Jean Grey levanta telequinéticamente los autobuses escolares fuera del alcance del puente destruido.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Marea de Zarcillos: Cada BAM de Rhino coloca 1 Matón en cada casilla adyacente que tenga espacio libre.",
     "events": {
@@ -2740,7 +2596,7 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero1": {
         "location": "Brooklyn Bridge",
-        "reason": "Coloso se interpone en medio del puente plantando sus puños blindados para contener la estampida alienígena."
+        "reason": "Cíclope se interpone en medio del puente plantando sus rayos ópticos para contener la estampida alienígena."
       },
       "hero2": {
         "location": "Brooklyn Bridge",
@@ -2749,15 +2605,7 @@ const CAMPAIGN_CHAPTERS = [
       "hero3": {
         "location": "Midtown High School",
         "reason": "Jean Grey levanta telequinéticamente los autobuses escolares fuera del alcance del puente destruido."
-      },
-      "locations": [
-        "Brooklyn Bridge",
-        "Midtown High School",
-        "Daily Bugle",
-        "Central Park",
-        "Morlock Tunnels",
-        "Oscorp Tower"
-      ]
+      }
     }
   },
   {
@@ -2767,17 +2615,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 10A: GRAN FINAL — MAXIMA MATANZA (El Golpe Maestro de la Alianza)",
     "villainId": "carnage",
-    "assignedHeroSlot1": "magneto_hero",
+    "assignedHeroSlot1": "wolverine",
     "assignedHeroSlot2": "spider_man",
-    "assignedHeroSlot3": "wolverine",
+    "assignedHeroSlot3": "magneto_hero",
     "squadOptions": [
-      "magneto_hero",
-      "spider_man",
       "wolverine",
-      "miles_morales"
+      "spider_man",
+      "magneto_hero",
+      "venom_hero"
     ],
     "comicReference": "Spider-Man: Maximum Carnage & X-Men: Fatal Attractions",
-    "synopsis": "¡EL CLÍMAX DE LA CAMPAÑA MAXIMUM CARNAGE! Cletus Kasady se ha fusionado por completo con la biomasa mutante en Central Park, transformado en un torbellino gigante de zarcillos carmesí asesinos. Con el perímetro exterior asegurado y la alianza unida con toda su fuerza, Erik Lehnsherr (Magneto) desciende del cielo envuelto en un campo de fuerza colosal, levantando toneladas de acero para forjar una jaula de confinamiento electromagnético. A su lado, Peter Parker (Spider-Man) y Logan (Wolverine) se lanzan al corazón de la tormenta roja en un despliegue heroico definitivo de garras, telarañas y valor para salvar el futuro de la Tierra.",
+    "synopsis": "¡CLÍMAX FINAL: ASALTO A LA TORRE DE CARNAGE! Cletus Kasady ha convertido la cima del Daily Bugle en un corazón palpitante de biomasa alienígena roja que cubre el cielo de Manhattan. Logan y Peter Parker lideran el asalto definitivo: Lobezno abre camino a garras de adamantium entre la marea de zarcillos mientras Spider-Man trepa con los viales del contra-virus acústico. Y en el momento culminante, ¡MAGNETO (HÉROE ALIADO) desciende con su capa ondeando para redimirse definitivamente, alzando una jaula titánica de vigas de acero y campos magnéticos que encierra a Carnage para el golpe final!",
     "locations": [
       {
         "name": "Daily Bugle",
@@ -2810,12 +2658,12 @@ const CAMPAIGN_CHAPTERS = [
     ],
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
-      "😈 VILLANO (Carnage): Inicia en DAILY BUGLE — Cletus Kasady (Carnage) ha tomado la torre del Daily Bugle, extendiendo una cúpula viscosa de sangre simbiótica sobre Manhattan.",
-      "👤 JORGE (magneto_hero): Inicia en CENTRAL PARK — Lobezno se abre camino a garras limpias entre las masas infectadas despejando el corredor hacia el rascacielos.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en OSCORP TOWER — Spider-Man (Peter) corre con los contenedores del antídoto acústico sintetizado para la inyección final.",
-      "⭐ APOYO (Lobezno (Logan), si juega): Inicia en DAILY BUGLE — Jean Grey alza una jaula psiónica sobre el helipuerto del Bugle para evitar la dispersión aérea de Carnage.",
+      "😈 VILLANO (Carnage): Inicia en DAILY BUGLE — Carnage (Cletus Kasady) ha tomado la torre del Daily Bugle extendiendo una cúpula de sangre simbiótica sobre Manhattan.",
+      "👤 JORGE (Lobezno (Logan)): Inicia en CENTRAL PARK — Lobezno se abre camino a garras limpias entre las masas infectadas despejando el corredor hacia el rascacielos.",
+      "🌸 ESPOSA (Spider-Man (Peter Parker)): Inicia en OSCORP TOWER — Spider-Man (Peter) corre con los contenedores del antídoto acústico sintetizado para la inyección final.",
+      "⭐ APOYO (Magneto (Erik Lehnsherr - Anti-Héroe), si juega): Inicia en DAILY BUGLE — Magneto (Héroe Redimido) alza una jaula de acero polarizado sobre la torre conteniendo la masa de Carnage.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Marea Roja: Los zarcillos amenazan la ciudad, pero la fuerza combinada de la alianza tiene la última palabra.",
     "events": {
@@ -2856,7 +2704,7 @@ const CAMPAIGN_CHAPTERS = [
     "deployment": {
       "villain": {
         "location": "Daily Bugle",
-        "reason": "Cletus Kasady (Carnage) ha tomado la torre del Daily Bugle, extendiendo una cúpula viscosa de sangre simbiótica sobre Manhattan."
+        "reason": "Carnage (Cletus Kasady) ha tomado la torre del Daily Bugle extendiendo una cúpula de sangre simbiótica sobre Manhattan."
       },
       "hero1": {
         "location": "Central Park",
@@ -2868,16 +2716,8 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero3": {
         "location": "Daily Bugle",
-        "reason": "Jean Grey alza una jaula psiónica sobre el helipuerto del Bugle para evitar la dispersión aérea de Carnage."
-      },
-      "locations": [
-        "Daily Bugle",
-        "Central Park",
-        "Oscorp Tower",
-        "Brooklyn Bridge",
-        "Xavier Institute",
-        "The Danger Room"
-      ]
+        "reason": "Magneto (Héroe Redimido) alza una jaula de acero polarizado sobre la torre conteniendo la masa de Carnage."
+      }
     }
   },
   {
@@ -2887,17 +2727,17 @@ const CAMPAIGN_CHAPTERS = [
     "actTitle": "ACTO III: GUERRA TOTAL Y CRISIS OMEGA",
     "title": "Capítulo 10B: GRAN FINAL — MAXIMA MATANZA (La Última Resistencia Desesperada)",
     "villainId": "carnage",
-    "assignedHeroSlot1": "magneto_hero",
-    "assignedHeroSlot2": "spider_man",
-    "assignedHeroSlot3": "wolverine",
+    "assignedHeroSlot1": "cyclops",
+    "assignedHeroSlot2": "miles_morales",
+    "assignedHeroSlot3": "venom_hero",
     "squadOptions": [
-      "magneto_hero",
-      "spider_man",
-      "wolverine",
-      "miles_morales"
+      "cyclops",
+      "miles_morales",
+      "venom_hero",
+      "magneto_hero"
     ],
     "comicReference": "Spider-Man: Maximum Carnage & X-Men: Fatal Attractions",
-    "synopsis": "¡EL MUNDO AL BORDE DE LA EXTINCIÓN! Manhattan está cubierta por una densa neblina carmesí y los zarcillos rojos crecen por los rascacielos. Los héroes llegan con el aliento justo y sin suministros de reserva a Central Park. Carnage se alza en el centro como una pesadilla viviente. No hay retirada posible, no hay refuerzos en camino: es matar o morir por el destino de toda la humanidad y los mutantes.",
+    "synopsis": "¡CLÍMAX FINAL: LA ÚLTIMA RESISTENCIA EN CENTRAL PARK! La ciudad ha caído en cuarentena y Carnage ha transformado el lago del parque en un nido rojo masivo. Scott Summers (Cíclope) y Miles Morales se plantan en la última línea de defensa: Cíclope se retira el visor por completo desatando un rayo óptico continuo de poder devastador, mientras Miles canaliza toda la bioelectricidad de su cuerpo en una megadescarga Venom en el corazón del parásito. Junto a ellos, Venom (Aliado) y Magneto combaten hombro con hombro protegiendo a los últimos sobrevivientes en un despliegue heroico inolvidable.",
     "locations": [
       {
         "name": "Central Park",
@@ -2931,11 +2771,11 @@ const CAMPAIGN_CHAPTERS = [
     "setupNotes": [
       "📍 DESPLIEGUE TÁCTICO INICIAL EN MESA:",
       "😈 VILLANO (Carnage): Inicia en CENTRAL PARK — Carnage ha transformado el lago de Central Park en una biomasa gigante palpitante que devora la ciudad.",
-      "👤 JORGE (magneto_hero): Inicia en XAVIER INSTITUTE — Cíclope se retira el visor por completo en la entrada de la mansión, desatando un rayo óptico de potencia destructiva total.",
-      "🌸 ESPOSA (Spider-Man (Peter)): Inicia en CENTRAL PARK — Miles Morales canaliza una sobrecarga bioeléctrica extrema en el epicentro de la masa alienígena.",
-      "⭐ APOYO (Lobezno (Logan), si juega): Inicia en MORLOCK TUNNELS — Coloso defiende la última compuerta de las cloacas resguardando a los sobrevivientes civiles.",
+      "👤 JORGE (Cíclope (Scott Summers)): Inicia en XAVIER INSTITUTE — Cíclope se retira el visor por completo en la entrada de la mansión desatando un rayo óptico de potencia total.",
+      "🌸 ESPOSA (Miles Morales): Inicia en CENTRAL PARK — Miles Morales canaliza una sobrecarga bioeléctrica extrema en el epicentro de la masa alienígena.",
+      "⭐ APOYO (Venom (Eddie Brock - Anti-Héroe), si juega): Inicia en MORLOCK TUNNELS — Venom (Héroe Aliado) defiende la última compuerta de las cloacas resguardando a los supervivientes civiles.",
       "Distribuye 1 Matón y 1 Civil en cada ubicación libre del círculo.",
-      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, usa casillas libres. NUNCA provoques Desbordamiento (Overflow)."
+      "REGLA DE ORO DE CAMPAÑA: Al colocar Matones o Civiles por eventos, colócalos en casillas libres. NUNCA provoques Desbordamiento (Overflow)."
     ],
     "specialRules": "Marea Roja Voraz: Cada BAM de Carnage inflige 1 herida adicional a todos los héroes en su ubicación si no descartan 1 carta.",
     "events": {
@@ -2980,7 +2820,7 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero1": {
         "location": "Xavier Institute",
-        "reason": "Cíclope se retira el visor por completo en la entrada de la mansión, desatando un rayo óptico de potencia destructiva total."
+        "reason": "Cíclope se retira el visor por completo en la entrada de la mansión desatando un rayo óptico de potencia total."
       },
       "hero2": {
         "location": "Central Park",
@@ -2988,16 +2828,8 @@ const CAMPAIGN_CHAPTERS = [
       },
       "hero3": {
         "location": "Morlock Tunnels",
-        "reason": "Coloso defiende la última compuerta de las cloacas resguardando a los sobrevivientes civiles."
-      },
-      "locations": [
-        "Central Park",
-        "Xavier Institute",
-        "Daily Bugle",
-        "Oscorp Tower",
-        "Morlock Tunnels",
-        "Brooklyn Bridge"
-      ]
+        "reason": "Venom (Héroe Aliado) defiende la última compuerta de las cloacas resguardando a los supervivientes civiles."
+      }
     }
   }
 ];

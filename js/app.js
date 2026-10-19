@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Estado local de la partida activa en curso (Modo 2 Jugadores fijos + 1 Opcional)
   const activeMatch = {
     chapterId: '1',
-    heroSlot1: 'cyclops',   // Jorge (Jugador 1)
+    heroSlot1: 'spider_man',   // Jorge (Jugador 1)
     heroSlot2: 'miles_morales',    // Esposa (Jugadora 2)
     heroSlot3: 'black_cat',           // 3er Héroe Opcional de Apoyo
     villainHp: 5,
