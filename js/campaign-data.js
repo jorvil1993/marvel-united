@@ -205,8 +205,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'El Imparable Ariete Rinoceronte',
     originBox: 'Enter The Spider-Verse',
     avatar: './assets/villains/rhino.png',
-    baseHp: 9,
-    perHeroHp: 3,
+    hpByHeroes: { 2: 5, 3: 8, 4: 11 },
     threatStyle: 'Destrucción física directa y embestidas devastadoras.'
   },
   sabretooth: {
@@ -215,8 +214,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'El Depredador Sádico de Mutantes',
     originBox: 'X-Men Core Box',
     avatar: './assets/villains/sabretooth.png',
-    baseHp: 8,
-    perHeroHp: 3,
+    hpByHeroes: { 2: 5, 3: 7, 4: 10 },
     threatStyle: 'Caza implacable, acecho al héroe más débil y regeneración salvaje.'
   },
   mystique_villain: {
@@ -225,8 +223,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'La Sombra de la Hermandad',
     originBox: 'X-Men Core Box',
     avatar: './assets/villains/mystique_villain.png',
-    baseHp: 6,
-    perHeroHp: 2,
+    hpByHeroes: { 2: 4, 3: 6, 4: 9 },
     threatStyle: 'Manipulación de la prensa, trampas encubiertas y engaños mortales.'
   },
   green_goblin: {
@@ -235,8 +232,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'El Genio Psicópata de Oscorp',
     originBox: 'Enter The Spider-Verse',
     avatar: './assets/villains/green_goblin.png',
-    baseHp: 10,
-    perHeroHp: 3,
+    hpByHeroes: { 2: 5, 3: 7, 4: 10 },
     threatStyle: 'Bombas calabaza en racimo, fuego sobre Nueva York y caos aéreo.'
   },
   juggernaut: {
@@ -245,8 +241,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'La Fuerza Arrasadora de Cyttorak',
     originBox: 'X-Men Core Box',
     avatar: './assets/villains/juggernaut.png',
-    baseHp: 12,
-    perHeroHp: 4,
+    hpByHeroes: { 2: 8, 3: 8, 4: 8 },
     threatStyle: 'Inmune al freno; derriba edificios y arrasa con todo héroe que se interponga.'
   },
   venom_villain: {
@@ -255,8 +250,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'El Terror Negro Fuera de Control',
     originBox: 'Enter The Spider-Verse',
     avatar: './assets/villains/venom_villain.png',
-    baseHp: 10,
-    perHeroHp: 3,
+    hpByHeroes: { 2: 5, 3: 8, 4: 11 },
     threatStyle: 'Agresión simbiótica voraz, zarcillos estranguladores e infección.'
   },
   magneto_villain: {
@@ -265,8 +259,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'El Caudillo de la Supremacía Mutante',
     originBox: 'X-Men Core Box',
     avatar: './assets/villains/magneto_villain.png',
-    baseHp: 12,
-    perHeroHp: 3,
+    hpByHeroes: { 2: 5, 3: 7, 4: 10 },
     threatStyle: 'Campos electromagnéticos que bloquean ubicaciones y lanzas de metal.'
   },
   carnage: {
@@ -275,8 +268,7 @@ const CAMPAIGN_VILLAINS = {
     subtitle: 'El Heraldo del Caos Simbiótico Absoluto',
     originBox: 'Enter The Spider-Verse',
     avatar: './assets/villains/carnage.png',
-    baseHp: 14,
-    perHeroHp: 4,
+    hpByHeroes: { 2: 5, 3: 8, 4: 11 },
     threatStyle: 'Letalidad desmedida, infección mutante masiva y exterminio desenfrenado.'
   }
 };

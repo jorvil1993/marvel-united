@@ -129,9 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === chapterId) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
 
-    // Calcular HP del villano según héroes activos (2 o 3)
+    // Calcular HP del villano según héroes activos usando la ficha física oficial
     const numHeroes = activeMatch.getSelectedHeroes().length;
-    activeMatch.villainMaxHp = villain.baseHp + (villain.perHeroHp * numHeroes);
+    if (villain && villain.hpByHeroes) {
+      activeMatch.villainMaxHp = villain.hpByHeroes[numHeroes] || villain.hpByHeroes[2] || 5;
+    } else {
+      activeMatch.villainMaxHp = 5;
+    }
     activeMatch.villainHp = activeMatch.villainMaxHp;
     activeMatch.civiliansSaved = 0;
     activeMatch.thugsDefeated = 0;
@@ -146,7 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
     const numHeroes = activeMatch.getSelectedHeroes().length;
     const oldMax = activeMatch.villainMaxHp;
-    activeMatch.villainMaxHp = villain.baseHp + (villain.perHeroHp * numHeroes);
+
+    if (villain && villain.hpByHeroes) {
+      activeMatch.villainMaxHp = villain.hpByHeroes[numHeroes] || villain.hpByHeroes[2] || 5;
+    } else {
+      activeMatch.villainMaxHp = 5;
+    }
+
     const diff = activeMatch.villainMaxHp - oldMax;
     activeMatch.villainHp = Math.max(1, activeMatch.villainHp + diff);
     updateTrackersUI();
