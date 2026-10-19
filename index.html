@@ -107,12 +107,15 @@
 
     <!-- Héroes Desplegados en la Mesa (2 Jugadores + 1 Opcional) -->
     <div style="background:var(--bg-card);border:1px solid var(--bg-card-border);border-radius:var(--radius-md);padding:12px;margin-bottom:14px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
         <div>
           <span style="font-size:0.75rem;text-transform:uppercase;color:var(--comic-yellow);font-weight:800;">Equipo en Mesa:</span>
           <span id="playerModeBadge" class="badge badge-blue" style="margin-left:6px;">2 Héroes (Tú y Esposa)</span>
         </div>
-        <button id="btnChangeTeamDirect" class="badge badge-yellow" style="cursor:pointer;border:none;">🔄 Cambiar Héroes</button>
+        <div style="display:flex;gap:6px;">
+          <button id="btnSwapCoupleHeroes" class="badge badge-blue" style="cursor:pointer;border:none;" title="Intercambiar qué héroe juega cada uno">⇄ Intercambiar (Jorge ⇄ Esposa)</button>
+          <button id="btnChangeTeamDirect" class="badge badge-yellow" style="cursor:pointer;border:none;" title="Elegir entre los 4 héroes autorizados de la misión">⚙️ Patrulla (4 Héroes)</button>
+        </div>
       </div>
 
       <div id="matchSlotsGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">

@@ -348,7 +348,22 @@ document.addEventListener('DOMContentLoaded', () => {
       comicRefEl.innerHTML = chapter.comicReference ? `📖 <strong>Inspiración de Cómic:</strong> ${chapter.comicReference}` : '';
       comicRefEl.style.display = chapter.comicReference ? 'block' : 'none';
     }
-    document.getElementById('matchSynopsis').textContent = chapter.synopsis;
+    const synopsisEl = document.getElementById('matchSynopsis');
+    if (synopsisEl && chapter.synopsis) {
+      const paragraphs = chapter.synopsis.split('\n\n').filter(p => p.trim());
+      synopsisEl.innerHTML = paragraphs.map(p => {
+        const text = p.trim();
+        if (text.startsWith('«PRÓLOGO') || text.startsWith('«ANTERIORMENTE')) {
+          return `<div style="background:#1e1b4b;border-left:3px solid #818cf8;padding:8px 10px;border-radius:6px;margin-bottom:8px;font-size:0.78rem;line-height:1.45;color:#e0e7ff;">${text.replace(/\n/g, '<br>')}</div>`;
+        } else if (text.startsWith('«LA CRISIS')) {
+          return `<div style="background:#261818;border-left:3px solid var(--marvel-red);padding:8px 10px;border-radius:6px;margin-bottom:8px;font-size:0.78rem;line-height:1.45;color:#fecaca;">${text.replace(/\n/g, '<br>')}</div>`;
+        } else if (text.startsWith('«MISIÓN')) {
+          return `<div style="background:#13231b;border-left:3px solid #34d399;padding:8px 10px;border-radius:6px;margin-bottom:4px;font-size:0.78rem;line-height:1.45;color:#d1fae5;">${text.replace(/\n/g, '<br>')}</div>`;
+        } else {
+          return `<p style="margin-bottom:6px;line-height:1.45;">${text.replace(/\n/g, '<br>')}</p>`;
+        }
+      }).join('');
+    }
 
     // Active Perks Widget (Prominente en la partida)
     renderMatchActivePerks();
@@ -585,6 +600,14 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMatchHeroTeam();
     slotPickerModal?.classList.remove('active');
   }
+
+  document.getElementById('btnSwapCoupleHeroes')?.addEventListener('click', () => {
+    const temp = activeMatch.heroSlot1;
+    activeMatch.heroSlot1 = activeMatch.heroSlot2;
+    activeMatch.heroSlot2 = temp;
+    soundFX.playClick();
+    renderMatchHeroTeam();
+  });
 
   document.getElementById('btnChangeTeamDirect')?.addEventListener('click', () => {
     openSlotPicker(1);
