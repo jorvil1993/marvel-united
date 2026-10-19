@@ -405,13 +405,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let eventData = chapter.events[eventType];
 
     if (!eventData && eventType === 'crisis') {
-      eventData = {
-        title: '¡INTERFERENCIA DEL DAILY BUGLE!',
-        type: 'Crisis Imprevista en Mesa',
-        badge: 'Giro Inesperado',
-        text: 'Los flashes de los fotógrafos desorientan a los héroes. Añade 1 Ficha de Exposición al héroe con más cartas en mano.',
-        flavor: '"¡Una foto vale más que mil desmentidos!" — J. Jonah Jameson'
-      };
+      const dynamicTwists = [
+        {
+          title: '¡DESCARGA DE ADRENALINA!',
+          type: 'Giro Heroico de Cómic',
+          badge: '¡Momento Épico!',
+          text: '¡La determinación de la pareja de héroes se enciende ante el peligro! <strong>Cada Héroe gana inmediatamente 1 Ficha de Ataque y 1 Ficha de Movimiento gratis.</strong>',
+          flavor: '"¡No nos rendiremos jamás mientras esta ciudad nos necesite!"'
+        },
+        {
+          title: '¡PARAMÉDICO EN EL LUGAR!',
+          type: 'Giro de Rescate',
+          badge: 'Ayuda Civil',
+          text: 'Un civil rescatado asiste a los héroes con primeros auxilios: <strong>Cada Héroe recupera 1 carta de su pila de descarte a su mano.</strong>',
+          flavor: '"¡Tengan vendas y antiséptico, sigan luchando por nosotros!"'
+        },
+        {
+          title: '¡INSPIRACIÓN HEROICA!',
+          type: 'Sinergia de Equipo',
+          badge: 'Unión Heroica',
+          text: '¡Un momento de sincronización perfecta! <strong>Cada Héroe roba 1 carta adicional de su mazo y puede mover a un compañero 1 espacio gratis.</strong>',
+          flavor: 'Una mirada de complicidad basta para coordinar el siguiente movimiento.'
+        },
+        {
+          title: '¡FLASH DEL DAILY BUGLE!',
+          type: 'Incidente con la Prensa',
+          badge: 'Prensa Hostil',
+          text: 'Un reportero toma una foto sorpresa: <strong>Ganan 1 Ficha de Exposición, PERO la indignación les da fuerzas: cada héroe gana 1 Ficha Heroica.</strong>',
+          flavor: '"¡Sigan peleando, esto va directo a la portada!" — Periodista'
+        }
+      ];
+      eventData = dynamicTwists[Math.floor(Math.random() * dynamicTwists.length)];
     }
 
     if (!eventData) return;
