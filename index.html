@@ -101,7 +101,7 @@
           <span style="font-size:0.75rem;text-transform:uppercase;color:var(--comic-yellow);font-weight:800;">Equipo en Mesa:</span>
           <span id="playerModeBadge" class="badge badge-blue" style="margin-left:6px;">2 Héroes (Tú y Esposa)</span>
         </div>
-        <button onclick="document.querySelector('[data-view=\'roster\']').click()" class="badge badge-yellow" style="cursor:pointer;border:none;">Catálogo ➔</button>
+        <button id="btnChangeTeamDirect" class="badge badge-yellow" style="cursor:pointer;border:none;">🔄 Cambiar Héroes</button>
       </div>
 
       <div id="matchSlotsGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
@@ -355,7 +355,11 @@
         <!-- Tarjetas de héroes desbloqueados -->
       </div>
 
-      <button id="closeOutcomeModalBtn" class="btn-primary" style="width:100%;margin-top:14px;">Continuar Campaña</button>
+      <!-- Acciones de Desenlace -->
+      <div id="outcomeActionsContainer" style="display:flex;flex-direction:column;gap:8px;margin-top:14px;">
+        <button id="closeOutcomeModalBtn" class="btn-primary" style="width:100%;">Continuar al Siguiente Capítulo ➔</button>
+        <button id="btnRetryOutcomeModal" class="btn-secondary" style="width:100%;display:none;border-color:var(--comic-yellow);color:var(--comic-yellow);cursor:pointer;">🔄 Jugar Revancha de este Capítulo</button>
+      </div>
     </div>
   </div>
 
@@ -408,6 +412,21 @@
         <button id="btnAssignSlot1" class="btn-primary" style="background:#2563eb;width:100%;">👤 Asignar a Jorge (Jugador 1)</button>
         <button id="btnAssignSlot2" class="btn-primary" style="background:#db2777;width:100%;">🌸 Asignar a Esposa (Jugadora 2)</button>
         <button id="btnAssignSlot3" class="btn-primary" style="background:#7c3aed;width:100%;">⭐ Asignar como 3er Héroe (Apoyo Opcional)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 4: SELECTOR RÁPIDO DE HÉROES EN MESA
+       ========================================================================= -->
+  <div id="slotPickerModal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="closeSlotPickerBtn" class="modal-close-btn">&times;</button>
+      <h2 id="slotPickerTitle" style="font-family:var(--font-comic);font-size:1.2rem;color:var(--comic-yellow);margin-bottom:4px;">Elegir Héroe</h2>
+      <p id="slotPickerSubtitle" style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">Toca un héroe desbloqueado para asignarlo a esta ranura:</p>
+      
+      <div id="slotPickerGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:55vh;overflow-y:auto;padding-right:4px;">
+        <!-- Lista dinámica de héroes desbloqueados -->
       </div>
     </div>
   </div>

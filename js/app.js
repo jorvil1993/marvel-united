@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const eventModal = document.getElementById('eventModal');
   const outcomeModal = document.getElementById('outcomeModal');
   const heroDetailModal = document.getElementById('heroDetailModal');
+  const slotPickerModal = document.getElementById('slotPickerModal');
 
   // Inicialización de Sonido
   updateSoundButtonUI();
@@ -197,6 +198,127 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTrackersUI();
   }
 
+  let currentPickerSlot = 1;
+
+  function openSlotPicker(slotIndex = 1) {
+    currentPickerSlot = slotIndex;
+    renderSlotPickerModal();
+    slotPickerModal?.classList.add('active');
+    soundFX.playClick();
+  }
+
+  function renderSlotPickerModal() {
+    const titleEl = document.getElementById('slotPickerTitle');
+    const subtitleEl = document.getElementById('slotPickerSubtitle');
+    const grid = document.getElementById('slotPickerGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    const slotLabels = {
+      1: '👤 Jorge (J1)',
+      2: '🌸 Esposa (J2)',
+      3: '⭐ 3er Héroe de Apoyo'
+    };
+
+    if (titleEl) {
+      titleEl.innerHTML = `Elegir Héroe: <span style="color:#fff;">${slotLabels[currentPickerSlot]}</span>`;
+    }
+
+    if (subtitleEl) {
+      subtitleEl.innerHTML = `
+        <div style="display:flex;gap:6px;margin-bottom:10px;">
+          <button id="pickerTabSlot1" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 1 ? '#3b82f6' : '#334155'};background:${currentPickerSlot === 1 ? '#1d4ed8' : '#1e293b'};color:#fff;">👤 Jorge</button>
+          <button id="pickerTabSlot2" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 2 ? '#ec4899' : '#334155'};background:${currentPickerSlot === 2 ? '#be185d' : '#1e293b'};color:#fff;">🌸 Esposa</button>
+          <button id="pickerTabSlot3" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 3 ? '#a855f7' : '#334155'};background:${currentPickerSlot === 3 ? '#7e22ce' : '#1e293b'};color:#fff;">⭐ Apoyo</button>
+        </div>
+        <span style="font-size:0.75rem;color:var(--text-muted);display:block;">Toca cualquier héroe desbloqueado para asignarlo:</span>
+      `;
+
+      document.getElementById('pickerTabSlot1')?.addEventListener('click', () => {
+        currentPickerSlot = 1;
+        renderSlotPickerModal();
+      });
+      document.getElementById('pickerTabSlot2')?.addEventListener('click', () => {
+        currentPickerSlot = 2;
+        renderSlotPickerModal();
+      });
+      document.getElementById('pickerTabSlot3')?.addEventListener('click', () => {
+        currentPickerSlot = 3;
+        renderSlotPickerModal();
+      });
+    }
+
+    const unlocked = campaignStorage.state.unlockedHeroes;
+
+    unlocked.forEach(heroId => {
+      const hero = CAMPAIGN_HEROES[heroId];
+      if (!hero) return;
+
+      const isCurrentInSlot = (currentPickerSlot === 1 && activeMatch.heroSlot1 === heroId) ||
+                              (currentPickerSlot === 2 && activeMatch.heroSlot2 === heroId) ||
+                              (currentPickerSlot === 3 && activeMatch.heroSlot3 === heroId);
+
+      let slotTag = '';
+      if (activeMatch.heroSlot1 === heroId) slotTag = '<span style="font-size:0.6rem;background:#1d4ed8;color:#fff;padding:2px 6px;border-radius:4px;">Jorge (J1)</span>';
+      else if (activeMatch.heroSlot2 === heroId) slotTag = '<span style="font-size:0.6rem;background:#be185d;color:#fff;padding:2px 6px;border-radius:4px;">Esposa (J2)</span>';
+      else if (activeMatch.heroSlot3 === heroId) slotTag = '<span style="font-size:0.6rem;background:#7e22ce;color:#fff;padding:2px 6px;border-radius:4px;">Apoyo (J3)</span>';
+
+      const card = document.createElement('div');
+      card.style.cssText = `background:${isCurrentInSlot ? '#1e293b' : '#111827'};border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#374151'};border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;cursor:pointer;`;
+      card.innerHTML = `
+        <img src="${hero.avatar}" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#4b5563'};">
+        <div>
+          <strong style="font-size:0.78rem;display:block;color:#fff;line-height:1.1;">${hero.name}</strong>
+          <span style="font-size:0.65rem;color:var(--text-muted);display:block;">${hero.alterEgo}</span>
+        </div>
+        <div>${slotTag}</div>
+        ${isCurrentInSlot ? '<span style="font-size:0.65rem;color:var(--comic-yellow);font-weight:bold;">✓ En esta Ranura</span>' : ''}
+      `;
+
+      card.addEventListener('click', () => {
+        assignHeroToCurrentSlot(heroId);
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
+  function assignHeroToCurrentSlot(heroId) {
+    if (currentPickerSlot === 1) {
+      if (activeMatch.heroSlot2 === heroId) activeMatch.heroSlot2 = activeMatch.heroSlot1;
+      if (activeMatch.heroSlot3 === heroId) activeMatch.heroSlot3 = null;
+      activeMatch.heroSlot1 = heroId;
+    } else if (currentPickerSlot === 2) {
+      if (activeMatch.heroSlot1 === heroId) activeMatch.heroSlot1 = activeMatch.heroSlot2;
+      if (activeMatch.heroSlot3 === heroId) activeMatch.heroSlot3 = null;
+      activeMatch.heroSlot2 = heroId;
+    } else if (currentPickerSlot === 3) {
+      if (activeMatch.heroSlot1 === heroId) activeMatch.heroSlot1 = (campaignStorage.state.unlockedHeroes.find(h => h !== heroId && h !== activeMatch.heroSlot2) || 'spider_man');
+      if (activeMatch.heroSlot2 === heroId) activeMatch.heroSlot2 = (campaignStorage.state.unlockedHeroes.find(h => h !== heroId && h !== activeMatch.heroSlot1) || 'wolverine');
+      activeMatch.heroSlot3 = heroId;
+      recalculateVillainHp();
+    }
+    soundFX.playClick();
+    renderMatchHeroTeam();
+    slotPickerModal?.classList.remove('active');
+  }
+
+  document.getElementById('btnChangeTeamDirect')?.addEventListener('click', () => {
+    openSlotPicker(1);
+  });
+
+  document.getElementById('closeSlotPickerBtn')?.addEventListener('click', () => {
+    slotPickerModal?.classList.remove('active');
+    soundFX.playClick();
+  });
+
+  slotPickerModal?.addEventListener('click', (e) => {
+    if (e.target === slotPickerModal) {
+      slotPickerModal.classList.remove('active');
+    }
+  });
+
   function renderMatchHeroTeam() {
     const slotsGrid = document.getElementById('matchSlotsGrid');
     const slot3Container = document.getElementById('matchSlot3Container');
@@ -214,13 +336,13 @@ document.addEventListener('DOMContentLoaded', () => {
     slot1Card.style.cssText = 'background:#131c2e;border:1px solid #2563eb;border-radius:8px;padding:8px;display:flex;align-items:center;gap:8px;cursor:pointer;';
     slot1Card.innerHTML = `
       <img src="${hero1.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #2563eb;">
-      <div style="overflow:hidden;">
-        <span style="font-size:0.6rem;color:#93c5fd;font-weight:800;text-transform:uppercase;display:block;">👤 Jorge (J1)</span>
+      <div style="overflow:hidden;flex:1;">
+        <span style="font-size:0.6rem;color:#93c5fd;font-weight:800;text-transform:uppercase;display:block;">👤 Jorge (J1) ✎</span>
         <strong style="font-size:0.8rem;white-space:nowrap;color:#fff;">${hero1.name}</strong>
       </div>
     `;
     slot1Card.addEventListener('click', () => {
-      switchTab('roster');
+      openSlotPicker(1);
     });
     slotsGrid.appendChild(slot1Card);
 
@@ -229,13 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
     slot2Card.style.cssText = 'background:#241624;border:1px solid #db2777;border-radius:8px;padding:8px;display:flex;align-items:center;gap:8px;cursor:pointer;';
     slot2Card.innerHTML = `
       <img src="${hero2.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #db2777;">
-      <div style="overflow:hidden;">
-        <span style="font-size:0.6rem;color:#fbcfe8;font-weight:800;text-transform:uppercase;display:block;">🌸 Esposa (J2)</span>
+      <div style="overflow:hidden;flex:1;">
+        <span style="font-size:0.6rem;color:#fbcfe8;font-weight:800;text-transform:uppercase;display:block;">🌸 Esposa (J2) ✎</span>
         <strong style="font-size:0.8rem;white-space:nowrap;color:#fff;">${hero2.name}</strong>
       </div>
     `;
     slot2Card.addEventListener('click', () => {
-      switchTab('roster');
+      openSlotPicker(2);
     });
     slotsGrid.appendChild(slot2Card);
 
@@ -248,12 +370,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const hero3 = CAMPAIGN_HEROES[activeMatch.heroSlot3] || CAMPAIGN_HEROES['cyclops'];
       const slot3Card = document.createElement('div');
-      slot3Card.style.cssText = 'background:#1f1936;border:1px solid #7c3aed;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;';
+      slot3Card.style.cssText = 'background:#1f1936;border:1px solid #7c3aed;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;';
       slot3Card.innerHTML = `
-        <div style="display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;" id="slot3HeroInfo">
           <img src="${hero3.avatar}" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #7c3aed;">
           <div>
-            <span style="font-size:0.6rem;color:#c4b5fd;font-weight:800;text-transform:uppercase;display:block;">⭐ 3er Héroe de Apoyo</span>
+            <span style="font-size:0.6rem;color:#c4b5fd;font-weight:800;text-transform:uppercase;display:block;">⭐ 3er Héroe de Apoyo ✎</span>
             <strong style="font-size:0.8rem;color:#fff;">${hero3.name}</strong>
           </div>
         </div>
@@ -261,7 +383,11 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       slot3Container.appendChild(slot3Card);
 
-      document.getElementById('btnRemoveSlot3').addEventListener('click', (e) => {
+      document.getElementById('slot3HeroInfo')?.addEventListener('click', () => {
+        openSlotPicker(3);
+      });
+
+      document.getElementById('btnRemoveSlot3')?.addEventListener('click', (e) => {
         e.stopPropagation();
         activeMatch.heroSlot3 = null;
         soundFX.playClick();
@@ -278,15 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
       addBtn.style.cssText = 'width:100%;background:#182030;border:1px dashed #64748b;color:#94a3b8;border-radius:8px;padding:8px;font-size:0.75rem;cursor:pointer;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:6px;';
       addBtn.innerHTML = '<span>➕</span> Añadir 3er Héroe de Apoyo (Opcional)';
       addBtn.addEventListener('click', () => {
-        const available = campaignStorage.state.unlockedHeroes.filter(id => id !== activeMatch.heroSlot1 && id !== activeMatch.heroSlot2);
-        if (available.length > 0) {
-          activeMatch.heroSlot3 = available[0];
-          soundFX.playUnlock();
-          recalculateVillainHp();
-          renderMatchHeroTeam();
-        } else {
-          switchTab('roster');
-        }
+        openSlotPicker(3);
       });
       slot3Container.appendChild(addBtn);
     }
@@ -500,11 +618,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modal de desenlace
+    const retryBtn = document.getElementById('btnRetryOutcomeModal');
+    const closeBtn = document.getElementById('closeOutcomeModalBtn');
+
     document.getElementById('outcomeBadge').textContent = result === 'win' ? '¡VICTORIA ÉPICA!' : 'DERROTA TÁCTICA';
     document.getElementById('outcomeBadge').className = `badge ${result === 'win' ? 'badge-green' : 'badge-red'}`;
     document.getElementById('outcomeTitle').textContent = outcome.title;
     document.getElementById('outcomeEpilogue').textContent = outcome.epilogue;
     document.getElementById('outcomeBonus').textContent = outcome.bonusText || outcome.penalties || '';
+
+    if (result === 'win') {
+      if (retryBtn) retryBtn.style.display = 'none';
+      if (closeBtn) {
+        closeBtn.textContent = 'Continuar al Siguiente Capítulo ➔';
+        closeBtn.className = 'btn-primary';
+      }
+    } else {
+      if (retryBtn) retryBtn.style.display = 'block';
+      if (closeBtn) {
+        closeBtn.textContent = 'Aceptar Derrota y Continuar Historia ➔';
+        closeBtn.className = 'btn-secondary';
+      }
+    }
 
     // Desbloqueos visuales en el modal
     const unlocksContainer = document.getElementById('outcomeUnlocksContainer');
@@ -537,6 +672,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Volver a cargar la siguiente misión o volver al timeline
     loadChapterIntoMatch(campaignStorage.state.currentChapterId);
     switchTab('timeline');
+  });
+
+  document.getElementById('btnRetryOutcomeModal')?.addEventListener('click', () => {
+    outcomeModal.classList.remove('active');
+    soundFX.playClick();
+    // Restaurar capítulo actual para la revancha y resetear partida
+    campaignStorage.state.currentChapterId = activeMatch.chapterId;
+    campaignStorage.saveState();
+    loadChapterIntoMatch(activeMatch.chapterId);
+    switchTab('match');
   });
 
   // =========================================================================
