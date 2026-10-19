@@ -350,6 +350,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.getElementById('matchSynopsis').textContent = chapter.synopsis;
 
+    // Active Perks Widget (Prominente en la partida)
+    renderMatchActivePerks();
+
     // Setup notes checklist
     const setupList = document.getElementById('matchSetupList');
     setupList.innerHTML = '';
@@ -696,21 +699,91 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function renderMatchActivePerks() {
+    const container = document.getElementById('matchActivePerksContainer');
+    if (!container) return;
+
+    const activePerkIds = campaignStorage.state.activePerks || [];
+    const unlockedPerkIds = campaignStorage.state.unlockedPerks || [];
+
+    if (activePerkIds.length === 0) {
+      container.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+          <div>
+            <strong style="color:var(--comic-yellow);font-size:0.75rem;text-transform:uppercase;display:block;">🛡️ Arsenal de Ventajas (0/2 Equipadas):</strong>
+            <span style="font-size:0.72rem;color:#94a3b8;">
+              ${unlockedPerkIds.length > 0 ? `Tienes ${unlockedPerkIds.length} ventajas desbloqueadas listas para equipar.` : 'Sin ventajas equipadas aún (se obtienen ganando batallas).'}
+            </span>
+          </div>
+          ${unlockedPerkIds.length > 0 ? `
+            <button id="btnQuickEquipPerks" class="badge badge-yellow" style="cursor:pointer;border:none;padding:5px 8px;">⚡ Equipar Ventajas</button>
+          ` : ''}
+        </div>
+      `;
+      document.getElementById('btnQuickEquipPerks')?.addEventListener('click', () => {
+        switchTab('perks');
+      });
+      return;
+    }
+
+    let cardsHtml = '';
+    activePerkIds.forEach(perkId => {
+      const perk = CAMPAIGN_PERKS[perkId];
+      if (!perk) return;
+      cardsHtml += `
+        <div style="background:#0f172a;border:1px solid #3b82f6;border-radius:6px;padding:8px;display:flex;align-items:flex-start;gap:8px;">
+          <span style="font-size:1.3rem;line-height:1;">${perk.icon}</span>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong style="font-size:0.78rem;color:var(--comic-yellow);">${perk.name}</strong>
+              <span class="badge badge-blue" style="font-size:0.58rem;">HABILITADA EN MESA</span>
+            </div>
+            <p style="font-size:0.72rem;color:#e2e8f0;margin:3px 0 0 0;line-height:1.25;">${perk.description}</p>
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <strong style="color:var(--comic-yellow);font-size:0.75rem;text-transform:uppercase;">🛡️ Ventajas Activas para esta Partida (${activePerkIds.length}/2):</strong>
+        <button id="btnManageActivePerks" class="badge badge-yellow" style="cursor:pointer;border:none;padding:3px 8px;">⚙️ Cambiar</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        ${cardsHtml}
+      </div>
+    `;
+
+    document.getElementById('btnManageActivePerks')?.addEventListener('click', () => {
+      switchTab('perks');
+    });
+  }
+
   function updateTrackersUI() {
-    document.getElementById('trackerVillainHp').textContent = activeMatch.villainHp;
-    document.getElementById('trackerVillainMaxHp').textContent = `/ ${activeMatch.villainMaxHp} PS`;
-    document.getElementById('trackerCivilians').textContent = `${activeMatch.civiliansSaved} / 9`;
-    document.getElementById('trackerThugs').textContent = `${activeMatch.thugsDefeated} / 9`;
-    document.getElementById('trackerThreats').textContent = `${activeMatch.threatsCleared} / 4`;
+    const vHp = document.getElementById('trackerVillainHp');
+    if (!vHp) return;
+    vHp.textContent = activeMatch.villainHp;
+    const vMax = document.getElementById('trackerVillainMaxHp');
+    if (vMax) vMax.textContent = `/ ${activeMatch.villainMaxHp} PS`;
+    const civ = document.getElementById('trackerCivilians');
+    if (civ) civ.textContent = `${activeMatch.civiliansSaved} / 9`;
+    const thugs = document.getElementById('trackerThugs');
+    if (thugs) thugs.textContent = `${activeMatch.thugsDefeated} / 9`;
+    const threats = document.getElementById('trackerThreats');
+    if (threats) threats.textContent = `${activeMatch.threatsCleared} / 4`;
     
     const expCountEl = document.getElementById('trackerExposure');
-    expCountEl.textContent = activeMatch.exposureTokens;
-    if (activeMatch.exposureTokens >= 3) {
-      expCountEl.style.color = 'var(--marvel-red)';
-      document.getElementById('exposureAlertBadge').style.display = 'inline-block';
-    } else {
-      expCountEl.style.color = 'var(--comic-yellow)';
-      document.getElementById('exposureAlertBadge').style.display = 'none';
+    if (expCountEl) {
+      expCountEl.textContent = activeMatch.exposureTokens;
+      if (activeMatch.exposureTokens >= 3) {
+        expCountEl.style.color = 'var(--marvel-red)';
+        const alertBadge = document.getElementById('exposureAlertBadge');
+        if (alertBadge) alertBadge.style.display = 'inline-block';
+      } else {
+        expCountEl.style.color = 'var(--comic-yellow)';
+        const alertBadge = document.getElementById('exposureAlertBadge');
+        if (alertBadge) alertBadge.style.display = 'none';
+      }
     }
   }
 
@@ -1134,6 +1207,7 @@ document.addEventListener('DOMContentLoaded', () => {
           campaignStorage.toggleActivePerk(perk.id);
           soundFX.playClick();
           renderPerks();
+          renderMatchActivePerks();
         });
       }
 

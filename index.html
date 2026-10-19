@@ -78,6 +78,11 @@
       <p id="matchSynopsis" style="font-size:0.8rem;color:#cbd5e1;margin-top:4px;line-height:1.4;"></p>
     </div>
 
+    <!-- Ventajas Activas en la Partida (Arsenal de Perks) -->
+    <div id="matchActivePerksContainer" style="background:#131c2e;border:1px solid #3b82f6;border-radius:var(--radius-md);padding:12px;margin-bottom:14px;">
+      <!-- Generado dinámicamente con las ventajas equipadas y su explicación -->
+    </div>
+
     <!-- Despliegue Táctico Inicial (Dónde Inicia Cada Uno) -->
     <div id="matchDeploymentCard" style="background:#111827;border:1px solid var(--comic-yellow);border-radius:var(--radius-md);padding:12px;margin-bottom:14px;">
       <!-- Generado dinámicamente con los lugares y motivos de inicio -->
@@ -120,96 +125,58 @@
       </div>
     </div>
 
-    <!-- TRACKERS INTERACTIVOS DE PARTIDA -->
-    <h3 class="section-title">Trackers de Mesa en Vivo</h3>
-    
-    <div class="trackers-grid">
-      <!-- Salud del Villano -->
-      <div class="tracker-card danger heroic">
-        <span class="tracker-title">❤️ Vida Restante del Villano</span>
-        <div class="tracker-value-row">
-          <button id="btnDamageVillainMinus" class="tracker-btn" title="Restar 1 de Vida">−</button>
-          <div style="display:flex;align-items:baseline;gap:4px;">
-            <span id="trackerVillainHp" class="tracker-number">12</span>
-            <span id="trackerVillainMaxHp" style="font-size:0.9rem;color:var(--text-muted);font-weight:bold;">/ 12 PS</span>
-          </div>
-          <button id="btnDamageVillainPlus" class="tracker-btn" title="Sumar 1 de Vida">+</button>
-        </div>
+    <!-- MAZO DE EVENTOS DIGITALES DE LA CAMPAÑA (PROMINENTE) -->
+    <div class="events-deck-section" style="background:linear-gradient(135deg, rgba(246,201,14,0.12) 0%, rgba(30,41,59,0.95) 100%);border:2px solid var(--comic-yellow);border-radius:var(--radius-md);padding:14px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <h3 class="section-title" style="margin:0;border:none;padding:0;font-size:1.15rem;color:var(--comic-yellow);">🎴 Cartas de Evento Digitales</h3>
+        <span class="badge badge-yellow">Uso Durante la Partida</span>
       </div>
-
-      <!-- Civiles Rescatados -->
-      <div class="tracker-card">
-        <span class="tracker-title">👥 Civiles Rescatados</span>
-        <div class="tracker-value-row">
-          <button id="btnCivilianMinus" class="tracker-btn">−</button>
-          <span id="trackerCivilians" class="tracker-number" style="font-size:1.6rem;">0 / 9</span>
-          <button id="btnCivilianPlus" class="tracker-btn">+</button>
-        </div>
-      </div>
-
-      <!-- Matones Derrotados -->
-      <div class="tracker-card">
-        <span class="tracker-title">💥 Matones Derrotados</span>
-        <div class="tracker-value-row">
-          <button id="btnThugMinus" class="tracker-btn">−</button>
-          <span id="trackerThugs" class="tracker-number" style="font-size:1.6rem;">0 / 9</span>
-          <button id="btnThugPlus" class="tracker-btn">+</button>
-        </div>
-      </div>
-
-      <!-- Amenazas Despejadas -->
-      <div class="tracker-card">
-        <span class="tracker-title">⚠️ Amenazas Despejadas</span>
-        <div class="tracker-value-row">
-          <button id="btnThreatMinus" class="tracker-btn">−</button>
-          <span id="trackerThreats" class="tracker-number" style="font-size:1.6rem;">0 / 4</span>
-          <button id="btnThreatPlus" class="tracker-btn">+</button>
-        </div>
-      </div>
-
-      <!-- Fichas de Exposición (Celulares) -->
-      <div class="tracker-card" style="border-color:#f59e0b;">
-        <span class="tracker-title">📱 Fichas de Exposición</span>
-        <div class="tracker-value-row">
-          <button id="btnExposureMinus" class="tracker-btn">−</button>
-          <span id="trackerExposure" class="tracker-number" style="font-size:1.6rem;">0</span>
-          <button id="btnExposurePlus" class="tracker-btn">+</button>
-        </div>
-        <span id="exposureAlertBadge" class="badge badge-red" style="display:none;margin-top:4px;">¡PRENSA HOSTIL ACTIVA!</span>
-      </div>
-    </div>
-
-    <!-- MAZO DE EVENTOS DIGITALES DE LA CAMPAÑA -->
-    <div class="events-deck-section">
-      <h3 class="section-title">Cartas de Evento Digitales</h3>
-      <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:8px;">Toca cada botón en el momento que corresponda según la partida en la mesa:</p>
+      <p style="font-size:0.78rem;color:#cbd5e1;margin-bottom:12px;line-height:1.35;">
+        Toca cada carta en el momento indicado en tu mesa para voltear la carta cómic en 3D y aplicar sus reglas y recompensas equilibradas:
+      </p>
       
       <div class="event-buttons-grid">
         <button id="btnEventInitial" class="btn-event-trigger">
           <span class="event-btn-icon">⚡</span>
           <span class="event-btn-label">Evento Inicial</span>
-          <span class="event-btn-desc">Regla de inicio de misión</span>
+          <span class="event-btn-desc">Al inicio de la partida</span>
         </button>
 
         <button id="btnEventUnderPressure" class="btn-event-trigger yellow">
           <span class="event-btn-icon">🔥</span>
           <span class="event-btn-label">Bajo Presión</span>
-          <span class="event-btn-desc">Al completar 1ª Misión</span>
+          <span class="event-btn-desc">Al completar la 1ª Misión</span>
         </button>
 
         <button id="btnEventAccelerated" class="btn-event-trigger red">
           <span class="event-btn-icon">💥</span>
           <span class="event-btn-label">Acelerado</span>
-          <span class="event-btn-desc">Al completar 2ª Misión</span>
+          <span class="event-btn-desc">Al completar la 2ª Misión</span>
         </button>
 
         <button id="btnEventCrisis" class="btn-event-trigger purple">
           <span class="event-btn-icon">📰</span>
           <span class="event-btn-label">Crisis Inesperada</span>
-          <span class="event-btn-desc">Giro de guión aleatorio</span>
+          <span class="event-btn-desc">Giro de guión sorpresivo</span>
         </button>
       </div>
     </div>
+
+    <!-- TRACKERS DE MESA COMENTADOS A PETICIÓN DEL USUARIO (Se llevan físicamente con tokens oficiales en la mesa)
+    <div class="trackers-grid">
+      <div class="tracker-card danger heroic">
+        <span class="tracker-title">❤️ Vida Restante del Villano</span>
+        <div class="tracker-value-row">
+          <button id="btnDamageVillainMinus" class="tracker-btn">−</button>
+          <div style="display:flex;align-items:baseline;gap:4px;">
+            <span id="trackerVillainHp" class="tracker-number">12</span>
+            <span id="trackerVillainMaxHp">/ 12 PS</span>
+          </div>
+          <button id="btnDamageVillainPlus" class="tracker-btn">+</button>
+        </div>
+      </div>
+    </div>
+    -->
 
     <!-- Botones de Resolución de la Partida -->
     <div class="match-action-bar">
