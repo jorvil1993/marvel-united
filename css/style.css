@@ -580,28 +580,70 @@ body {
 }
 
 .location-mini-card {
-  flex: 0 0 120px;
+  flex: 0 0 135px;
   background: var(--bg-card);
   border: 1px solid var(--bg-card-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
   text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.location-mini-card img {
+.location-mini-card.has-start {
+  border-color: var(--comic-yellow);
+  box-shadow: 0 0 8px rgba(246, 201, 14, 0.25);
+}
+
+.loc-img-wrap {
+  position: relative;
   width: 100%;
-  height: 70px;
+  height: 75px;
+}
+
+.loc-img-wrap img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.location-mini-card p {
+.loc-badges-row {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.loc-badge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  border-radius: 3px;
+  padding: 1px 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.loc-badge.villain { background: var(--marvel-red); color: #fff; }
+.loc-badge.hero1 { background: #1d4ed8; color: #fff; }
+.loc-badge.hero2 { background: #be185d; color: #fff; }
+.loc-badge.hero3 { background: #7e22ce; color: #fff; }
+
+.location-mini-card .loc-name {
   font-size: 0.68rem;
   font-weight: 700;
-  padding: 4px 2px;
+  padding: 5px 3px;
   color: var(--text-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background: var(--bg-card);
 }
 
 /* Match Resolution Buttons */

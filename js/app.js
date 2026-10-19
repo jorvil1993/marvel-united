@@ -362,15 +362,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // Special Rules
     document.getElementById('matchSpecialRules').textContent = chapter.specialRules;
 
-    // Locations Strip
+    // Tactical Deployment Card (Dónde Inicia Cada Uno)
+    const depCard = document.getElementById('matchDeploymentCard');
+    if (depCard && chapter.deployment) {
+      const dep = chapter.deployment;
+      const h1 = CAMPAIGN_HEROES[chapter.assignedHeroSlot1] || { name: 'Jorge' };
+      const h2 = CAMPAIGN_HEROES[chapter.assignedHeroSlot2] || { name: 'Esposa' };
+      const h3 = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
+
+      depCard.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;border-bottom:1px solid #334155;padding-bottom:6px;">
+          <span style="font-size:0.75rem;text-transform:uppercase;color:var(--comic-yellow);font-weight:800;letter-spacing:0.5px;">📍 Despliegue Táctico en Mesa (Ubicaciones Iniciales):</span>
+          <span class="badge badge-yellow">6 Ubicaciones</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:0.75rem;color:#cbd5e1;">
+          <div style="background:#1e1e38;padding:6px 8px;border-radius:6px;border-left:3px solid var(--marvel-red);">
+            <strong style="color:#f87171;">😈 ${villain.name}:</strong> Inicia en <strong style="color:#fff;">${dep.villain.location}</strong>.
+            <span style="display:block;font-size:0.7rem;color:#94a3b8;margin-top:2px;">${dep.villain.reason}</span>
+          </div>
+          <div style="background:#131c2e;padding:6px 8px;border-radius:6px;border-left:3px solid #3b82f6;">
+            <strong style="color:#93c5fd;">👤 Jorge (${h1.name}):</strong> Inicia en <strong style="color:#fff;">${dep.hero1.location}</strong>.
+            <span style="display:block;font-size:0.7rem;color:#94a3b8;margin-top:2px;">${dep.hero1.reason}</span>
+          </div>
+          <div style="background:#241624;padding:6px 8px;border-radius:6px;border-left:3px solid #ec4899;">
+            <strong style="color:#fbcfe8;">🌸 Esposa (${h2.name}):</strong> Inicia en <strong style="color:#fff;">${dep.hero2.location}</strong>.
+            <span style="display:block;font-size:0.7rem;color:#94a3b8;margin-top:2px;">${dep.hero2.reason}</span>
+          </div>
+          ${dep.hero3 && h3 ? `
+          <div style="background:#1f1936;padding:6px 8px;border-radius:6px;border-left:3px solid #a855f7;">
+            <strong style="color:#c4b5fd;">⭐ Apoyo (${h3.name}, si juega):</strong> Inicia en <strong style="color:#fff;">${dep.hero3.location}</strong>.
+            <span style="display:block;font-size:0.7rem;color:#94a3b8;margin-top:2px;">${dep.hero3.reason}</span>
+          </div>` : ''}
+        </div>
+      `;
+      depCard.style.display = 'block';
+    } else if (depCard) {
+      depCard.style.display = 'none';
+    }
+
+    // Locations Strip con Badges de Inicio
     const locationsStrip = document.getElementById('matchLocationsStrip');
     locationsStrip.innerHTML = '';
     chapter.locations.forEach(loc => {
+      let badgesHtml = '';
+      if (loc.startVillain) badgesHtml += `<span class="loc-badge villain">😈 Inicia Villano</span>`;
+      if (loc.startHero1) badgesHtml += `<span class="loc-badge hero1">👤 Inicia Jorge</span>`;
+      if (loc.startHero2) badgesHtml += `<span class="loc-badge hero2">🌸 Inicia Esposa</span>`;
+      if (loc.startHero3) badgesHtml += `<span class="loc-badge hero3">⭐ Inicia Apoyo</span>`;
+
+      const hasStart = loc.startVillain || loc.startHero1 || loc.startHero2 || loc.startHero3;
       const locCard = document.createElement('div');
-      locCard.className = 'location-mini-card';
+      locCard.className = `location-mini-card ${hasStart ? 'has-start' : ''}`;
       locCard.innerHTML = `
-        <img src="${loc.img}" alt="${loc.name}">
-        <p>${loc.name}</p>
+        <div class="loc-img-wrap">
+          <img src="${loc.img}" alt="${loc.name}">
+          ${badgesHtml ? `<div class="loc-badges-row">${badgesHtml}</div>` : ''}
+        </div>
+        <p class="loc-name">${loc.name}</p>
       `;
       locationsStrip.appendChild(locCard);
     });
