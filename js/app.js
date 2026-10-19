@@ -95,6 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = `node-card ${statusClass}`;
 
       const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
+      const hero1 = CAMPAIGN_HEROES[chapter.assignedHeroSlot1] || CAMPAIGN_HEROES['cyclops'];
+      const hero2 = CAMPAIGN_HEROES[chapter.assignedHeroSlot2] || CAMPAIGN_HEROES['miles_morales'];
+      const hero3 = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
 
       card.innerHTML = `
         <div class="node-badge">${isWin ? '✓' : isLoss ? '✕' : chapter.id}</div>
@@ -103,6 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="node-villain-tag">😈 ${villain.name || 'Jefe'}</span>
         </div>
         <h3 class="node-title">${chapter.title}</h3>
+        <div style="font-size:0.75rem;color:var(--comic-yellow);font-weight:bold;margin:4px 0 6px 0;line-height:1.2;">
+          👥 <strong>Héroes Asignados:</strong> <span style="color:#fff;">${hero1.name} & ${hero2.name}</span>
+          ${hero3 ? `<span style="font-size:0.68rem;color:#c4b5fd;display:block;">⭐ 3er Héroe (José / Apoyo): ${hero3.name}</span>` : ''}
+        </div>
         <p class="node-summary">${chapter.synopsis.slice(0, 115)}...</p>
         <div class="node-footer">
           <span>${isWin ? '<strong style="color:var(--success-green)">✓ VICTORIA REGISTRADA</strong>' : isLoss ? '<strong style="color:var(--marvel-red)">✕ DERROTA (SUPERADA)</strong>' : isCurrent ? '<strong style="color:var(--comic-yellow)">▶ CAPÍTULO ACTIVO</strong>' : '🔒 Bloqueado'}</span>
@@ -128,6 +135,27 @@ document.addEventListener('DOMContentLoaded', () => {
     activeMatch.chapterId = chapterId;
     const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === chapterId) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
+
+    // Asignación automática y obligatoria de la patrulla del capítulo
+    if (chapter.assignedHeroSlot1) {
+      activeMatch.heroSlot1 = chapter.assignedHeroSlot1;
+      if (!campaignStorage.state.unlockedHeroes.includes(chapter.assignedHeroSlot1)) {
+        campaignStorage.state.unlockedHeroes.push(chapter.assignedHeroSlot1);
+      }
+    }
+    if (chapter.assignedHeroSlot2) {
+      activeMatch.heroSlot2 = chapter.assignedHeroSlot2;
+      if (!campaignStorage.state.unlockedHeroes.includes(chapter.assignedHeroSlot2)) {
+        campaignStorage.state.unlockedHeroes.push(chapter.assignedHeroSlot2);
+      }
+    }
+    if (chapter.assignedHeroSlot3 && !campaignStorage.state.unlockedHeroes.includes(chapter.assignedHeroSlot3)) {
+      campaignStorage.state.unlockedHeroes.push(chapter.assignedHeroSlot3);
+    }
+    if (activeMatch.heroSlot3) {
+      activeMatch.heroSlot3 = chapter.assignedHeroSlot3 || null;
+    }
+    campaignStorage.saveState();
 
     // Calcular HP del villano según héroes activos usando la ficha física oficial
     const numHeroes = activeMatch.getSelectedHeroes().length;
@@ -173,7 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('matchVillainSubtitle').textContent = villain.subtitle;
     document.getElementById('matchVillainAvatar').src = villain.avatar;
 
-    // Synopsis
+    // Synopsis & Comic Reference
+    const comicRefEl = document.getElementById('matchComicRefBadge');
+    if (comicRefEl) {
+      comicRefEl.innerHTML = chapter.comicReference ? `📖 <strong>Inspiración de Cómic:</strong> ${chapter.comicReference}` : '';
+      comicRefEl.style.display = chapter.comicReference ? 'block' : 'none';
+    }
     document.getElementById('matchSynopsis').textContent = chapter.synopsis;
 
     // Setup notes checklist
@@ -228,21 +261,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const slotLabels = {
       1: '👤 Jorge (J1)',
       2: '🌸 Esposa (J2)',
-      3: '⭐ 3er Héroe de Apoyo'
+      3: '⭐ 3er Héroe (José / Apoyo)'
     };
 
     if (titleEl) {
       titleEl.innerHTML = `Elegir Héroe: <span style="color:#fff;">${slotLabels[currentPickerSlot]}</span>`;
     }
 
+    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const squad = chapter.squadOptions || ['cyclops', 'miles_morales', 'black_cat', 'spider_man'];
+
     if (subtitleEl) {
       subtitleEl.innerHTML = `
-        <div style="display:flex;gap:6px;margin-bottom:10px;">
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
           <button id="pickerTabSlot1" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 1 ? '#3b82f6' : '#334155'};background:${currentPickerSlot === 1 ? '#1d4ed8' : '#1e293b'};color:#fff;">👤 Jorge</button>
           <button id="pickerTabSlot2" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 2 ? '#ec4899' : '#334155'};background:${currentPickerSlot === 2 ? '#be185d' : '#1e293b'};color:#fff;">🌸 Esposa</button>
           <button id="pickerTabSlot3" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 3 ? '#a855f7' : '#334155'};background:${currentPickerSlot === 3 ? '#7e22ce' : '#1e293b'};color:#fff;">⭐ Apoyo</button>
         </div>
-        <span style="font-size:0.75rem;color:var(--text-muted);display:block;">Toca cualquier héroe desbloqueado para asignarlo:</span>
+        <div style="font-size:0.72rem;color:var(--comic-yellow);font-weight:bold;margin-bottom:6px;">
+          ⭐ PATRULLA DE LA MISIÓN (${squad.length} OPCIONES RECOMENDADAS):
+        </div>
       `;
 
       document.getElementById('pickerTabSlot1')?.addEventListener('click', () => {
@@ -259,9 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    const unlocked = campaignStorage.state.unlockedHeroes;
-
-    unlocked.forEach(heroId => {
+    // 1. Mostrar únicamente las 4 opciones recomendadas de la misión
+    squad.forEach(heroId => {
       const hero = CAMPAIGN_HEROES[heroId];
       if (!hero) return;
 
@@ -275,15 +312,16 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (activeMatch.heroSlot3 === heroId) slotTag = '<span style="font-size:0.6rem;background:#7e22ce;color:#fff;padding:2px 6px;border-radius:4px;">Apoyo (J3)</span>';
 
       const card = document.createElement('div');
-      card.style.cssText = `background:${isCurrentInSlot ? '#1e293b' : '#111827'};border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#374151'};border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;cursor:pointer;`;
+      card.style.cssText = `background:${isCurrentInSlot ? '#1e293b' : '#111827'};border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#2563eb'};border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;cursor:pointer;position:relative;`;
       card.innerHTML = `
-        <img src="${hero.avatar}" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#4b5563'};">
+        <span style="position:absolute;top:4px;left:6px;font-size:0.6rem;color:var(--comic-yellow);font-weight:bold;">★ Misión</span>
+        <img src="${hero.avatar}" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#3b82f6'};margin-top:6px;">
         <div>
           <strong style="font-size:0.78rem;display:block;color:#fff;line-height:1.1;">${hero.name}</strong>
           <span style="font-size:0.65rem;color:var(--text-muted);display:block;">${hero.alterEgo}</span>
         </div>
         <div>${slotTag}</div>
-        ${isCurrentInSlot ? '<span style="font-size:0.65rem;color:var(--comic-yellow);font-weight:bold;">✓ En esta Ranura</span>' : ''}
+        ${isCurrentInSlot ? '<span style="font-size:0.65rem;color:var(--comic-yellow);font-weight:bold;">✓ Asignado</span>' : ''}
       `;
 
       card.addEventListener('click', () => {
@@ -292,6 +330,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
       grid.appendChild(card);
     });
+
+    // 2. Opción para expandir otros héroes si el jugador lo desea
+    const otherHeroes = campaignStorage.state.unlockedHeroes.filter(h => !squad.includes(h));
+    if (otherHeroes.length > 0) {
+      const moreBtn = document.createElement('button');
+      moreBtn.style.cssText = 'grid-column: 1 / -1;background:#0f172a;border:1px dashed #475569;color:#94a3b8;padding:8px;border-radius:6px;font-size:0.72rem;cursor:pointer;margin-top:6px;';
+      moreBtn.innerHTML = `<span>+ Ver otros ${otherHeroes.length} héroes desbloqueados</span>`;
+      
+      const extraContainer = document.createElement('div');
+      extraContainer.style.cssText = 'grid-column: 1 / -1;display:none;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;';
+      
+      otherHeroes.forEach(heroId => {
+        const hero = CAMPAIGN_HEROES[heroId];
+        if (!hero) return;
+        const isCurrentInSlot = (currentPickerSlot === 1 && activeMatch.heroSlot1 === heroId) ||
+                                (currentPickerSlot === 2 && activeMatch.heroSlot2 === heroId) ||
+                                (currentPickerSlot === 3 && activeMatch.heroSlot3 === heroId);
+        const card = document.createElement('div');
+        card.style.cssText = `background:#111827;border:1px solid #374151;border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;cursor:pointer;`;
+        card.innerHTML = `
+          <img src="${hero.avatar}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;">
+          <strong style="font-size:0.75rem;color:#fff;">${hero.name}</strong>
+        `;
+        card.addEventListener('click', () => {
+          assignHeroToCurrentSlot(heroId);
+        });
+        extraContainer.appendChild(card);
+      });
+
+      moreBtn.addEventListener('click', () => {
+        if (extraContainer.style.display === 'none') {
+          extraContainer.style.display = 'grid';
+          moreBtn.textContent = '▲ Ocultar otros héroes';
+        } else {
+          extraContainer.style.display = 'none';
+          moreBtn.innerHTML = `<span>+ Ver otros ${otherHeroes.length} héroes desbloqueados</span>`;
+        }
+      });
+
+      grid.appendChild(moreBtn);
+      grid.appendChild(extraContainer);
+    }
   }
 
   function assignHeroToCurrentSlot(heroId) {
@@ -410,11 +490,18 @@ document.addEventListener('DOMContentLoaded', () => {
         modeBadge.className = 'badge badge-blue';
       }
 
+      const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+      const hero3Data = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
+      const hero3Label = hero3Data ? hero3Data.name : 'Apoyo';
+
       const addBtn = document.createElement('button');
       addBtn.style.cssText = 'width:100%;background:#182030;border:1px dashed #64748b;color:#94a3b8;border-radius:8px;padding:8px;font-size:0.75rem;cursor:pointer;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:6px;';
-      addBtn.innerHTML = '<span>➕</span> Añadir 3er Héroe de Apoyo (Opcional)';
+      addBtn.innerHTML = `<span>➕</span> Activar 3er Héroe de la Misión: <strong style="color:#c4b5fd;">${hero3Label}</strong>`;
       addBtn.addEventListener('click', () => {
-        openSlotPicker(3);
+        activeMatch.heroSlot3 = chapter.assignedHeroSlot3 || 'black_cat';
+        soundFX.playUnlock();
+        recalculateVillainHp();
+        renderMatchHeroTeam();
       });
       slot3Container.appendChild(addBtn);
     }

@@ -347,7 +347,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO I: LA SOMBRA EN MANHATTAN',
     title: 'Capítulo 1: Asalto a Medianoche en Oscorp',
     villainId: 'rhino',
-    synopsis: 'Una violenta explosión sacude los laboratorios de Oscorp en Midtown. Alguien ha contratado a Rhino para reventar las cámaras blindadas criogénicas donde Norman Osborn almacenaba bio-muestras mutantes y tejido simbiótico. Spider-Man acude al lugar y se topa con Wolverine y Cíclope, quienes investigaban el secuestro de jóvenes mutantes. ¡Deben frenar al bruto antes de que Manhattan sea contaminada!',
+    assignedHeroSlot1: 'cyclops',
+    assignedHeroSlot2: 'miles_morales',
+    assignedHeroSlot3: 'black_cat',
+    squadOptions: ['cyclops', 'miles_morales', 'black_cat', 'spider_man'],
+    comicReference: 'Champions Vol. 2 (Mark Waid) & Ultimate Spider-Man',
+    synopsis: 'Miles Morales patrullaba Brooklyn investigando robos de generadores de energía cuando detectó un apagón repentino en los laboratorios de Oscorp en Midtown. Al infiltrarse por la ventilación, se topa de frente con Scott Summers (Cíclope), quien rastreaba una fuga de radiación mutante detectada por Cerebro. Antes de poder coordinarse, las compuertas de titanio revientan en pedazos: ¡Rhino ha sido contratado para saquear las cámaras criogénicas donde Norman Osborn almacena bio-muestras mutantes y tejido simbiótico! Cíclope y Miles deberán unir la bioelectricidad del rayo veneno con los rayos ópticos de conmoción para frenar al bruto antes de que Manhattan sea contaminada. Y en las vigas del techo, la Gata Negra (Felicia Hardy) vigila lista para apoyar.',
     locations: [
       { name: 'Oscorp Tower', img: './assets/locations/oscorp.jpg' },
       { name: 'Midtown High School', img: './assets/locations/midtown_high.jpg' },
@@ -357,9 +362,9 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Sims Tower', img: './assets/locations/sims_tower.jpg' }
     ],
     setupNotes: [
-      'Coloca al Villano Rhino en Oscorp Tower.',
+      'HÉROES ASIGNADOS: Cíclope (Jorge) y Miles Morales (Esposa). 3er Héroe (José/Apoyo): Gata Negra.',
+      'Coloca al Villano Rhino en Oscorp Tower (5 PS para 2 héroes / 8 PS para 3 héroes).',
       'Distribuye 1 Matón y 1 Civil en cada ubicación.',
-      'Usa las cartas de amenaza de Rhino con normalidad.',
       'REGLA DE ORO DE CAMPAÑA: Si un evento pide colocar un Matón o Civil, colócalo en una casilla con espacio libre. NUNCA provoca Desbordamiento (Overflow).'
     ],
     specialRules: 'Muros de Refuerzo: La estructura de Oscorp tiembla. Cada vez que Rhino active BAM, coloca 1 Matón en su ubicación SOLO SI hay espacio libre (sin Desbordamiento).',
@@ -368,15 +373,15 @@ const CAMPAIGN_CHAPTERS = [
         title: '¡ALARMA DE CONTENCIÓN!',
         type: 'Evento de Inicio',
         badge: 'Comienzo Táctico',
-        text: 'Los héroes sorprenden a Rhino al ingresar a la bóveda: <strong>Cada héroe roba 1 carta adicional al inicio de su primer turno.</strong> Rhino derriba una compuerta: coloca 1 Matón en Oscorp Tower (solo si hay espacio libre; sin Desbordamiento).',
+        text: 'Cíclope y Miles sorprenden a Rhino al ingresar a la bóveda: <strong>Cada héroe roba 1 carta adicional al inicio de su primer turno.</strong> Rhino derriba una compuerta: coloca 1 Matón en Oscorp Tower (solo si hay espacio libre; sin Desbordamiento).',
         flavor: '"¡Fuera de mi camino, bichitos! ¡Esta noche me pagan el triple por romper cosas!" — Rhino'
       },
       underPressure: {
         title: '¡ABRIENDO BRECHA HEROICA!',
         type: 'Bajo Presión (1ª Misión Completa)',
         badge: 'Avance Heroico',
-        text: '¡Los héroes dominan la primera fase de la batalla! <strong>Cada Héroe gana inmediatamente 1 Ficha de Acción de su elección (Movimiento, Ataque o Heroica).</strong> Rhino ruge desorientado: avanza 1 espacio en sentido horario.',
-        flavor: 'Las redes y los golpes coordinados hacen retroceder la masa blindada de Rhino.'
+        text: '¡La coordinación entre el mutante y la araña da sus frutos! <strong>Cada Héroe gana inmediatamente 1 Ficha de Acción de su elección (Movimiento, Ataque o Heroica).</strong> Rhino ruge desorientado: avanza 1 espacio en sentido horario.',
+        flavor: 'Las redes bioeléctricas y los rayos de precisión hacen retroceder la masa blindada de Rhino.'
       },
       accelerated: {
         title: '¡GOLPE COMBINADO DE PRECISIÓN!',
@@ -388,11 +393,11 @@ const CAMPAIGN_CHAPTERS = [
     },
     winOutcome: {
       title: '¡VICTORIA: LA BÓVEDA ASEGURADA!',
-      epilogue: 'Con un trabajo en equipo impecable, lográis derribar a Rhino contra el suelo reforzado. Entre las sombras de la bóveda aparece Gata Negra (Felicia Hardy) con los discos duros de Osborn en la mano: "Buen golpe, chicos. Estos archivos contienen datos que querrán ver...". Felicia se une oficialmente a su equipo.',
+      epilogue: 'Con un trabajo en equipo impecable, Cíclope y Miles logran derribar a Rhino contra el suelo reforzado. Entre las sombras de la bóveda aparece Gata Negra (Felicia Hardy) con los discos duros de Osborn en la mano: "Buen golpe, chicos. Estos archivos contienen datos que querrán ver...". Felicia se une oficialmente a la patrulla.',
       unlockedHeroes: ['black_cat'],
       unlockedPerks: ['perk_oscorp_intel'],
       nextChapter: 2,
-      bonusText: 'Gata Negra desbloqueada. Ventaja "Datos Secretos de Oscorp" añadida a su arsenal.'
+      bonusText: 'Gata Negra desbloqueada. Ventaja "Datos Secretos de Oscorp" añadida a tu arsenal.'
     },
     lossOutcome: {
       title: 'RETIRADA TÁCTICA: EL RASTRO DE SANGRE',
@@ -408,7 +413,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO I: LA SOMBRA EN MANHATTAN',
     title: 'Capítulo 2: Cacería Sangrienta en Central Park',
     villainId: 'sabretooth',
-    synopsis: 'Las pistas del asalto llevan a los senderos boscosos de Central Park. Victor Creed (Dientes de Sable) ha sido enviado para emboscar a los mutantes y a los arácnidos en plena noche. Creed ha olido a Logan a kilómetros de distancia y se divierte asustando a los civiles en los senderos. Mientras tanto, Hank McCoy (Bestia) intenta rescatar las muestras en el laboratorio móvil.',
+    assignedHeroSlot1: 'wolverine',
+    assignedHeroSlot2: 'spider_man',
+    assignedHeroSlot3: 'beast',
+    squadOptions: ['wolverine', 'spider_man', 'beast', 'black_cat'],
+    comicReference: 'Astonishing Spider-Man & Wolverine (Jason Aaron)',
+    synopsis: 'El rastro químico del asalto a Oscorp conduce a los senderos boscosos de Central Park, cubiertos por una densa niebla nocturna. Victor Creed (Dientes de Sable) ha sido soltado en la oscuridad para cazar a los supervivientes y aterrorizar a los civiles. Logan (Wolverine) capta el olor a sangre de su viejo enemigo y llama de urgencia a su compañero Peter Parker (Spider-Man). Mientras Logan se lanza con furia salvaje por los senderos, Peter teje redes gigantescas entre los árboles para proteger y evacuar a las familias acorraladas, asistidos desde el laboratorio móvil por Hank McCoy (Bestia).',
     locations: [
       { name: 'Central Park', img: './assets/locations/central_park.jpg' },
       { name: 'Daily Bugle', img: './assets/locations/daily_bugle.jpg' },
@@ -418,7 +428,8 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Oscorp Tower', img: './assets/locations/oscorp.jpg' }
     ],
     setupNotes: [
-      'Coloca a Dientes de Sable en Central Park.',
+      'HÉROES ASIGNADOS: Wolverine (Jorge) y Spider-Man (Esposa). 3er Héroe (José/Apoyo): Bestia.',
+      'Coloca a Dientes de Sable en Central Park (5 PS para 2 héroes / 7 PS para 3 héroes).',
       'Coloca 1 Civil en cada ubicación con menos de 2 civiles.',
       'Si perdiste el Cap. 1, coloca 1 Matón adicional en Central Park (solo si hay espacio libre).'
     ],
@@ -468,7 +479,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO I: LA SOMBRA EN MANHATTAN',
     title: 'Capítulo 3: Sombras y Mentiras en el Daily Bugle',
     villainId: 'mystique_villain',
-    synopsis: '¡Titulares de primera plana acusan a Spider-Man y a los X-Men de terroristas mutantes en Nueva York! Detrás de la difamación se esconde Raven Darkhölme (Mística), operando como infiltrada de la Hermandad. Mística utiliza a los fotógrafos y periodistas del Daily Bugle como escudos para culpar a los héroes.',
+    assignedHeroSlot1: 'ghost_spider',
+    assignedHeroSlot2: 'jean_grey',
+    assignedHeroSlot3: 'spider_woman',
+    squadOptions: ['ghost_spider', 'jean_grey', 'spider_woman', 'spider_man'],
+    comicReference: 'All-New X-Men & Spider-Gwen',
+    synopsis: '¡El Daily Bugle estalla en titulares acusando a los héroes de provocar el terrorismo callejero en Manhattan! Raven Darkhölme (Mística) se ha infiltrado en el periódico manipulando a la prensa y usando a los reporteros como escudos humanos. Gwen Stacy (Ghost-Spider), sospechando un montaje fotográfico, acude a los tejados del Bugle, donde converge con Jean Grey, quien detecta intensas firmas psíquicas de engaño en la sala de redacción. Juntas forman un dúo de acrobacias arácnidas y rastreo telepático para desenmascarar a la impostora frente a las cámaras en vivo, con Jessica Drew (Spider-Woman) cubriendo las salidas.',
     locations: [
       { name: 'Daily Bugle', img: './assets/locations/daily_bugle.jpg' },
       { name: 'Midtown High School', img: './assets/locations/midtown_high.jpg' },
@@ -478,7 +494,8 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Xavier Institute', img: './assets/locations/xavier_institute.jpg' }
     ],
     setupNotes: [
-      'Coloca a Mística en el Daily Bugle.',
+      'HÉROES ASIGNADOS: Ghost-Spider (Jorge) y Jean Grey (Esposa). 3er Héroe (José/Apoyo): Spider-Woman.',
+      'Coloca a Mística en el Daily Bugle (4 PS para 2 héroes / 6 PS para 3 héroes).',
       'REGLA DE FICHAS FÍSICAS: Coloca 1 Ficha de Periodista en el Daily Bugle.',
       'Ten listas las Fichas de Exposición (celulares) en la mesa.',
       'Solo se gana 1 ficha de Exposición cuando un héroe ataca en la ubicación donde se encuentre la ficha de Periodista.'
@@ -496,8 +513,8 @@ const CAMPAIGN_CHAPTERS = [
         title: '¡TESTIGOS A FAVOR DE LOS HÉROES!',
         type: 'Bajo Presión (1ª Misión Completa)',
         badge: 'La Verdad Sale a la Luz',
-        text: '¡Los civiles defienden a los héroes frente a las cámaras! <strong>Descarta 1 Ficha de Exposición que tengan acumulada y cada héroe gana 1 Ficha Comodín.</strong> Mística se desconcierta y no puede moverse este turno.',
-        flavor: '"¡Ellos nos salvaron la vida, dejen de mentir en las noticias!"'
+        text: '¡Los civiles defienden a las heroínas frente a las cámaras! <strong>Descarta 1 Ficha de Exposición que tengan acumulada y cada héroe gana 1 Ficha Comodín.</strong> Mística se desconcierta y no puede moverse este turno.',
+        flavor: '"¡Ellas nos salvaron la vida, dejen de mentir en las noticias!"'
       },
       accelerated: {
         title: '¡FOTOGRAFÍA INCRIMINATORIA!',
@@ -509,11 +526,11 @@ const CAMPAIGN_CHAPTERS = [
     },
     winOutcome: {
       title: '¡VICTORIA: LA FARSA AL DESCUBIERTO!',
-      epilogue: 'Mística es desenmascarada frente a las cámaras de televisión en vivo. Gwen Stacy (Ghost-Spider), quien patrullaba los tejados cercanos, desciende con una ráfaga de telaraña sónica que desactiva los transmisores de escape. ¡Ghost-Spider se incorpora de lleno al equipo!',
-      unlockedHeroes: ['ghost_spider'],
+      epilogue: 'Mística es desenmascarada frente a las cámaras de televisión en vivo gracias a los reflejos de Gwen y la telepatía de Jean. Ghost-Spider y Jean Grey aseguran las pruebas del complot. ¡Ghost-Spider y Jean Grey se incorporan con honores a la alianza!',
+      unlockedHeroes: ['ghost_spider', 'jean_grey'],
       unlockedPerks: ['perk_gwen_lens'],
       nextChapter: 4,
-      bonusText: 'Ghost-Spider desbloqueada. Ventaja "Cámara Antiespía de Gwen" añadida a tu arsenal.'
+      bonusText: 'Ghost-Spider y Jean Grey desbloqueadas. Ventaja "Cámara Antiespía de Gwen" añadida a tu arsenal.'
     },
     lossOutcome: {
       title: 'RETIRADA: LA CIUDAD EN SOSPECHA',
@@ -529,7 +546,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO II: EL ALZAMIENTO DE LA HERMANDAD',
     title: 'Capítulo 4: Terror Ardiente desde las Alturas',
     villainId: 'green_goblin',
-    synopsis: 'Norman Osborn finalmente se calza la máscara del Duende Verde. Sobrevolando Manhattan en su planeador a reacción, desata un bombardeo incendiario sobre puentes y rascacielos. Osborn revela que estaba financiando a la Hermandad para distraer a los X-Men mientras él perfeccionaba una cepa del suero Goblin fusionada con parásitos extraterrestres.',
+    assignedHeroSlot1: 'storm',
+    assignedHeroSlot2: 'spider_woman',
+    assignedHeroSlot3: 'miles_morales',
+    squadOptions: ['storm', 'spider_woman', 'miles_morales', 'ghost_spider'],
+    comicReference: 'Secret Invasion & A+X (Avengers + X-Men)',
+    synopsis: 'Norman Osborn finalmente se calza la máscara del Duende Verde. Sobrevolando Manhattan en su planeador a reacción, desata un bombardeo incendiario sobre puentes y rascacielos. Para neutralizar una amenaza aérea devastadora, la alianza despliega a sus especialistas del cielo: Ororo Munroe (Tormenta) desata vientos huracanados y relámpagos para dispersar el fuego, mientras Jessica Drew (Spider-Woman) se lanza en vuelo rasante acrobático para abordar el planeador del Duende en pleno aire, con Miles Morales asegurando los cables colgantes del puente.',
     locations: [
       { name: 'Brooklyn Bridge', img: './assets/locations/brooklyn_bridge.jpg' },
       { name: 'Daily Bugle', img: './assets/locations/daily_bugle.jpg' },
@@ -539,7 +561,8 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Midtown High School', img: './assets/locations/midtown_high.jpg' }
     ],
     setupNotes: [
-      'Coloca al Duende Verde en el Brooklyn Bridge.',
+      'HÉROES ASIGNADOS: Tormenta (Jorge) y Spider-Woman (Esposa). 3er Héroe (José/Apoyo): Miles Morales.',
+      'Coloca al Duende Verde en el Brooklyn Bridge (5 PS para 2 héroes / 7 PS para 3 héroes).',
       'Coloca 1 Civil y 1 Matón en cada ubicación.',
       'Si perdiste el Cap. 3, coloca 1 Matón extra en Brooklyn Bridge (solo con espacio libre).'
     ],
@@ -549,31 +572,31 @@ const CAMPAIGN_CHAPTERS = [
         title: '¡REDES DE RESCATE EN EL PUENTE!',
         type: 'Evento de Inicio',
         badge: 'Despliegue Rápido',
-        text: 'Los héroes despliegan redes gigantes antes del primer bombardeo: <strong>Cada héroe rescata 1 Civil inmediatamente en su ubicación inicial.</strong>',
+        text: 'Tormenta y Spider-Woman despliegan redes gigantes antes del primer bombardeo: <strong>Cada héroe rescata 1 Civil inmediatamente en su ubicación inicial.</strong>',
         flavor: '"¡JAJAJAJA! ¡Miren cómo bailan mis pequeñas arañitas bajo el fuego de mis calabazas!" — Duende Verde'
       },
       underPressure: {
-        title: '¡ESCUDO TELEQUINÉTICO PROTECTOR!',
+        title: '¡CORRIENTE ASCENDENTE DE TORMENTA!',
         type: 'Bajo Presión (1ª Misión Completa)',
-        badge: 'Poder Psiónico',
-        text: '¡Jean Grey proyecta una barrera mental! <strong>Ningún Civil o Héroe puede sufrir daño por efectos de área durante la siguiente ronda. Cada héroe roba 1 carta.</strong>',
-        flavor: 'Una cúpula rosada de energía psiónica desvía la metralla de las bombas calabaza.'
+        badge: 'Poder Elemental',
+        text: '¡Tormenta desvía los proyectiles hacia el río! <strong>Ningún Civil o Héroe puede sufrir daño por efectos de área durante la siguiente ronda. Cada héroe roba 1 carta.</strong>',
+        flavor: 'Vientos tempestuosos apagan las llamas de las calabazas explosivas.'
       },
       accelerated: {
         title: '¡PROPULSOR DEL PLANEADOR AVERIADO!',
         type: 'Acelerado (2ª Misión Completa)',
         badge: 'Ataque Certero',
-        text: '¡Un disparo certero inutiliza el motor del planeador! <strong>El Duende Verde recibe 2 de daño directo de impacto y queda inmovilizado en su ubicación hasta el final de la ronda.</strong>',
+        text: '¡Spider-Woman descarga un rayo bioeléctrico que inutiliza el planeador! <strong>El Duende Verde recibe 2 de daño directo y queda inmovilizado en su ubicación hasta el final de la ronda.</strong>',
         flavor: 'El planeador humea y pierde altura dando giros descontrolados.'
       }
     },
     winOutcome: {
       title: '¡VICTORIA: EL DUENDE DERRIBADO!',
-      epilogue: 'Cíclope descarga un rayo óptico colosal que derriba el planeador del Duende contra las aguas del río. Jean Grey desciende flotando tras salvar varios autobuses escolares con su telequinesis. Con su mente despierta, Jean se une oficialmente a su equipo.',
-      unlockedHeroes: ['jean_grey'],
+      epilogue: 'Tormenta descarga un relámpago colosal que estrella el planeador del Duende contra las aguas del río. Spider-Woman desciende planeando tras salvar los vehículos del puente. Con la amenaza neutralizada, ¡Tormenta y Spider-Woman consolidan la fuerza aérea del equipo!',
+      unlockedHeroes: ['storm', 'spider_woman'],
       unlockedPerks: ['perk_telekinetic_shield'],
       nextChapter: 5,
-      bonusText: 'Jean Grey desbloqueada. Ventaja "Escudo Psiónico de Jean" lista para equiparse.'
+      bonusText: 'Tormenta y Spider-Woman desbloqueadas. Ventaja "Escudo Psiónico de Jean" lista para equiparse.'
     },
     lossOutcome: {
       title: 'RETIRADA: NOCHE DE HUMO',
@@ -589,7 +612,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO II: EL ALZAMIENTO DE LA HERMANDAD',
     title: 'Capítulo 5: El Asedio a la Mansión X',
     villainId: 'juggernaut',
-    synopsis: '¡Cain Marko (Juggernaut) marcha imparable por los jardines del Instituto Xavier en Westchester! Su objetivo es demoler la escuela y secuestrar la tecnología de Cerebro para Osborn. Ni los muros de titanio ni los campos de fuerza pueden detener su masa mística. ¡La Spider-Family y los X-Men deben formar una muralla infranqueable!',
+    assignedHeroSlot1: 'beast',
+    assignedHeroSlot2: 'spider_2099',
+    assignedHeroSlot3: 'cyclops',
+    squadOptions: ['beast', 'spider_2099', 'cyclops', 'wolverine'],
+    comicReference: 'Timestorm 2009/2099 & X-Men: Danger Room Sessions',
+    synopsis: '¡Alarma roja en el Instituto Xavier! Cain Marko (Juggernaut) avanza en línea recta demoliendo los muros de la Mansión X con el objetivo de secuestrar Cerebro. La fuerza bruta no basta para frenarlo. En ese instante crítico, Miguel O\'Hara (Spider-Man 2099) llega a través de un vórtice cronológico desde el futuro: la caída de Cerebro hoy desencadenaría el colapso del siglo XXI. Miguel une su intelecto con Hank McCoy (Bestia) para recalibrar los generadores de gravedad artificial de la Sala de Peligro y tenderle una trampa cinética al coloso, mientras Cíclope descarga ráfagas de conmoción para intentar desprender su casco místico.',
     locations: [
       { name: 'Xavier Institute', img: './assets/locations/xavier_institute.jpg' },
       { name: 'The Danger Room', img: './assets/locations/danger_room.jpg' },
@@ -599,7 +627,8 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Midtown High School', img: './assets/locations/midtown_high.jpg' }
     ],
     setupNotes: [
-      'Coloca a Juggernaut en los jardines exteriores de Xavier Institute.',
+      'HÉROES ASIGNADOS: Bestia (Jorge) y Spider-Man 2099 (Esposa). 3er Héroe (José/Apoyo): Cíclope.',
+      'Coloca a Juggernaut en Xavier Institute (8 PS fijo para 2, 3 o 4 héroes).',
       'Coloca 2 Civiles (estudiantes mutantes) en Xavier Institute y 1 en The Danger Room.',
       'Si perdiste el Cap. 4, coloca 1 ficha de Crisis en el Hangar Bay.'
     ],
@@ -616,24 +645,24 @@ const CAMPAIGN_CHAPTERS = [
         title: '¡GRAVEDAD ARTIFICIAL DE LA SALA DE PELIGRO!',
         type: 'Bajo Presión (1ª Misión Completa)',
         badge: 'Trampa Tecnológica',
-        text: '¡Activáis los campos de gravedad inversa de la escuela! <strong>Juggernaut queda completamente inmovilizado durante su siguiente turno de villano (no se mueve ni empuja héroes).</strong>',
+        text: '¡Bestia y Miguel activan los campos de gravedad inversa! <strong>Juggernaut queda completamente inmovilizado durante su siguiente turno de villano (no se mueve ni empuja héroes).</strong>',
         flavor: 'Campos de fuerza electromagnéticos clavan los pies gigantescos de Juggernaut al suelo.'
       },
       accelerated: {
         title: '¡CASCO MÍSTICO DESPRENDIDO!',
         type: 'Acelerado (2ª Misión Completa)',
         badge: 'Vulnerabilidad',
-        text: '¡Lográis desatornillar su casco blindado! <strong>Todos los ataques contra Juggernaut durante esta partida infligen +1 de daño adicional. Además, cada héroe roba 1 carta.</strong>',
+        text: '¡Las garras de 2099 y la fuerza de Bestia desprenden el casco! <strong>Todos los ataques contra Juggernaut durante esta partida infligen +1 de daño adicional. Además, cada héroe roba 1 carta.</strong>',
         flavor: 'Sin su casco protector de Cyttorak, Cain Marko queda vulnerable a los impactos.'
       }
     },
     winOutcome: {
       title: '¡VICTORIA: EL GIGANTE DERRUMBADO!',
-      epilogue: 'Combinando telarañas gigantes de amortiguación con rayos cinéticos de Cíclope, lográis derribar a Juggernaut. En ese instante, los cielos truenan: Tormenta (Storm) y Spider-Woman aterrizan en formación cerrada tras despejar el espacio aéreo del Hangar Blackbird. ¡Dos nuevas heroínas legendarias se suman a la alianza!',
-      unlockedHeroes: ['storm', 'spider_woman'],
+      epilogue: 'Combinando trampas de gravedad con las garras cibernéticas de 2099 y la agilidad de Bestia, lográis derribar a Juggernaut. Miguel O\'Hara confirma que la línea temporal de Cerebro ha sido preservada. ¡Spider-Man 2099 se suma oficialmente como activo estratégico!',
+      unlockedHeroes: ['spider_2099'],
       unlockedPerks: ['perk_blackbird_hanger'],
       nextChapter: 6,
-      bonusText: 'Tormenta y Spider-Woman desbloqueadas. Ventaja "Despliegue del Blackbird" añadida.'
+      bonusText: 'Spider-Man 2099 desbloqueado. Ventaja "Despliegue del Blackbird" añadida a tu arsenal.'
     },
     lossOutcome: {
       title: 'RETIRADA: EL ALA ESTE EN ESCOMBROS',
@@ -649,7 +678,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO II: EL ALZAMIENTO DE LA HERMANDAD',
     title: 'Capítulo 6: La Hora del Simbionte — ¿Monstruo o Aliado?',
     villainId: 'venom_villain',
-    synopsis: '¡Alerta máxima en las profundidades de Nueva York! Un ser negro y colosal con una araña blanca en el pecho devora patrullas armadas en los Túneles Morlock. Es Venom (Eddie Brock), quien enloquecido por la presencia de una cepa mutante sintética, cree que todos son sus enemigos. Sin embargo, Peter sabe que Eddie no es un asesino despiadado como Carnage. ¿Podréis hacerle entrar en razón antes de que el simbionte consuma su mente?',
+    assignedHeroSlot1: 'cyclops',
+    assignedHeroSlot2: 'spider_man',
+    assignedHeroSlot3: 'jean_grey',
+    squadOptions: ['cyclops', 'spider_man', 'jean_grey', 'storm'],
+    comicReference: 'Marvel Super Heroes Secret Wars (1984) & Spider-Man and the X-Men',
+    synopsis: 'En los túneles subterráneos de los Morlocks, una masa negra simbiótica devora patrullas y genera pánico. Peter Parker reconoce el patrón al instante: se trata de Venom (Eddie Brock), quien ha enloquecido por la presencia de una frecuencia mutante roja. Peter convence a Scott Summers (Cíclope) de no aniquilarlo, sino rescatar al hombre dentro del monstruo: Scott calcula los rebotes de sus rayos ópticos para generar calor extremo y aturdir al simbionte sin dañarlo, mientras Peter lo cerca con telaraña sónica y Jean Grey proyecta una sonda mental para devolverle la cordura a Eddie Brock.',
     locations: [
       { name: 'Morlock Tunnels', img: './assets/locations/morlock_tunnels.jpg' },
       { name: 'Midtown High School', img: './assets/locations/midtown_high.jpg' },
@@ -659,17 +693,18 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Brooklyn Bridge', img: './assets/locations/brooklyn_bridge.jpg' }
     ],
     setupNotes: [
-      'Coloca a Venom en los Morlock Tunnels.',
+      'HÉROES ASIGNADOS: Cíclope (Jorge) y Spider-Man (Esposa). 3er Héroe (José/Apoyo): Jean Grey.',
+      'Coloca a Venom en los Morlock Tunnels (5 PS para 2 héroes / 8 PS para 3 héroes).',
       'Coloca 1 Civil y 1 Matón en cada ubicación.',
       'CONDICIÓN DE REDENCIÓN: Si los héroes completan las 3 Misiones de Héroe antes de vencer a Venom, ¡Venom se une como HÉROE JUGABLE!'
     ],
-    specialRules: 'Frenesí de Zarcillos: Las vibraciones sónicas calman al simbionte.',
+    specialRules: 'Frenesí de Zarcillos: Las vibraciones sónicas y el calor calman al simbionte.',
     events: {
       initial: {
         title: '¡ECOS EN EL SUBTERRÁNEO!',
         type: 'Evento de Inicio',
         badge: 'Rastreo Subterráneo',
-        text: 'Peter y Logan reconocen la frecuencia del simbionte: <strong>Cada héroe recibe 1 Ficha Comodín al inicio de la partida.</strong>',
+        text: 'Peter y Scott reconocen la frecuencia del simbionte: <strong>Cada héroe recibe 1 Ficha Comodín al inicio de la partida.</strong>',
         flavor: '"¡TODOS SON CULPABLES! ¡NOSOTROS NOS ALIMENTAREMOS DE SUS MIEDOS!" — Venom'
       },
       underPressure: {
@@ -689,7 +724,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     winOutcome: {
       title: '¡VICTORIA ÉPICA: LA REDENCIÓN DE VENOM!',
-      epilogue: 'Con campanas sónicas y palabras firmes, Venom se detiene jadeante. Eddie Brock extiende su garra simbiótica: "¡Ese monstruo rojo de Kasady quiere extinguirlos a todos... lucharemos a su lado!". ¡VENOM SE UNE OFICIALMENTE COMO HÉROE JUGABLE!',
+      epilogue: 'Con campanas sónicas de Peter, rayos precisos de Cíclope y el apoyo telepático de Jean, Venom se detiene jadeante. Eddie Brock extiende su garra simbiótica: "¡Ese monstruo rojo de Kasady quiere extinguirlos a todos... lucharemos a su lado!". ¡VENOM SE UNE OFICIALMENTE COMO HÉROE JUGABLE!',
       unlockedHeroes: ['venom_hero'],
       unlockedPerks: ['perk_symbiote_tendril'],
       nextChapter: 7,
@@ -709,7 +744,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO III: GUERRA TOTAL Y CRISIS OMEGA',
     title: 'Capítulo 7: La Ley del Más Fuerte en Genosha',
     villainId: 'magneto_villain',
-    synopsis: 'Harto de las manipulaciones humanas y de los experimentos con sangre mutante, Erik Lehnsherr (Magneto) se atrinchera en la isla de Genosha. Magneto amenaza con lanzar un pulso electromagnético que inutilizará toda la tecnología humana si no le entregan a los culpables. Los héroes viajan a Genosha para frenar su cólera y convencerlo de que la plaga de Carnage extinguirá a humanos y mutantes por igual.',
+    assignedHeroSlot1: 'spider_2099',
+    assignedHeroSlot2: 'wolverine',
+    assignedHeroSlot3: 'ghost_spider',
+    squadOptions: ['spider_2099', 'wolverine', 'ghost_spider', 'jean_grey'],
+    comicReference: '2099: World of Tomorrow & Astonishing X-Men',
+    synopsis: 'La alianza viaja en el Blackbird hacia la isla de Genosha. Creyendo que el virus simbiótico es una bioarma humana para exterminar mutantes, Magneto prepara un pulso electromagnético masivo. Logan (Wolverine), arriesgando su vida ante los poderes de Magneto sobre el metal, se interna en la ciudadela junto a Spider-Man 2099 (Miguel O\'Hara), quien usa armamento de Alchemax no ferromagnético para esquivar los campos de fuerza. Juntos deben confrontar a Erik y mostrarle los archivos del futuro: si no se unen contra Carnage, ni humanos ni mutantes sobrevivirán.',
     locations: [
       { name: 'Genosha', img: './assets/locations/genosha.jpg' },
       { name: 'Xavier Institute', img: './assets/locations/xavier_institute.jpg' },
@@ -719,17 +759,18 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Hangar Bay', img: './assets/locations/hangar_bay.jpg' }
     ],
     setupNotes: [
-      'Coloca a Magneto en Genosha.',
+      'HÉROES ASIGNADOS: Spider-Man 2099 (Jorge) y Wolverine (Esposa). 3er Héroe (José/Apoyo): Ghost-Spider.',
+      'Coloca a Magneto en Genosha (5 PS para 2 héroes / 7 PS para 3 héroes).',
       'Coloca 1 Civil y 1 Matón en cada ubicación de la isla.',
-      'Si tienes a Tormenta o Cíclope en el equipo, facilitan el diálogo mutante.'
+      'Miguel O\'Hara cuenta con armamento polímero inmune al control magnético.'
     ],
-    specialRules: 'Muro Magnético: El metal obedece a Erik, pero los héroes pueden canalizar energías elementales para neutralizar sus campos.',
+    specialRules: 'Muro Magnético: El metal obedece a Erik, pero los héroes pueden canalizar energías tácticas para neutralizar sus campos.',
     events: {
       initial: {
         title: '¡TREGUA TÁCTICA PREVIA!',
         type: 'Evento de Inicio',
         badge: 'Respeto Mutuo',
-        text: 'Magneto escucha las advertencias iniciales de sus hermanos mutantes: <strong>Cada héroe recibe 1 Ficha Heroica al empezar.</strong>',
+        text: 'Magneto escucha las advertencias de Logan y la tecnología del futuro de Miguel: <strong>Cada héroe recibe 1 Ficha Heroica al empezar.</strong>',
         flavor: '"Charles siempre fue un soñador ingenuo. Demuéstrenme que tienen la fuerza para proteger nuestro futuro." — Magneto'
       },
       underPressure: {
@@ -737,7 +778,7 @@ const CAMPAIGN_CHAPTERS = [
         type: 'Bajo Presión (1ª Misión Completa)',
         badge: 'Canalización Heroica',
         text: '¡Los héroes estabilizan los campos de fuerza de la isla! <strong>Cada héroe recupera 1 carta de su pila de descarte a su mano. Magneto retira 1 amenaza de Genosha.</strong>',
-        flavor: 'Cíclope y Tormenta disipan las cargas estáticas demostrando control absoluto.'
+        flavor: 'Miguel y Logan demuestran convicción y control absoluto.'
       },
       accelerated: {
         title: '¡RECONOCIMIENTO DEL PELIGRO COMÚN!',
@@ -749,11 +790,11 @@ const CAMPAIGN_CHAPTERS = [
     },
     winOutcome: {
       title: '¡VICTORIA: EL PACTO DE GENOSHA!',
-      epilogue: 'Magneto desciende solemnemente: "Si esa criatura demente amenaza a mis hermanos mutantes, lucharé a vuestro lado bajo el estandarte de la supervivencia". En ese instante, un vórtice temporal se abre en el cielo: ¡Spider-Man 2099 (Miguel O\'Hara) aterriza desde el futuro, confirmando que la tregua de Magneto es la clave para salvar la línea temporal!',
-      unlockedHeroes: ['magneto_hero', 'spider_2099'],
+      epilogue: 'Magneto desciende solemnemente: "Si esa criatura demente amenaza a mis hermanos mutantes, lucharé a vuestro lado bajo el estandarte de la supervivencia". ¡MAGNETO SE SUMA OFICIALMENTE COMO HÉROE ALIADO PARA LA GUERRA FINAL!',
+      unlockedHeroes: ['magneto_hero'],
       unlockedPerks: ['perk_magnetic_pulse'],
       nextChapter: 8,
-      bonusText: '¡MAGNETO (MODO HÉROE) Y SPIDER-MAN 2099 DESBLOQUEADOS! Ventaja "Pulso Magnético Táctico" lista.'
+      bonusText: '¡MAGNETO (MODO HÉROE) DESBLOQUEADO! Ventaja "Pulso Magnético Táctico" lista para equiparse.'
     },
     lossOutcome: {
       title: 'RETIRADA: AISLAMIENTO MUTANTE',
@@ -769,7 +810,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO III: GUERRA TOTAL Y CRISIS OMEGA',
     title: 'Capítulo 8: Pacto en las Sombras e Infiltración Dimensional',
     villainId: 'mystique_villain',
-    synopsis: 'Antes de lanzar la ofensiva final, los héroes descubren que Mística ha estado jugando una partida a tres bandas para proteger a los suyos. Para comprobar su lealtad definitiva, pactan un encuentro en los muelles de Brooklyn, mientras un curioso cerdito arácnido con martillo de caricatura atraviesa un portal dimensional...',
+    assignedHeroSlot1: 'spider_ham',
+    assignedHeroSlot2: 'mystique_hero',
+    assignedHeroSlot3: 'black_cat',
+    squadOptions: ['spider_ham', 'mystique_hero', 'black_cat', 'spider_woman'],
+    comicReference: 'Spider-Verse (Dan Slott) & X-Men Black: Mystique',
+    synopsis: 'Para asaltar la fábrica clandestina en los muelles de Brooklyn donde se sintetizan las cepas rojas de Carnage, se requiere sigilo absoluto y desorientación. Mística, ahora aliada por la supervivencia mutante, utiliza sus habilidades de camuflaje para vulnerar las esclusas biométricas. A su lado, Peter Porker (Spider-Ham), recién llegado del multiverso animado, desafía la gravedad y la física con su martillo de caricatura, demoliendo las defensas de seguridad de la forma más cómica e impredecible posible, con la Gata Negra cubriendo la retaguardia.',
     locations: [
       { name: 'Brooklyn Bridge', img: './assets/locations/brooklyn_bridge.jpg' },
       { name: 'Daily Bugle', img: './assets/locations/daily_bugle.jpg' },
@@ -779,9 +825,10 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'Hangar Bay', img: './assets/locations/hangar_bay.jpg' }
     ],
     setupNotes: [
-      'Coloca a Mística en el Brooklyn Bridge.',
+      'HÉROES ASIGNADOS: Spider-Ham (Jorge) y Mística Heroína (Esposa). 3er Héroe (José/Apoyo): Gata Negra.',
+      'Coloca a Mística en el Brooklyn Bridge (4 PS para 2 héroes / 6 PS para 3 héroes).',
       'Coloca 1 Civil y 1 Matón en cada ubicación.',
-      'Misión de prueba y lealtad.'
+      'Misión de prueba y coordinación extrema.'
     ],
     specialRules: 'Prueba de Reflejos: Mística evalúa la coordinación de los héroes.',
     events: {
@@ -796,7 +843,7 @@ const CAMPAIGN_CHAPTERS = [
         title: '¡LLEGA EL HÉROE DE LOS DIBUJOS!',
         type: 'Bajo Presión (1ª Misión Completa)',
         badge: 'Toon Force al Rescate',
-        text: '¡PLOP! Spider-Ham cae de un portal con un martillo gigante de caricatura: <strong>Elimina a todos los matones en su ubicación inmediatamente (sin Desbordamiento) y cada héroe roba 1 carta.</strong>',
+        text: '¡PLOP! Spider-Ham saca un martillo gigante de su bolsillo: <strong>Elimina a todos los matones en su ubicación inmediatamente (sin Desbordamiento) y cada héroe roba 1 carta.</strong>',
         flavor: '"¡Tranquilos todos, el jamón de la justicia ha llegado para arreglar esto a martillazos!" — Spider-Ham'
       },
       accelerated: {
@@ -830,7 +877,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO III: GUERRA TOTAL Y CRISIS OMEGA',
     title: 'Capítulo 9: El Frente Unido en Manhattan',
     villainId: 'rhino',
-    synopsis: '¡La víspera del juicio final! Los remanentes de las fuerzas de choque intentan cercar Manhattan antes de que Carnage desate la infección total. Los héroes deben limpiar el perímetro exterior para permitir que la fuerza de asalto penetre en el epicentro de Central Park.',
+    assignedHeroSlot1: 'storm',
+    assignedHeroSlot2: 'venom_hero',
+    assignedHeroSlot3: 'miles_morales',
+    squadOptions: ['storm', 'venom_hero', 'miles_morales', 'cyclops'],
+    comicReference: 'Venomverse & X-Men Red',
+    synopsis: '¡El cerco a Manhattan! Rhino, sobrecargado con tejido simbiótico rojo que multiplica su blindaje, lidera el ataque para aislar el perímetro exterior antes del despertar de Carnage. Eddie Brock (Venom), redimido y enfurecido por la corrupción de su linaje, se lanza de frente en un choque monumental de fuerza bruta. Desde lo alto, Tormenta desata tempestades y rayos para calcinar los zarcillos parásitos de la armadura de Rhino, mientras Miles Morales teje barreras bioeléctricas para impedir que la embestida rompa el cordón de evacuación de civiles.',
     locations: [
       { name: 'Central Park', img: './assets/locations/central_park.jpg' },
       { name: 'Daily Bugle', img: './assets/locations/daily_bugle.jpg' },
@@ -840,7 +892,8 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'The Danger Room', img: './assets/locations/danger_room.jpg' }
     ],
     setupNotes: [
-      'Coloca a Rhino en Central Park.',
+      'HÉROES ASIGNADOS: Tormenta (Jorge) y Venom Héroe (Esposa). 3er Héroe (José/Apoyo): Miles Morales.',
+      'Coloca a Rhino en Central Park (5 PS para 2 héroes / 8 PS para 3 héroes).',
       'Coloca 1 Civil y 1 Matón en cada ubicación.',
       'BATALLA PREPARATORIA: Puedes equipar hasta 3 Ventajas de Campaña para esta misión.'
     ],
@@ -870,7 +923,7 @@ const CAMPAIGN_CHAPTERS = [
     },
     winOutcome: {
       title: '¡VICTORIA: EL PERÍMETRO ESTÁ ASEGURADO!',
-      epilogue: 'Rhino y sus matones son finalmente neutralizados. El cielo sobre Central Park se tiñe de un rojo sangre espeluznante: Carnage ha abierto los tanques de biomasa mutante. ¡Es la hora de la batalla definitiva por el destino del planeta!',
+      epilogue: 'Rhino y sus matones son finalmente neutralizados gracias al poder destructor de Tormenta y la fuerza simbiótica de Venom. El cielo sobre Central Park se tiñe de un rojo sangre espeluznante: Carnage ha abierto los tanques de biomasa mutante. ¡Es la hora de la batalla definitiva por el destino del planeta!',
       nextChapter: 10,
       bonusText: '¡Todos los héroes desbloqueados están disponibles con la moral al máximo para el Capítulo 10!'
     },
@@ -888,7 +941,12 @@ const CAMPAIGN_CHAPTERS = [
     actTitle: 'ACTO III: GUERRA TOTAL Y CRISIS OMEGA',
     title: 'Capítulo 10: GRAN FINAL — MAXIMA MATANZA (MAXIMUM CARNAGE)',
     villainId: 'carnage',
-    synopsis: '¡EL CLÍMAX DE LA CAMPAÑA! Cletus Kasady ha absorbido el tejido simbiótico fusionado con el Gen-X mutante. Transformado en un titán carmesí con zarcillos gigantescos y energía psíquica, Carnage busca infectar a toda la población del mundo. Los X-Men, la Spider-Family y sus aliados son la última línea de defensa entre la vida y el caos simbiótico absoluto.',
+    assignedHeroSlot1: 'magneto_hero',
+    assignedHeroSlot2: 'spider_man',
+    assignedHeroSlot3: 'wolverine',
+    squadOptions: ['magneto_hero', 'spider_man', 'wolverine', 'miles_morales'],
+    comicReference: 'Spider-Man: Maximum Carnage & X-Men: Fatal Attractions',
+    synopsis: '¡EL CLÍMAX DE LA CAMPAÑA MAXIMUM CARNAGE! Cletus Kasady se ha fusionado por completo con la biomasa mutante en Central Park, transformado en un torbellino gigante de zarcillos carmesí asesinos. Erik Lehnsherr (Magneto) desciende del cielo envuelto en un campo de fuerza colosal, levantando toneladas de acero para contener la marea roja en una jaula magnética de vacío. A su lado, Peter Parker (Spider-Man) y Logan (Wolverine) se lanzan al corazón de la bestia en un despliegue heroico definitivo de garras, telarañas y valor para salvar el futuro de la Tierra.',
     locations: [
       { name: 'Central Park', img: './assets/locations/central_park.jpg' },
       { name: 'Daily Bugle', img: './assets/locations/daily_bugle.jpg' },
@@ -898,8 +956,8 @@ const CAMPAIGN_CHAPTERS = [
       { name: 'The Danger Room', img: './assets/locations/danger_room.jpg' }
     ],
     setupNotes: [
-      'JEFE FINAL: Coloca a Carnage en Central Park.',
-      'SALUD DEL JEFE: Se calcula automáticamente en la app según si juegan 2 o 3 héroes.',
+      'JEFE FINAL: Coloca a Carnage en Central Park (5 PS para 2 héroes / 8 PS para 3 héroes).',
+      'HÉROES ASIGNADOS: Magneto (Jorge) y Spider-Man (Esposa). 3er Héroe (José/Apoyo): Wolverine.',
       'Coloca 1 Civil y 1 Matón en cada una de las 6 ubicaciones.',
       'PUEDES EQUIPAR HASTA 3 VENTAJAS DE CAMPAÑA PARA ESTA BATALLA FINAL.'
     ],
@@ -929,9 +987,9 @@ const CAMPAIGN_CHAPTERS = [
     },
     winOutcome: {
       title: '¡VICTORIA ABSOLUTA: EL TRIUNFO DE LA ALIANZA!',
-      epilogue: '¡LO HAN LOGRADO! El simbionte rojo es arrancado de Cletus Kasady mediante la jaula magnética y sellado en una cápsula criogénica de contención en la Sala de Peligro. Manhattan vuelve a respirar en paz. Los mutantes y los héroes arácnidos forjan una hermandad inmortal de respeto mutuo.',
+      epilogue: '¡LO HAN LOGRADO! El simbionte rojo es arrancado de Cletus Kasady mediante la jaula magnética de Magneto y sellado en una cápsula criogénica de contención en la Sala de Peligro. Manhattan vuelve a respirar en paz. Los mutantes y los héroes arácnidos forjan una hermandad inmortal de respeto mutuo.',
       isCampaignWon: true,
-      bonusText: '¡FELICITACIONES! Has completado con éxito la campaña "MARVEL UNITED: MAXIMUM MUTATION". ¡Una victoria legendaria para ti y tu esposa!'
+      bonusText: '¡FELICITACIONES! Han completado con éxito la campaña "MARVEL UNITED: MAXIMUM MUTATION". ¡Una victoria legendaria para ti y tu esposa!'
     },
     lossOutcome: {
       title: 'RETIRADA ESTRATÉGICA',
