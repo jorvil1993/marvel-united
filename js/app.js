@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const paragraphs = chapter.synopsis.split('\n\n').filter(p => p.trim());
       synopsisEl.innerHTML = paragraphs.map(p => {
         const text = p.trim();
-        if (text.startsWith('«PRÓLOGO') || text.startsWith('«ANTERIORMENTE')) {
+        if (text.startsWith('«PRÓLOGO') || text.startsWith('«ANTERIORMENTE') || text.startsWith('«CONEXIÓN')) {
           return `<div style="background:#1e1b4b;border-left:3px solid #818cf8;padding:8px 10px;border-radius:6px;margin-bottom:8px;font-size:0.78rem;line-height:1.45;color:#e0e7ff;">${text.replace(/\n/g, '<br>')}</div>`;
         } else if (text.startsWith('«LA CRISIS') || text.startsWith('«EL ASALTO') || text.startsWith('«FRACTURA')) {
           return `<div style="background:#261818;border-left:3px solid var(--marvel-red);padding:8px 10px;border-radius:6px;margin-bottom:8px;font-size:0.78rem;line-height:1.45;color:#fecaca;">${text.replace(/\n/g, '<br>')}</div>`;
