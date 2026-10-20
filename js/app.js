@@ -4,12 +4,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Estado local de la partida activa en curso (Modo 2 Jugadores fijos + 1 Opcional)
   const activeMatch = {
-    chapterId: 1,
+    chapterId: '1',
     heroSlot1: 'spider_man',   // Jorge (Jugador 1)
-    heroSlot2: 'wolverine',    // Esposa (Jugadora 2)
-    heroSlot3: null,           // 3er Héroe Opcional de Apoyo
-    villainHp: 15,
-    villainMaxHp: 15,
+    heroSlot2: 'miles_morales',    // Esposa (Jugadora 2)
+    heroSlot3: 'black_cat',           // 3er Héroe Opcional de Apoyo
+    villainHp: 5,
+    villainMaxHp: 5,
     civiliansSaved: 0,
     thugsDefeated: 0,
     threatsCleared: 0,
@@ -28,6 +28,81 @@ document.addEventListener('DOMContentLoaded', () => {
   const eventModal = document.getElementById('eventModal');
   const outcomeModal = document.getElementById('outcomeModal');
   const heroDetailModal = document.getElementById('heroDetailModal');
+  const slotPickerModal = document.getElementById('slotPickerModal');
+  const missionSplashModal = document.getElementById('missionSplashModal');
+  const splashCoverImg = document.getElementById('splashCoverImg');
+  const splashIssueNum = document.getElementById('splashIssueNum');
+  const splashActBadge = document.getElementById('splashActBadge');
+  const splashComicRef = document.getElementById('splashComicRef');
+  const splashMissionTitle = document.getElementById('splashMissionTitle');
+  const splashMatchupHeroes = document.getElementById('splashMatchupHeroes');
+  const splashLocation = document.getElementById('splashLocation');
+  const splashMatchupVillain = document.getElementById('splashMatchupVillain');
+  const splashContinueBtn = document.getElementById('splashContinueBtn');
+  const closeSplashBtn = document.getElementById('closeSplashBtn');
+  const btnViewMissionCover = document.getElementById('btnViewMissionCover');
+
+  let activeSplashChapterId = '1';
+
+  function openMissionSplash(chapterId) {
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(chapterId)) || CAMPAIGN_CHAPTERS[0];
+    activeSplashChapterId = String(chapter.id);
+
+    const h1 = CAMPAIGN_HEROES[chapter.assignedHeroSlot1]?.name || 'Jorge';
+    const h2 = CAMPAIGN_HEROES[chapter.assignedHeroSlot2]?.name || 'Esposa';
+    const h3 = chapter.assignedHeroSlot3 ? (CAMPAIGN_HEROES[chapter.assignedHeroSlot3]?.name || null) : null;
+    const villain = CAMPAIGN_VILLAINS[chapter.villainId]?.name || chapter.villainId;
+    const locName = chapter.locations?.[0]?.name || 'Nueva York';
+
+    if (splashIssueNum) splashIssueNum.textContent = '#' + (chapter.step || 1);
+    if (splashActBadge) splashActBadge.textContent = `${chapter.actTitle || 'ACTO I'} • ENTREGA #${chapter.step || 1}`;
+    if (splashComicRef) splashComicRef.textContent = chapter.comicReference ? `📖 Inspirado en: ${chapter.comicReference}` : '📖 MARVEL COMICS MAXIMUM MUTATION';
+    if (splashMissionTitle) splashMissionTitle.textContent = chapter.title.toUpperCase();
+    if (splashMatchupHeroes) splashMatchupHeroes.textContent = `${h1} & ${h2}${h3 ? ` (Apoyo: ${h3})` : ''}`;
+    if (splashLocation) splashLocation.textContent = locName;
+    if (splashMatchupVillain) splashMatchupVillain.textContent = villain;
+
+    if (splashCoverImg) {
+      splashCoverImg.onerror = () => {
+        splashCoverImg.onerror = null;
+        splashCoverImg.src = './assets/covers/chapter_1.png';
+      };
+      splashCoverImg.src = `./assets/covers/chapter_${chapter.id}.png`;
+    }
+
+    if (missionSplashModal) {
+      missionSplashModal.classList.add('active');
+    }
+    soundFX.playTransition();
+  }
+
+  function closeMissionSplash() {
+    if (missionSplashModal) {
+      missionSplashModal.classList.remove('active');
+    }
+  }
+
+  if (closeSplashBtn) {
+    closeSplashBtn.addEventListener('click', () => {
+      closeMissionSplash();
+      soundFX.playClick();
+    });
+  }
+
+  if (splashContinueBtn) {
+    splashContinueBtn.addEventListener('click', () => {
+      closeMissionSplash();
+      loadChapterIntoMatch(activeSplashChapterId);
+      switchTab('match');
+      soundFX.playFanfare();
+    });
+  }
+
+  if (btnViewMissionCover) {
+    btnViewMissionCover.addEventListener('click', () => {
+      openMissionSplash(activeMatch.chapterId);
+    });
+  }
 
   // Inicialización de Sonido
   updateSoundButtonUI();
@@ -68,55 +143,212 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 1. TIMELINE & MAPA DE CAMPAÑA
+  // 1. TIMELINE & MAPA DE CAMPAÑA (Árbol de 10 Entregas con Ramificaciones)
   // =========================================================================
   function renderTimeline() {
     const container = document.getElementById('timelineNodesContainer');
     if (!container) return;
 
     container.innerHTML = '';
-    const currentId = campaignStorage.state.currentChapterId;
+    const history = campaignStorage.state.history || [];
+    const currentChapterId = String(campaignStorage.state.currentChapterId || '1');
+    const currentStep = history.length + 1;
+    const isCampaignFinished = history.length >= 10;
 
-    CAMPAIGN_CHAPTERS.forEach(chapter => {
-      const isCurrent = chapter.id === currentId;
-      const historyItem = campaignStorage.state.history.find(h => h.chapterId === chapter.id);
-      const isCompleted = !!historyItem;
-      const isWin = historyItem && historyItem.result === 'win';
-      const isLoss = historyItem && historyItem.result === 'loss';
-      const isLocked = chapter.id > currentId && !isCompleted;
+    // Header Banner
+    const banner = document.createElement('div');
+    banner.style.cssText = 'background:linear-gradient(135deg, rgba(226,54,54,0.25) 0%, rgba(30,41,59,0.95) 100%);border:2px solid var(--comic-yellow);border-radius:12px;padding:14px;margin-bottom:18px;box-shadow:0 4px 15px rgba(0,0,0,0.4);';
+    banner.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span class="badge badge-yellow">★ CAMPAÑA EN CURSO</span>
+        <span style="font-size:0.75rem;color:var(--comic-yellow);font-weight:bold;">${Math.min(10, currentStep)} de 10 Entregas</span>
+      </div>
+      <h2 style="font-family:var(--font-comic);font-size:1.2rem;color:#fff;margin:0 0 6px 0;">
+        ${isCampaignFinished ? '¡LA MUTACIÓN MÁXIMA HA LLEGADO A SU FIN!' : `BATALLA #${currentStep}: ${CAMPAIGN_CHAPTERS.find(c => String(c.id) === currentChapterId)?.title || 'En combate'}`}
+      </h2>
+      <p style="font-size:0.78rem;color:#cbd5e1;margin:0;line-height:1.4;">
+        ${isCampaignFinished 
+          ? 'Has completado los 10 números de esta saga. Revisa tu crónica de victorias y derrotas o explora otros caminos alternativos.'
+          : '<strong>Sin revanchas:</strong> Toda victoria otorga aliados y ventajas; toda derrota desata crisis y consecuencias que transforman el siguiente número.'}
+      </p>
+    `;
+    container.appendChild(banner);
 
-      const card = document.createElement('div');
-      let statusClass = 'locked';
-      if (isCurrent) statusClass = 'current';
-      else if (isWin) statusClass = 'completed-win';
-      else if (isLoss) statusClass = 'completed-loss';
+    // List of 10 Issues
+    for (let step = 1; step <= 10; step++) {
+      if (step <= history.length) {
+        // PAST PLAYED STEP
+        const hEntry = history[step - 1];
+        const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(hEntry.chapterId)) || {
+          id: hEntry.chapterId,
+          title: hEntry.chapterTitle,
+          actTitle: 'BATALLA REGISTRADA',
+          synopsis: 'Misión concluida.',
+          villainId: hEntry.villainId
+        };
+        const isWin = hEntry.result === 'win';
+        const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
 
-      card.className = `node-card ${statusClass}`;
-
-      const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
-
-      card.innerHTML = `
-        <div class="node-badge">${isWin ? '✓' : isLoss ? '✕' : chapter.id}</div>
-        <div class="node-header">
-          <span class="node-act">${chapter.actTitle}</span>
-          <span class="node-villain-tag">😈 ${villain.name || 'Jefe'}</span>
-        </div>
-        <h3 class="node-title">${chapter.title}</h3>
-        <p class="node-summary">${chapter.synopsis.slice(0, 115)}...</p>
-        <div class="node-footer">
-          <span>${isWin ? '<strong style="color:var(--success-green)">✓ VICTORIA REGISTRADA</strong>' : isLoss ? '<strong style="color:var(--marvel-red)">✕ DERROTA (SUPERADA)</strong>' : isCurrent ? '<strong style="color:var(--comic-yellow)">▶ CAPÍTULO ACTIVO</strong>' : '🔒 Bloqueado'}</span>
-          <span>${isCurrent ? '<button class="badge badge-yellow" style="cursor:pointer">JUGAR EN MESA ➔</button>' : ''}</span>
-        </div>
-      `;
-
-      if (!isLocked) {
+        const card = document.createElement('div');
+        card.className = `node-card ${isWin ? 'completed-win' : 'completed-loss'}`;
+        card.innerHTML = `
+          <div class="node-badge" style="background:${isWin ? 'var(--success-green)' : 'var(--marvel-red)'};color:#fff;border-color:#fff;">${isWin ? '✓' : '✕'}</div>
+          <div class="node-header">
+            <span class="node-act">${chapter.actTitle || ''} • ENTREGA #${step}</span>
+            <span class="node-villain-tag">😈 ${villain.name || chapter.villainId || ''}</span>
+          </div>
+          <h3 class="node-title">${chapter.title}</h3>
+          <div style="font-size:0.75rem;color:${isWin ? 'var(--success-green)' : 'var(--marvel-red)'};font-weight:bold;margin:2px 0 4px 0;">
+            ${isWin ? '✓ VICTORIA HISTÓRICA' : '✕ DERROTA (CONSECUENCIAS ASUMIDAS)'}
+          </div>
+          <div style="font-size:0.72rem;color:#cbd5e1;line-height:1.3;">
+            👥 <strong>Héroes:</strong> ${(hEntry.selectedHeroes || []).map(h => CAMPAIGN_HEROES[h]?.name || h).join(', ')}
+          </div>
+          <p class="node-summary" style="margin-top:4px;font-size:0.72rem;color:#94a3b8;">
+            ${isWin ? (chapter.winOutcome?.bonusText || chapter.winOutcome?.epilogue?.slice(0, 120) || 'Objetivo cumplido.') : (chapter.lossOutcome?.penalties || chapter.lossOutcome?.epilogue?.slice(0, 120) || 'Consecuencias tácticas asumidas.')}
+          </p>
+        `;
         card.addEventListener('click', () => {
-          loadChapterIntoMatch(chapter.id);
-          switchTab('match');
+          openMissionSplash(chapter.id);
+        });
+        container.appendChild(card);
+      } else if (step === currentStep && !isCampaignFinished) {
+        // CURRENT ACTIVE STEP
+        const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === currentChapterId) || CAMPAIGN_CHAPTERS[0];
+        const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
+        const hero1 = CAMPAIGN_HEROES[chapter.assignedHeroSlot1] || CAMPAIGN_HEROES['cyclops'];
+        const hero2 = CAMPAIGN_HEROES[chapter.assignedHeroSlot2] || CAMPAIGN_HEROES['miles_morales'];
+        const hero3 = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
+
+        const card = document.createElement('div');
+        card.className = 'node-card current';
+        card.innerHTML = `
+          <div class="node-badge" style="background:var(--comic-yellow);color:var(--text-dark);border-color:#fff;font-size:1.1rem;">▶</div>
+          <div class="node-header">
+            <span class="node-act" style="color:var(--comic-yellow);">${chapter.actTitle} • ENTREGA #${step} DE 10</span>
+            <span class="node-villain-tag">😈 ${villain.name}</span>
+          </div>
+          <h3 class="node-title" style="font-size:1.1rem;color:#fff;">${chapter.title}</h3>
+          
+          ${chapter.comicReference ? `<div style="font-size:0.68rem;background:rgba(246,201,14,0.15);border-left:3px solid var(--comic-yellow);padding:3px 6px;margin:3px 0 6px 0;color:var(--comic-yellow);font-weight:600;">📖 Inspirado en: ${chapter.comicReference}</div>` : ''}
+
+          <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:6px 8px;margin:4px 0 8px 0;">
+            <div style="font-size:0.72rem;color:var(--comic-cyan);font-weight:bold;margin-bottom:4px;">👥 PATRULLA OBLIGATORIA ASIGNADA:</div>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <div style="display:flex;align-items:center;gap:4px;">
+                <img src="${hero1.avatar}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                <span style="font-size:0.72rem;color:#fff;"><strong>Jorge:</strong> ${hero1.name}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;">
+                <img src="${hero2.avatar}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                <span style="font-size:0.72rem;color:#fff;"><strong>Esposa:</strong> ${hero2.name}</span>
+              </div>
+              ${hero3 ? `
+              <div style="display:flex;align-items:center;gap:4px;">
+                <img src="${hero3.avatar}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                <span style="font-size:0.72rem;color:#c4b5fd;">⭐ <strong>Apoyo:</strong> ${hero3.name}</span>
+              </div>` : ''}
+            </div>
+          </div>
+
+          <p class="node-summary" style="font-size:0.76rem;line-height:1.35;color:#cbd5e1;">${chapter.synopsis.slice(0, 160)}...</p>
+
+          <div style="margin:8px 0;font-size:0.7rem;background:rgba(0,0,0,0.3);border-radius:6px;padding:6px 8px;display:flex;flex-direction:column;gap:4px;">
+            <div style="color:var(--success-green);"><strong>✓ Si Ganan:</strong> ${chapter.winOutcome?.bonusText || 'Avanzan con ventaja'}</div>
+            <div style="color:#f87171;"><strong>✕ Si Pierden:</strong> ${chapter.lossOutcome?.penalties || chapter.lossOutcome?.bonusText || 'Consecuencias inmediatas'}</div>
+          </div>
+
+          <button id="btnPlayActiveChapter" class="btn-primary" style="width:100%;margin-top:6px;padding:10px;font-size:0.88rem;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;">
+            <span>🖼️</span> VER PORTADA & JUGAR CAPÍTULO ➔
+          </button>
+        `;
+
+        card.querySelector('#btnPlayActiveChapter')?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openMissionSplash(chapter.id);
+        });
+
+        card.addEventListener('click', () => {
+          openMissionSplash(chapter.id);
+        });
+
+        container.appendChild(card);
+      } else {
+        // FUTURE LOCKED STEP (Anti-Spoiler Fog-of-War estricto)
+        const card = document.createElement('div');
+        card.className = 'node-card locked';
+        card.style.cssText = 'opacity:0.6;filter:grayscale(0.6);border:1px dashed #334155;';
+        card.innerHTML = `
+          <div class="node-badge" style="background:#1e293b;color:#64748b;border-color:#334155;">🔒</div>
+          <div class="node-header">
+            <span class="node-act" style="color:#64748b;">ENTREGA #${step} DE 10</span>
+            <span class="node-villain-tag" style="background:#1e293b;color:#64748b;border:1px dashed #334155;">🔒 CONFIDENCIAL</span>
+          </div>
+          <h3 class="node-title" style="color:#64748b;font-family:var(--font-comic);">??? — EXPEDIENTE CLASIFICADO</h3>
+          <p class="node-summary" style="color:#64748b;font-size:0.74rem;line-height:1.35;">
+            El archivo táctico de esta misión permanece sellado bajo secreto de S.H.I.E.L.D. Se revelará y adaptará automáticamente al concluir la batalla anterior.
+          </p>
+        `;
+        container.appendChild(card);
+      }
+    }
+
+    // MULTIVERSE EXPLORER (Bitácora Anti-Spoiler: Solo muestra nodos jugados y el actual)
+    const multiverseSection = document.createElement('div');
+    multiverseSection.style.cssText = 'margin-top:24px;border-top:1px dashed #334155;padding-top:16px;';
+    multiverseSection.innerHTML = `
+      <button id="btnToggleMultiverse" class="btn-secondary" style="width:100%;padding:10px;font-size:0.82rem;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;">
+        <span>🗺️</span> Ver Bitácora de Rutas Descubiertas
+      </button>
+      <div id="multiverseGridContainer" style="display:none;margin-top:14px;flex-direction:column;gap:12px;"></div>
+    `;
+    container.appendChild(multiverseSection);
+
+    const toggleBtn = multiverseSection.querySelector('#btnToggleMultiverse');
+    const multiGrid = multiverseSection.querySelector('#multiverseGridContainer');
+
+    toggleBtn?.addEventListener('click', () => {
+      const isVisible = multiGrid.style.display === 'flex';
+      multiGrid.style.display = isVisible ? 'none' : 'flex';
+      toggleBtn.innerHTML = isVisible
+        ? '<span>🗺️</span> Ver Bitácora de Rutas Descubiertas'
+        : '<span>▲</span> Ocultar Bitácora';
+
+      if (!isVisible && multiGrid.children.length === 0) {
+        CAMPAIGN_CHAPTERS.forEach(c => {
+          const wasPlayed = history.some(h => String(h.chapterId) === String(c.id));
+          const isCurrentInMulti = String(c.id) === currentChapterId;
+
+          if (wasPlayed || isCurrentInMulti) {
+            const v = CAMPAIGN_VILLAINS[c.villainId] || {};
+            const h1 = CAMPAIGN_HEROES[c.assignedHeroSlot1] || { name: c.assignedHeroSlot1 };
+            const h2 = CAMPAIGN_HEROES[c.assignedHeroSlot2] || { name: c.assignedHeroSlot2 };
+
+            const item = document.createElement('div');
+            item.style.cssText = `background:#111827;border:1px solid ${isCurrentInMulti ? 'var(--comic-yellow)' : '#22c55e'};border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:4px;font-size:0.75rem;cursor:pointer;`;
+            item.innerHTML = `
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <strong style="color:var(--comic-yellow);font-size:0.8rem;">[Misión ${c.id}] ${c.title}</strong>
+                <span class="badge ${wasPlayed ? 'badge-green' : 'badge-yellow'}">${wasPlayed ? 'JUGADO' : 'ACTIVO'}</span>
+              </div>
+              <div style="color:#cbd5e1;">😈 <strong>Villano:</strong> ${v.name} • 👥 <strong>Patrulla:</strong> ${h1.name} & ${h2.name}</div>
+              <div style="color:#94a3b8;font-size:0.7rem;">📖 <strong>Inspiración:</strong> ${c.comicReference || 'Marvel Comics'}</div>
+            `;
+            item.addEventListener('click', () => {
+              openMissionSplash(c.id);
+            });
+            multiGrid.appendChild(item);
+          } else {
+            const item = document.createElement('div');
+            item.style.cssText = 'background:#0b0f19;border:1px dashed #1e293b;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:#475569;';
+            item.innerHTML = `
+              <span>🔒 [Misión ${c.id}] ??? — Expediente Clasificado</span>
+              <span class="badge" style="background:#1e293b;color:#64748b;">En las Sombras</span>
+            `;
+            multiGrid.appendChild(item);
+          }
         });
       }
-
-      container.appendChild(card);
     });
   }
 
@@ -124,13 +356,35 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. COMPANION EN MESA: PARTIDA ACTIVA
   // =========================================================================
   function loadChapterIntoMatch(chapterId) {
-    activeMatch.chapterId = chapterId;
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === chapterId) || CAMPAIGN_CHAPTERS[0];
+    activeMatch.chapterId = String(chapterId);
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(chapterId)) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
 
-    // Calcular HP del villano según héroes activos (2 o 3)
+    // Asignación automática y obligatoria de la patrulla del capítulo
+    if (chapter.assignedHeroSlot1) {
+      activeMatch.heroSlot1 = chapter.assignedHeroSlot1;
+      if (!campaignStorage.state.unlockedHeroes.includes(chapter.assignedHeroSlot1)) {
+        campaignStorage.state.unlockedHeroes.push(chapter.assignedHeroSlot1);
+      }
+    }
+    if (chapter.assignedHeroSlot2) {
+      activeMatch.heroSlot2 = chapter.assignedHeroSlot2;
+      if (!campaignStorage.state.unlockedHeroes.includes(chapter.assignedHeroSlot2)) {
+        campaignStorage.state.unlockedHeroes.push(chapter.assignedHeroSlot2);
+      }
+    }
+    if (chapter.assignedHeroSlot3 && !campaignStorage.state.unlockedHeroes.includes(chapter.assignedHeroSlot3)) {
+      campaignStorage.state.unlockedHeroes.push(chapter.assignedHeroSlot3);
+    }
+    if (activeMatch.heroSlot3) {
+      activeMatch.heroSlot3 = chapter.assignedHeroSlot3 || null;
+    }
+    campaignStorage.saveState();
+
+    // Calcular HP del villano según héroes activos usando la ficha física oficial
     const numHeroes = activeMatch.getSelectedHeroes().length;
-    activeMatch.villainMaxHp = villain.baseHp + (villain.perHeroHp * numHeroes);
+    const vLife = villain ? (villain.vida || villain.hpByHeroes || { 2: 5, 3: 7, 4: 10 }) : { 2: 5 };
+    activeMatch.villainMaxHp = vLife[numHeroes] || vLife[2] || 5;
     activeMatch.villainHp = activeMatch.villainMaxHp;
     activeMatch.civiliansSaved = 0;
     activeMatch.thugsDefeated = 0;
@@ -141,51 +395,143 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function recalculateVillainHp() {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId];
     const numHeroes = activeMatch.getSelectedHeroes().length;
     const oldMax = activeMatch.villainMaxHp;
-    activeMatch.villainMaxHp = villain.baseHp + (villain.perHeroHp * numHeroes);
+    const vLife = villain ? (villain.vida || villain.hpByHeroes || { 2: 5, 3: 7, 4: 10 }) : { 2: 5 };
+
+    activeMatch.villainMaxHp = vLife[numHeroes] || vLife[2] || 5;
     const diff = activeMatch.villainMaxHp - oldMax;
     activeMatch.villainHp = Math.max(1, activeMatch.villainHp + diff);
     updateTrackersUI();
   }
 
   function renderActiveMatch() {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
     const villain = CAMPAIGN_VILLAINS[chapter.villainId] || {};
 
     // Header info
     document.getElementById('matchChapterAct').textContent = chapter.actTitle;
     document.getElementById('matchChapterTitle').textContent = chapter.title;
     document.getElementById('matchVillainName').textContent = villain.name;
-    document.getElementById('matchVillainSubtitle').textContent = villain.subtitle;
+    document.getElementById('matchVillainSubtitle').textContent = villain.alterEgo ? `Alter Ego: ${villain.alterEgo}` : (villain.subtitle || '');
     document.getElementById('matchVillainAvatar').src = villain.avatar;
 
-    // Synopsis
-    document.getElementById('matchSynopsis').textContent = chapter.synopsis;
+    // Synopsis & Comic Reference
+    const comicRefEl = document.getElementById('matchComicRefBadge');
+    if (comicRefEl) {
+      comicRefEl.innerHTML = chapter.comicReference ? `📖 <strong>Inspiración de Cómic:</strong> ${chapter.comicReference}` : '';
+      comicRefEl.style.display = chapter.comicReference ? 'block' : 'none';
+    }
+    const synopsisEl = document.getElementById('matchSynopsis');
+    if (synopsisEl && chapter.synopsis) {
+      const paragraphs = chapter.synopsis.split('\n\n').filter(p => p.trim());
+      synopsisEl.innerHTML = paragraphs.map(p => {
+        const text = p.trim();
+        if (text.startsWith('«PRÓLOGO') || text.startsWith('«ANTERIORMENTE')) {
+          return `<div style="background:#1e1b4b;border-left:3px solid #818cf8;padding:8px 10px;border-radius:6px;margin-bottom:8px;font-size:0.78rem;line-height:1.45;color:#e0e7ff;">${text.replace(/\n/g, '<br>')}</div>`;
+        } else if (text.startsWith('«LA CRISIS') || text.startsWith('«EL ASALTO') || text.startsWith('«FRACTURA')) {
+          return `<div style="background:#261818;border-left:3px solid var(--marvel-red);padding:8px 10px;border-radius:6px;margin-bottom:8px;font-size:0.78rem;line-height:1.45;color:#fecaca;">${text.replace(/\n/g, '<br>')}</div>`;
+        } else if (text.startsWith('«MISIÓN') || text.startsWith('«INTERVENCIÓN')) {
+          return `<div style="background:#13231b;border-left:3px solid #34d399;padding:8px 10px;border-radius:6px;margin-bottom:4px;font-size:0.78rem;line-height:1.45;color:#d1fae5;">${text.replace(/\n/g, '<br>')}</div>`;
+        } else {
+          return `<p style="margin-bottom:6px;line-height:1.45;">${text.replace(/\n/g, '<br>')}</p>`;
+        }
+      }).join('');
+    }
+
+    // Active Perks Widget (Prominente en la partida)
+    renderMatchActivePerks();
 
     // Setup notes checklist
     const setupList = document.getElementById('matchSetupList');
     setupList.innerHTML = '';
-    chapter.setupNotes.forEach(note => {
+    const checklist = chapter.setupChecklist || chapter.setupNotes || [];
+    checklist.forEach(note => {
       const li = document.createElement('li');
       li.textContent = note;
       setupList.appendChild(li);
     });
 
     // Special Rules
-    document.getElementById('matchSpecialRules').textContent = chapter.specialRules;
+    document.getElementById('matchSpecialRules').textContent = chapter.specialRules || 'Reglas estándar de Marvel United.';
 
-    // Locations Strip
+    // Tactical Deployment Card (Dónde Inicia Cada Uno)
+    const depCard = document.getElementById('matchDeploymentCard');
+    if (depCard) {
+      const vLoc = chapter.locations.find(l => l.startVillain) || chapter.locations[0];
+      const hLoc = chapter.locations.find(l => l.startHeroes) || chapter.locations[3] || chapter.locations[1];
+      const h1 = CAMPAIGN_HEROES[activeMatch.heroSlot1] || { name: 'Jorge' };
+      const h2 = CAMPAIGN_HEROES[activeMatch.heroSlot2] || { name: 'Esposa' };
+      const h3 = activeMatch.heroSlot3 ? CAMPAIGN_HEROES[activeMatch.heroSlot3] : null;
+
+      const panic = campaignStorage.state.panicScore || 0;
+      const reward = campaignStorage.state.pendingCampaignReward;
+      const injured = campaignStorage.state.injuredHeroes || [];
+      const isH1Injured = injured.includes(activeMatch.heroSlot1);
+      const isH2Injured = injured.includes(activeMatch.heroSlot2);
+
+      let statusAlerts = '';
+      if (panic > 0) {
+        statusAlerts += `
+          <div style="background:#450a0a;border-left:3px solid #ef4444;padding:6px 8px;border-radius:4px;font-size:0.72rem;color:#fecaca;">
+            ⚠️ <strong>PÁNICO EN NUEVA YORK (${panic}/5):</strong> La ciudad sufre tensión por derrotas previas.
+          </div>`;
+      }
+      if (reward) {
+        const rewObj = (typeof CAMPAIGN_REWARDS !== 'undefined' ? CAMPAIGN_REWARDS.find(r => r.id === reward) : null) || { name: reward, desc: 'Ventaja táctica activa.' };
+        statusAlerts += `
+          <div style="background:#064e3b;border-left:3px solid #10b981;padding:6px 8px;border-radius:4px;font-size:0.72rem;color:#a7f3d0;">
+            🎁 <strong>RECOMPENSA ACTIVA: ${rewObj.name}:</strong> ${rewObj.desc}
+          </div>`;
+      }
+      if (isH1Injured || isH2Injured) {
+        const injuredNames = [isH1Injured ? h1.name : null, isH2Injured ? h2.name : null].filter(Boolean).join(', ');
+        statusAlerts += `
+          <div style="background:#3b1e3b;border-left:3px solid #f43f5e;padding:6px 8px;border-radius:4px;font-size:0.72rem;color:#fecdd3;">
+            🩹 <strong>HÉROE HERIDO (${injuredNames}):</strong> Quedó fuera de combate en la última derrota. Inicia esta partida con <strong>2 cartas en mano</strong> en vez de 3.
+          </div>`;
+      }
+
+      depCard.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;border-bottom:1px solid #334155;padding-bottom:6px;">
+          <span style="font-size:0.75rem;text-transform:uppercase;color:var(--comic-yellow);font-weight:800;letter-spacing:0.5px;">📍 Despliegue Oficial en Mesa (6 Ubicaciones):</span>
+          <span class="badge badge-yellow">Posiciones 0 y 3</span>
+        </div>
+        ${statusAlerts ? `<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">${statusAlerts}</div>` : ''}
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:0.75rem;color:#cbd5e1;">
+          <div style="background:#1e1e38;padding:6px 8px;border-radius:6px;border-left:3px solid var(--marvel-red);">
+            <strong style="color:#f87171;">😈 ${villain.name}:</strong> Inicia en <strong style="color:#fff;">${vLoc.name} (Posición 0)</strong>.
+            <span style="display:block;font-size:0.7rem;color:#94a3b8;margin-top:2px;">${vLoc.note || 'Centro de operaciones inicial de la amenaza.'}</span>
+          </div>
+          <div style="background:#131c2e;padding:6px 8px;border-radius:6px;border-left:3px solid #3b82f6;">
+            <strong style="color:#93c5fd;">👥 Equipo de Héroes (${h1.name} & ${h2.name}${h3 ? `, ${h3.name}` : ''}):</strong> Inician juntos en <strong style="color:#fff;">${hLoc.name} (Posición 3, opuesto al villano)</strong>.
+            <span style="display:block;font-size:0.7rem;color:#94a3b8;margin-top:2px;">${hLoc.note || 'Punto de incursión táctica del equipo.'}</span>
+          </div>
+        </div>
+      `;
+      depCard.style.display = 'block';
+    }
+
+    // Locations Strip con Badges de Inicio y Efecto de Carta
     const locationsStrip = document.getElementById('matchLocationsStrip');
     locationsStrip.innerHTML = '';
-    chapter.locations.forEach(loc => {
+    chapter.locations.forEach((loc, index) => {
+      let badgesHtml = '';
+      if (loc.startVillain) badgesHtml += `<span class="loc-badge villain">😈 Villano (Pos. 0)</span>`;
+      if (loc.startHeroes) badgesHtml += `<span class="loc-badge hero1">👥 Héroes (Pos. 3)</span>`;
+
+      const hasStart = loc.startVillain || loc.startHeroes;
       const locCard = document.createElement('div');
-      locCard.className = 'location-mini-card';
+      locCard.className = `location-mini-card ${hasStart ? 'has-start' : ''}`;
       locCard.innerHTML = `
-        <img src="${loc.img}" alt="${loc.name}">
-        <p>${loc.name}</p>
+        <div class="loc-img-wrap">
+          <img src="${loc.img}" alt="${loc.name}">
+          ${badgesHtml ? `<div class="loc-badges-row">${badgesHtml}</div>` : ''}
+        </div>
+        <p class="loc-name"><strong>[${index}]</strong> ${loc.name}</p>
+        <p style="font-size:0.65rem;color:#94a3b8;margin:2px 0 0 0;line-height:1.2;">${loc.effect || ''}</p>
       `;
       locationsStrip.appendChild(locCard);
     });
@@ -196,6 +542,182 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trackers
     updateTrackersUI();
   }
+
+  let currentPickerSlot = 1;
+
+  function openSlotPicker(slotIndex = 1) {
+    currentPickerSlot = slotIndex;
+    renderSlotPickerModal();
+    slotPickerModal?.classList.add('active');
+    soundFX.playClick();
+  }
+
+  function renderSlotPickerModal() {
+    const titleEl = document.getElementById('slotPickerTitle');
+    const subtitleEl = document.getElementById('slotPickerSubtitle');
+    const grid = document.getElementById('slotPickerGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    const slotLabels = {
+      1: '👤 Jorge (J1)',
+      2: '🌸 Esposa (J2)',
+      3: '⭐ 3er Héroe (José / Apoyo)'
+    };
+
+    if (titleEl) {
+      titleEl.innerHTML = `Elegir Héroe: <span style="color:#fff;">${slotLabels[currentPickerSlot]}</span>`;
+    }
+
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
+    const squad = chapter.squadOptions || ['cyclops', 'miles_morales', 'black_cat', 'spider_man'];
+
+    if (subtitleEl) {
+      subtitleEl.innerHTML = `
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <button id="pickerTabSlot1" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 1 ? '#3b82f6' : '#334155'};background:${currentPickerSlot === 1 ? '#1d4ed8' : '#1e293b'};color:#fff;">👤 Jorge</button>
+          <button id="pickerTabSlot2" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 2 ? '#ec4899' : '#334155'};background:${currentPickerSlot === 2 ? '#be185d' : '#1e293b'};color:#fff;">🌸 Esposa</button>
+          <button id="pickerTabSlot3" style="flex:1;padding:6px;border-radius:6px;font-size:0.75rem;font-weight:bold;cursor:pointer;border:1px solid ${currentPickerSlot === 3 ? '#a855f7' : '#334155'};background:${currentPickerSlot === 3 ? '#7e22ce' : '#1e293b'};color:#fff;">⭐ Apoyo</button>
+        </div>
+        <div style="font-size:0.72rem;color:var(--comic-yellow);font-weight:bold;margin-bottom:6px;">
+          ⭐ PATRULLA DE LA MISIÓN (${squad.length} OPCIONES RECOMENDADAS):
+        </div>
+      `;
+
+      document.getElementById('pickerTabSlot1')?.addEventListener('click', () => {
+        currentPickerSlot = 1;
+        renderSlotPickerModal();
+      });
+      document.getElementById('pickerTabSlot2')?.addEventListener('click', () => {
+        currentPickerSlot = 2;
+        renderSlotPickerModal();
+      });
+      document.getElementById('pickerTabSlot3')?.addEventListener('click', () => {
+        currentPickerSlot = 3;
+        renderSlotPickerModal();
+      });
+    }
+
+    // 1. Mostrar únicamente las 4 opciones recomendadas de la misión
+    squad.forEach(heroId => {
+      const hero = CAMPAIGN_HEROES[heroId];
+      if (!hero) return;
+
+      const isCurrentInSlot = (currentPickerSlot === 1 && activeMatch.heroSlot1 === heroId) ||
+                              (currentPickerSlot === 2 && activeMatch.heroSlot2 === heroId) ||
+                              (currentPickerSlot === 3 && activeMatch.heroSlot3 === heroId);
+
+      let slotTag = '';
+      if (activeMatch.heroSlot1 === heroId) slotTag = '<span style="font-size:0.6rem;background:#1d4ed8;color:#fff;padding:2px 6px;border-radius:4px;">Jorge (J1)</span>';
+      else if (activeMatch.heroSlot2 === heroId) slotTag = '<span style="font-size:0.6rem;background:#be185d;color:#fff;padding:2px 6px;border-radius:4px;">Esposa (J2)</span>';
+      else if (activeMatch.heroSlot3 === heroId) slotTag = '<span style="font-size:0.6rem;background:#7e22ce;color:#fff;padding:2px 6px;border-radius:4px;">Apoyo (J3)</span>';
+
+      const card = document.createElement('div');
+      card.style.cssText = `background:${isCurrentInSlot ? '#1e293b' : '#111827'};border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#2563eb'};border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;cursor:pointer;position:relative;`;
+      card.innerHTML = `
+        <span style="position:absolute;top:4px;left:6px;font-size:0.6rem;color:var(--comic-yellow);font-weight:bold;">★ Misión</span>
+        <img src="${hero.avatar}" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid ${isCurrentInSlot ? 'var(--comic-yellow)' : '#3b82f6'};margin-top:6px;">
+        <div>
+          <strong style="font-size:0.78rem;display:block;color:#fff;line-height:1.1;">${hero.name}</strong>
+          <span style="font-size:0.65rem;color:var(--text-muted);display:block;">${hero.alterEgo}</span>
+        </div>
+        <div>${slotTag}</div>
+        ${isCurrentInSlot ? '<span style="font-size:0.65rem;color:var(--comic-yellow);font-weight:bold;">✓ Asignado</span>' : ''}
+      `;
+
+      card.addEventListener('click', () => {
+        assignHeroToCurrentSlot(heroId);
+      });
+
+      grid.appendChild(card);
+    });
+
+    // 2. Opción para expandir otros héroes si el jugador lo desea
+    const otherHeroes = campaignStorage.state.unlockedHeroes.filter(h => !squad.includes(h));
+    if (otherHeroes.length > 0) {
+      const moreBtn = document.createElement('button');
+      moreBtn.style.cssText = 'grid-column: 1 / -1;background:#0f172a;border:1px dashed #475569;color:#94a3b8;padding:8px;border-radius:6px;font-size:0.72rem;cursor:pointer;margin-top:6px;';
+      moreBtn.innerHTML = `<span>+ Ver otros ${otherHeroes.length} héroes desbloqueados</span>`;
+      
+      const extraContainer = document.createElement('div');
+      extraContainer.style.cssText = 'grid-column: 1 / -1;display:none;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;';
+      
+      otherHeroes.forEach(heroId => {
+        const hero = CAMPAIGN_HEROES[heroId];
+        if (!hero) return;
+        const isCurrentInSlot = (currentPickerSlot === 1 && activeMatch.heroSlot1 === heroId) ||
+                                (currentPickerSlot === 2 && activeMatch.heroSlot2 === heroId) ||
+                                (currentPickerSlot === 3 && activeMatch.heroSlot3 === heroId);
+        const card = document.createElement('div');
+        card.style.cssText = `background:#111827;border:1px solid #374151;border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;cursor:pointer;`;
+        card.innerHTML = `
+          <img src="${hero.avatar}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;">
+          <strong style="font-size:0.75rem;color:#fff;">${hero.name}</strong>
+        `;
+        card.addEventListener('click', () => {
+          assignHeroToCurrentSlot(heroId);
+        });
+        extraContainer.appendChild(card);
+      });
+
+      moreBtn.addEventListener('click', () => {
+        if (extraContainer.style.display === 'none') {
+          extraContainer.style.display = 'grid';
+          moreBtn.textContent = '▲ Ocultar otros héroes';
+        } else {
+          extraContainer.style.display = 'none';
+          moreBtn.innerHTML = `<span>+ Ver otros ${otherHeroes.length} héroes desbloqueados</span>`;
+        }
+      });
+
+      grid.appendChild(moreBtn);
+      grid.appendChild(extraContainer);
+    }
+  }
+
+  function assignHeroToCurrentSlot(heroId) {
+    if (currentPickerSlot === 1) {
+      if (activeMatch.heroSlot2 === heroId) activeMatch.heroSlot2 = activeMatch.heroSlot1;
+      if (activeMatch.heroSlot3 === heroId) activeMatch.heroSlot3 = null;
+      activeMatch.heroSlot1 = heroId;
+    } else if (currentPickerSlot === 2) {
+      if (activeMatch.heroSlot1 === heroId) activeMatch.heroSlot1 = activeMatch.heroSlot2;
+      if (activeMatch.heroSlot3 === heroId) activeMatch.heroSlot3 = null;
+      activeMatch.heroSlot2 = heroId;
+    } else if (currentPickerSlot === 3) {
+      if (activeMatch.heroSlot1 === heroId) activeMatch.heroSlot1 = (campaignStorage.state.unlockedHeroes.find(h => h !== heroId && h !== activeMatch.heroSlot2) || 'spider_man');
+      if (activeMatch.heroSlot2 === heroId) activeMatch.heroSlot2 = (campaignStorage.state.unlockedHeroes.find(h => h !== heroId && h !== activeMatch.heroSlot1) || 'wolverine');
+      activeMatch.heroSlot3 = heroId;
+      recalculateVillainHp();
+    }
+    soundFX.playClick();
+    renderMatchHeroTeam();
+    slotPickerModal?.classList.remove('active');
+  }
+
+  document.getElementById('btnSwapCoupleHeroes')?.addEventListener('click', () => {
+    const temp = activeMatch.heroSlot1;
+    activeMatch.heroSlot1 = activeMatch.heroSlot2;
+    activeMatch.heroSlot2 = temp;
+    soundFX.playClick();
+    renderMatchHeroTeam();
+  });
+
+  document.getElementById('btnChangeTeamDirect')?.addEventListener('click', () => {
+    openSlotPicker(1);
+  });
+
+  document.getElementById('closeSlotPickerBtn')?.addEventListener('click', () => {
+    slotPickerModal?.classList.remove('active');
+    soundFX.playClick();
+  });
+
+  slotPickerModal?.addEventListener('click', (e) => {
+    if (e.target === slotPickerModal) {
+      slotPickerModal.classList.remove('active');
+    }
+  });
 
   function renderMatchHeroTeam() {
     const slotsGrid = document.getElementById('matchSlotsGrid');
@@ -214,13 +736,13 @@ document.addEventListener('DOMContentLoaded', () => {
     slot1Card.style.cssText = 'background:#131c2e;border:1px solid #2563eb;border-radius:8px;padding:8px;display:flex;align-items:center;gap:8px;cursor:pointer;';
     slot1Card.innerHTML = `
       <img src="${hero1.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #2563eb;">
-      <div style="overflow:hidden;">
-        <span style="font-size:0.6rem;color:#93c5fd;font-weight:800;text-transform:uppercase;display:block;">👤 Jorge (J1)</span>
+      <div style="overflow:hidden;flex:1;">
+        <span style="font-size:0.6rem;color:#93c5fd;font-weight:800;text-transform:uppercase;display:block;">👤 Jorge (J1) ✎</span>
         <strong style="font-size:0.8rem;white-space:nowrap;color:#fff;">${hero1.name}</strong>
       </div>
     `;
     slot1Card.addEventListener('click', () => {
-      switchTab('roster');
+      openSlotPicker(1);
     });
     slotsGrid.appendChild(slot1Card);
 
@@ -229,13 +751,13 @@ document.addEventListener('DOMContentLoaded', () => {
     slot2Card.style.cssText = 'background:#241624;border:1px solid #db2777;border-radius:8px;padding:8px;display:flex;align-items:center;gap:8px;cursor:pointer;';
     slot2Card.innerHTML = `
       <img src="${hero2.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #db2777;">
-      <div style="overflow:hidden;">
-        <span style="font-size:0.6rem;color:#fbcfe8;font-weight:800;text-transform:uppercase;display:block;">🌸 Esposa (J2)</span>
+      <div style="overflow:hidden;flex:1;">
+        <span style="font-size:0.6rem;color:#fbcfe8;font-weight:800;text-transform:uppercase;display:block;">🌸 Esposa (J2) ✎</span>
         <strong style="font-size:0.8rem;white-space:nowrap;color:#fff;">${hero2.name}</strong>
       </div>
     `;
     slot2Card.addEventListener('click', () => {
-      switchTab('roster');
+      openSlotPicker(2);
     });
     slotsGrid.appendChild(slot2Card);
 
@@ -248,12 +770,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const hero3 = CAMPAIGN_HEROES[activeMatch.heroSlot3] || CAMPAIGN_HEROES['cyclops'];
       const slot3Card = document.createElement('div');
-      slot3Card.style.cssText = 'background:#1f1936;border:1px solid #7c3aed;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;';
+      slot3Card.style.cssText = 'background:#1f1936;border:1px solid #7c3aed;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;';
       slot3Card.innerHTML = `
-        <div style="display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;" id="slot3HeroInfo">
           <img src="${hero3.avatar}" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #7c3aed;">
           <div>
-            <span style="font-size:0.6rem;color:#c4b5fd;font-weight:800;text-transform:uppercase;display:block;">⭐ 3er Héroe de Apoyo</span>
+            <span style="font-size:0.6rem;color:#c4b5fd;font-weight:800;text-transform:uppercase;display:block;">⭐ 3er Héroe de Apoyo ✎</span>
             <strong style="font-size:0.8rem;color:#fff;">${hero3.name}</strong>
           </div>
         </div>
@@ -261,7 +783,11 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       slot3Container.appendChild(slot3Card);
 
-      document.getElementById('btnRemoveSlot3').addEventListener('click', (e) => {
+      document.getElementById('slot3HeroInfo')?.addEventListener('click', () => {
+        openSlotPicker(3);
+      });
+
+      document.getElementById('btnRemoveSlot3')?.addEventListener('click', (e) => {
         e.stopPropagation();
         activeMatch.heroSlot3 = null;
         soundFX.playClick();
@@ -274,39 +800,108 @@ document.addEventListener('DOMContentLoaded', () => {
         modeBadge.className = 'badge badge-blue';
       }
 
+      const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
+      const hero3Data = chapter.assignedHeroSlot3 ? CAMPAIGN_HEROES[chapter.assignedHeroSlot3] : null;
+      const hero3Label = hero3Data ? hero3Data.name : 'Apoyo';
+
       const addBtn = document.createElement('button');
       addBtn.style.cssText = 'width:100%;background:#182030;border:1px dashed #64748b;color:#94a3b8;border-radius:8px;padding:8px;font-size:0.75rem;cursor:pointer;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:6px;';
-      addBtn.innerHTML = '<span>➕</span> Añadir 3er Héroe de Apoyo (Opcional)';
+      addBtn.innerHTML = `<span>➕</span> Activar 3er Héroe de la Misión: <strong style="color:#c4b5fd;">${hero3Label}</strong>`;
       addBtn.addEventListener('click', () => {
-        const available = campaignStorage.state.unlockedHeroes.filter(id => id !== activeMatch.heroSlot1 && id !== activeMatch.heroSlot2);
-        if (available.length > 0) {
-          activeMatch.heroSlot3 = available[0];
-          soundFX.playUnlock();
-          recalculateVillainHp();
-          renderMatchHeroTeam();
-        } else {
-          switchTab('roster');
-        }
+        activeMatch.heroSlot3 = chapter.assignedHeroSlot3 || 'black_cat';
+        soundFX.playUnlock();
+        recalculateVillainHp();
+        renderMatchHeroTeam();
       });
       slot3Container.appendChild(addBtn);
     }
   }
 
+  function renderMatchActivePerks() {
+    const container = document.getElementById('matchActivePerksContainer');
+    if (!container) return;
+
+    const activePerkIds = campaignStorage.state.activePerks || [];
+    const unlockedPerkIds = campaignStorage.state.unlockedPerks || [];
+
+    if (activePerkIds.length === 0) {
+      container.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+          <div>
+            <strong style="color:var(--comic-yellow);font-size:0.75rem;text-transform:uppercase;display:block;">🛡️ Arsenal de Ventajas (0/2 Equipadas):</strong>
+            <span style="font-size:0.72rem;color:#94a3b8;">
+              ${unlockedPerkIds.length > 0 ? `Tienes ${unlockedPerkIds.length} ventajas desbloqueadas listas para equipar.` : 'Sin ventajas equipadas aún (se obtienen ganando batallas).'}
+            </span>
+          </div>
+          ${unlockedPerkIds.length > 0 ? `
+            <button id="btnQuickEquipPerks" class="badge badge-yellow" style="cursor:pointer;border:none;padding:5px 8px;">⚡ Equipar Ventajas</button>
+          ` : ''}
+        </div>
+      `;
+      document.getElementById('btnQuickEquipPerks')?.addEventListener('click', () => {
+        switchTab('perks');
+      });
+      return;
+    }
+
+    let cardsHtml = '';
+    activePerkIds.forEach(perkId => {
+      const perk = CAMPAIGN_PERKS[perkId];
+      if (!perk) return;
+      cardsHtml += `
+        <div style="background:#0f172a;border:1px solid #3b82f6;border-radius:6px;padding:8px;display:flex;align-items:flex-start;gap:8px;">
+          <span style="font-size:1.3rem;line-height:1;">${perk.icon}</span>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong style="font-size:0.78rem;color:var(--comic-yellow);">${perk.name}</strong>
+              <span class="badge badge-blue" style="font-size:0.58rem;">HABILITADA EN MESA</span>
+            </div>
+            <p style="font-size:0.72rem;color:#e2e8f0;margin:3px 0 0 0;line-height:1.25;">${perk.description}</p>
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <strong style="color:var(--comic-yellow);font-size:0.75rem;text-transform:uppercase;">🛡️ Ventajas Activas para esta Partida (${activePerkIds.length}/2):</strong>
+        <button id="btnManageActivePerks" class="badge badge-yellow" style="cursor:pointer;border:none;padding:3px 8px;">⚙️ Cambiar</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        ${cardsHtml}
+      </div>
+    `;
+
+    document.getElementById('btnManageActivePerks')?.addEventListener('click', () => {
+      switchTab('perks');
+    });
+  }
+
   function updateTrackersUI() {
-    document.getElementById('trackerVillainHp').textContent = activeMatch.villainHp;
-    document.getElementById('trackerVillainMaxHp').textContent = `/ ${activeMatch.villainMaxHp} PS`;
-    document.getElementById('trackerCivilians').textContent = `${activeMatch.civiliansSaved} / 9`;
-    document.getElementById('trackerThugs').textContent = `${activeMatch.thugsDefeated} / 9`;
-    document.getElementById('trackerThreats').textContent = `${activeMatch.threatsCleared} / 4`;
+    const vHp = document.getElementById('trackerVillainHp');
+    if (!vHp) return;
+    vHp.textContent = activeMatch.villainHp;
+    const vMax = document.getElementById('trackerVillainMaxHp');
+    if (vMax) vMax.textContent = `/ ${activeMatch.villainMaxHp} PS`;
+    const civ = document.getElementById('trackerCivilians');
+    if (civ) civ.textContent = `${activeMatch.civiliansSaved} / 9`;
+    const thugs = document.getElementById('trackerThugs');
+    if (thugs) thugs.textContent = `${activeMatch.thugsDefeated} / 9`;
+    const threats = document.getElementById('trackerThreats');
+    if (threats) threats.textContent = `${activeMatch.threatsCleared} / 4`;
     
     const expCountEl = document.getElementById('trackerExposure');
-    expCountEl.textContent = activeMatch.exposureTokens;
-    if (activeMatch.exposureTokens >= 3) {
-      expCountEl.style.color = 'var(--marvel-red)';
-      document.getElementById('exposureAlertBadge').style.display = 'inline-block';
-    } else {
-      expCountEl.style.color = 'var(--comic-yellow)';
-      document.getElementById('exposureAlertBadge').style.display = 'none';
+    if (expCountEl) {
+      expCountEl.textContent = activeMatch.exposureTokens;
+      if (activeMatch.exposureTokens >= 3) {
+        expCountEl.style.color = 'var(--marvel-red)';
+        const alertBadge = document.getElementById('exposureAlertBadge');
+        if (alertBadge) alertBadge.style.display = 'inline-block';
+      } else {
+        expCountEl.style.color = 'var(--comic-yellow)';
+        const alertBadge = document.getElementById('exposureAlertBadge');
+        if (alertBadge) alertBadge.style.display = 'none';
+      }
     }
   }
 
@@ -401,17 +996,41 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function triggerEventCard(eventType) {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId) || CAMPAIGN_CHAPTERS[0];
-    let eventData = chapter.events[eventType];
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId)) || CAMPAIGN_CHAPTERS[0];
+    let eventData = chapter.events ? chapter.events[eventType] : null;
 
     if (!eventData && eventType === 'crisis') {
-      eventData = {
-        title: '¡INTERFERENCIA DEL DAILY BUGLE!',
-        type: 'Crisis Imprevista en Mesa',
-        badge: 'Giro Inesperado',
-        text: 'Los flashes de los fotógrafos desorientan a los héroes. Añade 1 Ficha de Exposición al héroe con más cartas en mano.',
-        flavor: '"¡Una foto vale más que mil desmentidos!" — J. Jonah Jameson'
-      };
+      const dynamicTwists = [
+        {
+          title: '¡DESCARGA DE ADRENALINA!',
+          type: 'Giro Heroico',
+          badge: '¡Momento Épico!',
+          rule: '¡La determinación del equipo se enciende ante el peligro inminente! <strong>Cada Héroe gana inmediatamente 1 ficha de Movimiento o 1 ficha de Ataque a su elección.</strong>',
+          flavor: '«¡No nos rendiremos jamás mientras esta ciudad nos necesite!»'
+        },
+        {
+          title: '¡COORDINACIÓN PERFECTA!',
+          type: 'Sinergia de Equipo',
+          badge: 'Unión Táctica',
+          rule: '¡Sincronización táctica en el calor de la batalla! <strong>El Héroe activo puede recolocar a su compañero a 1 Lugar adyacente sin coste.</strong>',
+          flavor: 'Una mirada de complicidad basta para cubrir la retaguardia.'
+        },
+        {
+          title: '¡REFUERZO HEROICO!',
+          type: 'Voluntad Inquebrantable',
+          badge: 'Inspiración',
+          rule: '¡Un segundo aliento renueva las fuerzas del equipo! <strong>El Héroe activo roba 1 carta adicional de su mazo a su mano.</strong>',
+          flavor: '«¡Aún tenemos trucos bajo la manga!»'
+        },
+        {
+          title: '¡FLASH DEL BUGLE!',
+          type: 'Incidente de Prensa',
+          badge: 'Prensa Hostil',
+          rule: 'Si juegan con el Desafío Identidad Secreta: <strong>Mueve 1 Periodista 1 Lugar en sentido horario. Si no, añade 1 Civil al Lugar con menos Civiles.</strong>',
+          flavor: '«¡Foto de primera plana! ¡Esto va directo a la edición de la tarde!»'
+        }
+      ];
+      eventData = dynamicTwists[Math.floor(Math.random() * dynamicTwists.length)];
     }
 
     if (!eventData) return;
@@ -423,9 +1042,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Configurar clase y contenido
     frontEl.className = `comic-card-front event-${eventType}`;
-    document.getElementById('eventCardTypeBadge').textContent = eventData.badge || eventData.type;
+    document.getElementById('eventCardTypeBadge').textContent = eventData.badge || eventData.type || (eventType === 'initial' ? 'Evento Inicial' : eventType === 'underPressure' ? 'Bajo Presión' : eventType === 'accelerated' ? 'Acelerado' : 'Crisis');
     document.getElementById('eventCardTitle').textContent = eventData.title;
-    document.getElementById('eventCardRule').innerHTML = eventData.text;
+    document.getElementById('eventCardRule').innerHTML = eventData.rule || eventData.text || '';
     document.getElementById('eventCardFlavor').textContent = eventData.flavor || '';
     document.getElementById('eventCardFooterSeries').textContent = `${chapter.actTitle} • CAP. ${chapter.id}`;
 
@@ -460,7 +1079,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function handleMatchResult(result) {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === activeMatch.chapterId);
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(activeMatch.chapterId));
     if (!chapter) return;
 
     const outcome = result === 'win' ? chapter.winOutcome : chapter.lossOutcome;
@@ -476,32 +1095,103 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modal de desenlace
-    document.getElementById('outcomeBadge').textContent = result === 'win' ? '¡VICTORIA ÉPICA!' : 'DERROTA TÁCTICA';
+    const closeBtn = document.getElementById('closeOutcomeModalBtn');
+
+    document.getElementById('outcomeBadge').textContent = result === 'win' ? '¡VICTORIA ÉPICA!' : 'DERROTA NARRATIVA';
     document.getElementById('outcomeBadge').className = `badge ${result === 'win' ? 'badge-green' : 'badge-red'}`;
     document.getElementById('outcomeTitle').textContent = outcome.title;
     document.getElementById('outcomeEpilogue').textContent = outcome.epilogue;
     document.getElementById('outcomeBonus').textContent = outcome.bonusText || outcome.penalties || '';
 
-    // Desbloqueos visuales en el modal
+    if (closeBtn) {
+      closeBtn.textContent = 'Aceptar Consecuencias y Avanzar en la Historia ➔';
+      closeBtn.className = 'btn-primary';
+    }
+
+    // Desbloqueos y Recompensas de Campaña en el modal
     const unlocksContainer = document.getElementById('outcomeUnlocksContainer');
     unlocksContainer.innerHTML = '';
 
-    if (result === 'win' && outcome.unlockedHeroes && outcome.unlockedHeroes.length > 0) {
-      outcome.unlockedHeroes.forEach(heroId => {
-        const hero = CAMPAIGN_HEROES[heroId];
-        if (!hero) return;
-        const div = document.createElement('div');
-        div.style.cssText = 'background:var(--bg-card);border:2px solid var(--comic-yellow);border-radius:8px;padding:8px;display:flex;align-items:center;gap:10px;margin-top:6px;';
-        div.innerHTML = `
-          <img src="${hero.avatar}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
-          <div>
-            <strong style="color:var(--comic-yellow);font-size:0.85rem">¡HÉROE DESBLOQUEADO!</strong>
-            <p style="font-size:0.75rem">${hero.name} (${hero.alterEgo})</p>
-          </div>
-        `;
-        unlocksContainer.appendChild(div);
+    if (result === 'win') {
+      // Recompensas de Campaña oficiales para elegir 1
+      const rewardDiv = document.createElement('div');
+      rewardDiv.style.cssText = 'background:#0f172a;border:1px solid #10b981;border-radius:8px;padding:10px;margin-top:10px;';
+      rewardDiv.innerHTML = `
+        <strong style="color:var(--comic-yellow);font-size:0.75rem;text-transform:uppercase;display:block;margin-bottom:6px;">🎁 Elige 1 Recompensa de Campaña para la Siguiente Batalla:</strong>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          ${(typeof CAMPAIGN_REWARDS !== 'undefined' ? CAMPAIGN_REWARDS : []).map(r => `
+            <button class="btn-reward-choice" data-reward="${r.id}" style="background:#1e293b;border:1px solid ${campaignStorage.state.pendingCampaignReward === r.id ? 'var(--comic-yellow)' : '#334155'};color:#fff;border-radius:6px;padding:8px 10px;text-align:left;font-size:0.75rem;cursor:pointer;">
+              <strong style="color:var(--comic-yellow);display:block;">${r.name}</strong>
+              <span style="color:#cbd5e1;font-size:0.7rem;">${r.desc}</span>
+            </button>
+          `).join('')}
+        </div>
+      `;
+
+      rewardDiv.querySelectorAll('.btn-reward-choice').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const rId = btn.dataset.reward;
+          campaignStorage.setPendingReward(rId);
+          rewardDiv.querySelectorAll('.btn-reward-choice').forEach(b => {
+            b.style.borderColor = b.dataset.reward === rId ? 'var(--comic-yellow)' : '#334155';
+            b.style.background = b.dataset.reward === rId ? '#1e3a5f' : '#1e293b';
+          });
+          soundFX.playClick();
+        });
       });
-      setTimeout(() => soundFX.playUnlock(), 600);
+      unlocksContainer.appendChild(rewardDiv);
+
+      // Desbloqueo de Héroes
+      if (outcome.unlockedHeroes && outcome.unlockedHeroes.length > 0) {
+        outcome.unlockedHeroes.forEach(heroId => {
+          const hero = CAMPAIGN_HEROES[heroId];
+          if (!hero) return;
+          const div = document.createElement('div');
+          div.style.cssText = 'background:var(--bg-card);border:2px solid var(--comic-yellow);border-radius:8px;padding:8px;display:flex;align-items:center;gap:10px;margin-top:6px;';
+          div.innerHTML = `
+            <img src="${hero.avatar}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
+            <div>
+              <strong style="color:var(--comic-yellow);font-size:0.85rem">¡HÉROE DESBLOQUEADO!</strong>
+              <p style="font-size:0.75rem">${hero.name} (${hero.alterEgo})</p>
+            </div>
+          `;
+          unlocksContainer.appendChild(div);
+        });
+        setTimeout(() => soundFX.playUnlock(), 600);
+      }
+    } else {
+      // En caso de derrota: Secuelas y Héroes Heridos
+      const h1 = CAMPAIGN_HEROES[activeMatch.heroSlot1] || { name: 'Jorge' };
+      const h2 = CAMPAIGN_HEROES[activeMatch.heroSlot2] || { name: 'Esposa' };
+
+      const lossDiv = document.createElement('div');
+      lossDiv.style.cssText = 'background:#2b1212;border:1px solid #ef4444;border-radius:8px;padding:10px;margin-top:10px;';
+      lossDiv.innerHTML = `
+        <strong style="color:#fca5a5;font-size:0.75rem;text-transform:uppercase;display:block;margin-bottom:4px;">⚠️ Secuela Táctica de la Derrota:</strong>
+        <p style="font-size:0.72rem;color:#fecaca;margin:0 0 6px 0;">+1 Pánico en Nueva York (Actual: ${campaignStorage.state.panicScore}/5). ¿Algún héroe quedó fuera de combate?</p>
+        <div style="display:flex;gap:6px;">
+          <button id="btnInjuryH1" style="flex:1;background:#1e293b;border:1px solid #64748b;color:#fff;border-radius:6px;padding:6px;font-size:0.72rem;cursor:pointer;">${h1.name} KO (Herido)</button>
+          <button id="btnInjuryH2" style="flex:1;background:#1e293b;border:1px solid #64748b;color:#fff;border-radius:6px;padding:6px;font-size:0.72rem;cursor:pointer;">${h2.name} KO (Herida)</button>
+        </div>
+      `;
+
+      lossDiv.querySelector('#btnInjuryH1')?.addEventListener('click', (e) => {
+        campaignStorage.setHeroInjured(activeMatch.heroSlot1);
+        e.target.style.borderColor = '#ef4444';
+        e.target.style.background = '#450a0a';
+        e.target.textContent = `✓ ${h1.name} Herido (Inicia con 2 cartas)`;
+        soundFX.playClick();
+      });
+
+      lossDiv.querySelector('#btnInjuryH2')?.addEventListener('click', (e) => {
+        campaignStorage.setHeroInjured(activeMatch.heroSlot2);
+        e.target.style.borderColor = '#ef4444';
+        e.target.style.background = '#450a0a';
+        e.target.textContent = `✓ ${h2.name} Herida (Inicia con 2 cartas)`;
+        soundFX.playClick();
+      });
+
+      unlocksContainer.appendChild(lossDiv);
     }
 
     outcomeModal.classList.add('active');
@@ -585,6 +1275,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('modalHeroRole').textContent = hero.role;
     document.getElementById('modalHeroTrait').textContent = hero.trait;
     document.getElementById('modalHeroDesc').textContent = hero.description;
+    
+    const bioEl = document.getElementById('modalHeroComicBio');
+    if (bioEl) {
+      bioEl.textContent = hero.comicBio || hero.description;
+    }
     
     // Stats
     document.getElementById('statMov').textContent = hero.stats.mov;
@@ -699,6 +1394,7 @@ document.addEventListener('DOMContentLoaded', () => {
           campaignStorage.toggleActivePerk(perk.id);
           soundFX.playClick();
           renderPerks();
+          renderMatchActivePerks();
         });
       }
 
@@ -718,6 +1414,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('statTotalWins').textContent = campaignStorage.state.gameStats.totalWins;
     document.getElementById('statTotalLosses').textContent = campaignStorage.state.gameStats.totalLosses;
     document.getElementById('statHeroesUnlocked').textContent = `${campaignStorage.state.unlockedHeroes.length} / 15`;
+    const panicEl = document.getElementById('statPanicScore');
+    if (panicEl) panicEl.textContent = `${campaignStorage.state.panicScore || 0} / 5`;
 
     if (campaignStorage.state.history.length === 0) {
       container.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:20px;">Aún no se ha librado ninguna batalla en la campaña. ¡Comienza jugando el Capítulo 1 en la mesa!</p>';

@@ -9,14 +9,16 @@ class CampaignStorage {
 
   getDefaultState() {
     return {
-      version: 1,
+      version: 2,
       startedAt: new Date().toISOString(),
-      currentChapterId: 1,
+      currentChapterId: '1',
       unlockedHeroes: ['spider_man', 'miles_morales', 'wolverine', 'cyclops'],
       unlockedPerks: [],
       activePerks: [],
-      exposureScore: 0,
+      panicScore: 0,
+      pendingCampaignReward: null,
       injuredHeroes: [],
+      exposureScores: {},
       history: [],
       gameStats: {
         totalWins: 0,
@@ -89,12 +91,50 @@ class CampaignStorage {
     return this.state.activePerks;
   }
 
+  setPendingReward(rewardId) {
+    this.state.pendingCampaignReward = rewardId;
+    this.saveState();
+  }
+
+  consumePendingReward() {
+    const reward = this.state.pendingCampaignReward;
+    this.state.pendingCampaignReward = null;
+    this.saveState();
+    return reward;
+  }
+
+  setHeroInjured(heroId) {
+    if (heroId && !this.state.injuredHeroes.includes(heroId)) {
+      this.state.injuredHeroes.push(heroId);
+      this.saveState();
+    }
+  }
+
+  clearInjuredHeroes() {
+    this.state.injuredHeroes = [];
+    this.saveState();
+  }
+
+  addHeroExposure(heroId, amount = 1) {
+    if (!heroId) return 0;
+    if (!this.state.exposureScores) this.state.exposureScores = {};
+    const cur = (this.state.exposureScores[heroId] || 0) + amount;
+    this.state.exposureScores[heroId] = cur;
+    this.saveState();
+    return cur;
+  }
+
+  getHeroExposure(heroId) {
+    if (!this.state.exposureScores) return 0;
+    return this.state.exposureScores[heroId] || 0;
+  }
+
   recordGameResult(chapterId, result, selectedHeroes = [], notes = '') {
-    const chapter = CAMPAIGN_CHAPTERS.find(c => c.id === chapterId);
+    const chapter = CAMPAIGN_CHAPTERS.find(c => String(c.id) === String(chapterId));
     if (!chapter) return;
 
     const entry = {
-      chapterId,
+      chapterId: String(chapterId),
       chapterTitle: chapter.title,
       villainId: chapter.villainId,
       result, // 'win' | 'loss'
@@ -110,27 +150,33 @@ class CampaignStorage {
       if (!this.state.gameStats.villainsDefeated.includes(chapter.villainId)) {
         this.state.gameStats.villainsDefeated.push(chapter.villainId);
       }
+      // Curar heridas tras victoria
+      this.clearInjuredHeroes();
+
       // Unlocks from chapter
-      if (chapter.winOutcome.unlockedHeroes) {
+      if (chapter.winOutcome && chapter.winOutcome.unlockedHeroes) {
         chapter.winOutcome.unlockedHeroes.forEach(h => this.unlockHero(h));
       }
-      if (chapter.winOutcome.unlockedPerks) {
+      if (chapter.winOutcome && chapter.winOutcome.unlockedPerks) {
         chapter.winOutcome.unlockedPerks.forEach(p => this.unlockPerk(p));
       }
-      if (chapter.winOutcome.nextChapter) {
-        this.state.currentChapterId = chapter.winOutcome.nextChapter;
+      if (chapter.winOutcome && chapter.winOutcome.nextChapter) {
+        this.state.currentChapterId = String(chapter.winOutcome.nextChapter);
       }
     } else {
       this.state.gameStats.totalLosses++;
+      // Aumentar Pánico en Nueva York (0 a 5)
+      this.state.panicScore = Math.min(5, (this.state.panicScore || 0) + 1);
+
       // Unlocks from loss if any
-      if (chapter.lossOutcome.unlockedHeroes) {
+      if (chapter.lossOutcome && chapter.lossOutcome.unlockedHeroes) {
         chapter.lossOutcome.unlockedHeroes.forEach(h => this.unlockHero(h));
       }
-      if (chapter.lossOutcome.unlockedPerks) {
+      if (chapter.lossOutcome && chapter.lossOutcome.unlockedPerks) {
         chapter.lossOutcome.unlockedPerks.forEach(p => this.unlockPerk(p));
       }
-      if (chapter.lossOutcome.nextChapter) {
-        this.state.currentChapterId = chapter.lossOutcome.nextChapter;
+      if (chapter.lossOutcome && chapter.lossOutcome.nextChapter) {
+        this.state.currentChapterId = String(chapter.lossOutcome.nextChapter);
       }
     }
 

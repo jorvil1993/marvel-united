@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mu-campaign-v1';
+const CACHE_NAME = 'mu-campaign-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -39,18 +39,28 @@ const ASSETS_TO_CACHE = [
   './assets/villains/mystique_villain.png',
   './assets/villains/juggernaut.png',
   './assets/villains/sabretooth.png',
-  './assets/locations/central_park.jpg',
-  './assets/locations/daily_bugle.jpg',
+  './assets/locations/queens.jpg',
+  './assets/locations/oscorp_tower.jpg',
   './assets/locations/brooklyn_bridge.jpg',
-  './assets/locations/oscorp.jpg',
   './assets/locations/midtown_high.jpg',
-  './assets/locations/xavier_institute.jpg',
-  './assets/locations/danger_room.jpg',
-  './assets/locations/muir_island.jpg',
-  './assets/locations/genosha.jpg',
-  './assets/locations/morlock_tunnels.jpg',
+  './assets/locations/daily_bugle.jpg',
+  './assets/locations/osborn_labs.jpg',
   './assets/locations/hangar_bay.jpg',
-  './assets/locations/sims_tower.jpg'
+  './assets/locations/weapon_x.jpg',
+  './assets/locations/xavier_institute.jpg',
+  './assets/locations/muir_island.jpg',
+  './assets/locations/x_jet.jpg',
+  './assets/locations/genosha.jpg',
+  './assets/locations/asteroid_m.jpg',
+  './assets/locations/sentinel_station.jpg',
+  './assets/covers/chapter_1.png',
+  './assets/covers/chapter_2A.png',
+  './assets/covers/chapter_2B.png',
+  './assets/covers/chapter_4A.png',
+  './assets/covers/chapter_5A.png',
+  './assets/covers/chapter_6A.png',
+  './assets/covers/chapter_7A.png',
+  './assets/covers/chapter_10A.png'
 ];
 
 self.addEventListener('install', (event) => {
